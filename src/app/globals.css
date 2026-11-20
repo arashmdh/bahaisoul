@@ -31,7 +31,7 @@ html[data-locale="fa"] body {
 }
 
 html[data-locale="fa"] .font-display {
-  font-family: var(--font-nastaliq), var(--font-vazir), serif;
+  font-family: var(--font-vazir), var(--font-display), serif;
 }
 
 ::selection {

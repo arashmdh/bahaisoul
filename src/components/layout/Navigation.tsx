@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
@@ -12,6 +12,14 @@ import { cn } from "@/lib/utils";
 export function Navigation() {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const links = [
     { href: "/#doors", label: t.nav.doors },
@@ -22,8 +30,14 @@ export function Navigation() {
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo/40 via-indigo/10 to-transparent" />
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        scrolled || open
+          ? "border-b border-gold/15 bg-indigo/95 backdrop-blur-md"
+          : "bg-gradient-to-b from-indigo/70 via-indigo/35 to-transparent"
+      )}
+    >
       <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
         <Link
           href="/"
@@ -41,7 +55,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-sm tracking-wide text-alabaster/75 transition hover:text-gold"
+              className="font-sans text-sm tracking-wide text-alabaster/80 transition hover:text-gold"
             >
               {link.label}
             </Link>
@@ -49,7 +63,7 @@ export function Navigation() {
           <LanguageSwitcher />
           <Link
             href="/auth/signin"
-            className="rounded-sm border border-gold/40 bg-gold/10 px-4 py-2 font-sans text-sm tracking-wide text-gold transition hover:bg-gold/20"
+            className="border border-gold/40 bg-gold/10 px-4 py-2 font-sans text-sm tracking-wide text-gold transition hover:bg-gold/20"
           >
             {t.nav.enter}
           </Link>
@@ -72,9 +86,7 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={cn(
-              "absolute inset-x-0 top-full border-t border-gold/15 bg-indigo/95 px-5 py-6 backdrop-blur-md md:hidden"
-            )}
+            className="border-t border-gold/15 bg-indigo px-5 py-6 md:hidden"
           >
             <div className="flex flex-col gap-4">
               {links.map((link) => (
