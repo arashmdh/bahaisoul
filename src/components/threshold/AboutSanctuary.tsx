@@ -277,8 +277,8 @@ function CosmosArtBox() {
 }
 
 export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
-  const { locale } = useLocale();
-  const copy = locale === "fa" ? ABOUT.fa : ABOUT.en;
+  const { locale, t } = useLocale();
+  const copy = ABOUT[locale];
   const isFa = locale === "fa";
 
   return (
@@ -375,7 +375,7 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
                 href="/about"
                 className="inline-flex border-b border-amber-300/50 pb-1 font-sans text-sm tracking-wide text-amber-50 transition hover:border-amber-100 hover:text-white"
               >
-                {isFa ? "ادامهٔ بیانیه" : "Read the full manifesto"}
+                {t.aboutCta}
               </Link>
             </div>
           )}

@@ -33,13 +33,13 @@ export const dictionaries = {
     hero: {
       headline: "A sanctuary for the contemplative heart",
       support:
-        "Explore the mystical, cultural, and communal dimensions of the Bahá'í Faith through nine luminous doors.",
+        "Walk the mystical, cultural, and communal paths of the Bahá'í Faith through nine open doors of light.",
       ctaPrimary: "Cross the Threshold",
       ctaSecondary: "Enter the Sanctuary",
     },
     doors: {
       heading: "The Nine Doors",
-      sub: "Each door opens onto a pillar of spiritual inquiry.",
+      sub: "Each door opens onto a living pillar of spiritual inquiry.",
     },
     quote: {
       heading: "Word of the Day",
@@ -73,6 +73,7 @@ export const dictionaries = {
       reverence: "Built in reverence · A digital House of Worship for seekers",
       version: "Version",
     },
+    aboutCta: "Read the full manifesto",
   },
   sv: {
     brand: "Bahá'í Soul",
@@ -84,7 +85,7 @@ export const dictionaries = {
       sanctuary: "Helgedom",
       gallery: "Galleri",
       scholars: "Forskare",
-      dashboard: "Instrumentpanel",
+      dashboard: "Översikt",
       enter: "Stig in",
     },
     history: {
@@ -98,15 +99,15 @@ export const dictionaries = {
       count: "{n} heliga platser",
     },
     hero: {
-      headline: "En helgedom för det kontemplativa hjärtat",
+      headline: "En helgedom för det stilla hjärtat",
       support:
-        "Utforska den bahá'íska trons mystiska, kulturella och gemenskapliga dimensioner genom nio lysande dörrar.",
+        "Utforska bahá'í-trons mystiska, kulturella och gemenskapliga vägar genom nio öppna dörrar av ljus.",
       ctaPrimary: "Träd över tröskeln",
       ctaSecondary: "Gå in i helgedomen",
     },
     doors: {
       heading: "De nio dörrarna",
-      sub: "Varje dörr öppnar sig mot en pelare av andlig undersökning.",
+      sub: "Varje dörr leder till en levande pelare av andlig undersökning.",
     },
     quote: {
       heading: "Dagens ord",
@@ -140,9 +141,10 @@ export const dictionaries = {
       reverence: "Byggt i vördnad · Ett digitalt tillbedjanshus för sökare",
       version: "Version",
     },
+    aboutCta: "Läs hela manifestet",
   },
   fa: {
-    brand: "بهائی سول",
+    brand: "روح بهائی",
     brandSub: "معبد مجازی",
     nav: {
       doors: "نُه در",
@@ -157,7 +159,7 @@ export const dictionaries = {
     history: {
       eyebrow: "سیرهٔ مقدّس",
       menu: "موضوعات",
-      choose: "عنوان زیر را برگزینید تا هر فصل از تاریخ آیین را بخوانید.",
+      choose: "یک عنوان برگزینید تا هر فصل از داستان آیین را بخوانید.",
       milestones: "نقاط عطف تاریخی",
       sources: "منابع",
     },
@@ -167,13 +169,13 @@ export const dictionaries = {
     hero: {
       headline: "حرمگاهی برای قلب تأمل‌گر",
       support:
-        "ابعاد عرفانی، فرهنگی و اجتماعی آیین بهائی را از رهگذر نُه در نورانی کاوش کنید.",
+        "ابعاد عرفانی، فرهنگی و اجتماعی آیین بهائی را از میان نُه درِ نورانی بپیمایید.",
       ctaPrimary: "از آستانه بگذرید",
       ctaSecondary: "وارد حرم شوید",
     },
     doors: {
       heading: "نُه در",
-      sub: "هر در به ستونی از جست‌وجوی روحانی می‌گشاید.",
+      sub: "هر در به ستونی زنده از جست‌وجوی روحانی می‌گشاید.",
     },
     quote: {
       heading: "کلام روز",
@@ -184,7 +186,7 @@ export const dictionaries = {
       send: "ارسال به معبد",
       sending: "در حال ارسال…",
       sent: "تأمل شما دریافت شد.",
-      sendError: "ارسال نشد. دوباره تلاش کنید.",
+      sendError: "ارسال نشد. لطفاً دوباره تلاش کنید.",
       recent: "تأمل‌های اخیر",
       next: "بعدی",
       prev: "قبلی",
@@ -204,9 +206,10 @@ export const dictionaries = {
       off: "فضای صوتی خاموش",
     },
     footer: {
-      reverence: "ساخته‌شده با حرمت · خانه‌ای مجازی برای جویندگان",
+      reverence: "ساخته‌شده با حرمت · خانه‌ای مجازی برای جویندگان حقیقت",
       version: "نسخه",
     },
+    aboutCta: "ادامهٔ بیانیه",
   },
 } as const;
 
@@ -275,4 +278,5 @@ export type Dictionary = {
     reverence: string;
     version: string;
   };
+  aboutCta: string;
 };

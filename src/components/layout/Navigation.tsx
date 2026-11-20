@@ -27,7 +27,7 @@ export function Navigation() {
     { href: "/#doors", label: t.nav.doors },
     { href: "/gallery", label: t.nav.gallery },
     { href: "/sanctuary", label: t.nav.sanctuary },
-    { href: "/doors/scholars", label: t.nav.scholars },
+    { href: "/scholars", label: t.nav.scholars },
     { href: "/dashboard", label: t.nav.dashboard },
   ];
 

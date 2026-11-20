@@ -136,7 +136,7 @@ export const DOORS: Door[] = [
       sv: "Förteckning över forskare",
       fa: "فهرست پژوهشگران و سوابق",
     },
-    href: "/doors/scholars",
+    href: "/scholars",
   },
   {
     slug: "seekers-path",
