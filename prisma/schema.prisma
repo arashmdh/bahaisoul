@@ -1,0 +1,200 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Roles: SEEKER | SCHOLAR | ADMIN
+// DoorCategory: METAPHYSICS | MYSTICISM | FAMILY | ARTS | SOCIETY |
+//   SCIENCE_RELIGION | DEVOTIONAL | SCHOLARS | SEEKERS_PATH
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  avatar        String?
+  role          String    @default("SEEKER")
+  bio           String?
+  languagePref  String    @default("en") // en | sv | fa
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts           Account[]
+  sessions           Session[]
+  scholarProfile     ScholarProfile?
+  articles           Article[]
+  journalEntries     JournalEntry[]
+  prayerIntentions   PrayerIntention[]
+  bookmarks          Bookmark[]
+  doorProgress       DoorProgress[]
+  scholarApplication ScholarApplication?
+  questionsAsked     ScholarQuestion[]   @relation("QuestionsAsked")
+  questionsReceived  ScholarQuestion[]   @relation("QuestionsReceived")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model ScholarProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  username       String   @unique
+  title          String?
+  lineageHistory String?
+  resumeMarkdown String?
+  credentials    String?
+  specialties    String   @default("[]")
+  verified       Boolean  @default(false)
+  publishedTalks String   @default("[]")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ScholarApplication {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  statement String
+  resumeUrl String?
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Article {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  contentMarkdown String
+  doorCategory    String
+  citationsJson   String    @default("[]")
+  authorId        String
+  publishedAt     DateTime?
+  readingTime     Int       @default(5)
+  featured        Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  author         User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  journalEntries JournalEntry[]
+  bookmarks      Bookmark[]
+}
+
+model JournalEntry {
+  id          String   @id @default(cuid())
+  userId      String
+  articleId   String?
+  privateNote String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+}
+
+model PrayerIntention {
+  id          String   @id @default(cuid())
+  userId      String?
+  content     String
+  candleCount Int      @default(1)
+  anonymous   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId String
+  highlight String?
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+}
+
+model DoorProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  door        String
+  progressPct Int       @default(0)
+  completedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, door])
+}
+
+model DailySacredWriting {
+  id        String   @id @default(cuid())
+  quote     String
+  source    String
+  author    String   @default("Bahá'u'lláh")
+  lang      String   @default("en")
+  featured  Boolean  @default(false)
+  dateKey   String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ScholarQuestion {
+  id         String    @id @default(cuid())
+  fromUserId String
+  toUserId   String
+  question   String
+  answer     String?
+  createdAt  DateTime  @default(now())
+  answeredAt DateTime?
+
+  fromUser User @relation("QuestionsAsked", fields: [fromUserId], references: [id], onDelete: Cascade)
+  toUser   User @relation("QuestionsReceived", fields: [toUserId], references: [id], onDelete: Cascade)
+}
+
+model SanctuaryPresence {
+  id        String   @id @default(cuid())
+  sessionId String   @unique
+  lastSeen  DateTime @default(now())
+}

@@ -1,0 +1,103 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { NinePointedStar } from "@/components/ui/NinePointedStar";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { cn } from "@/lib/utils";
+
+export function Navigation() {
+  const { t } = useLocale();
+  const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "/#doors", label: t.nav.doors },
+    { href: "/sanctuary", label: t.nav.sanctuary },
+    { href: "/doors/scholars", label: t.nav.scholars },
+    { href: "/dashboard", label: t.nav.dashboard },
+  ];
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo/40 via-indigo/10 to-transparent" />
+      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+        <Link
+          href="/"
+          className="group flex items-center gap-3 text-alabaster"
+          onClick={() => setOpen(false)}
+        >
+          <NinePointedStar size={28} animated={false} className="text-gold/90" />
+          <span className="font-display text-lg tracking-[0.04em] md:text-xl">
+            {t.brand}
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-sans text-sm tracking-wide text-alabaster/75 transition hover:text-gold"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <LanguageSwitcher />
+          <Link
+            href="/auth/signin"
+            className="rounded-sm border border-gold/40 bg-gold/10 px-4 py-2 font-sans text-sm tracking-wide text-gold transition hover:bg-gold/20"
+          >
+            {t.nav.enter}
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex text-alabaster md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className={cn(
+              "absolute inset-x-0 top-full border-t border-gold/15 bg-indigo/95 px-5 py-6 backdrop-blur-md md:hidden"
+            )}
+          >
+            <div className="flex flex-col gap-4">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="font-display text-xl text-alabaster/90"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <LanguageSwitcher />
+              <Link
+                href="/auth/signin"
+                onClick={() => setOpen(false)}
+                className="mt-2 w-fit border border-gold/40 px-4 py-2 text-sm text-gold"
+              >
+                {t.nav.enter}
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
