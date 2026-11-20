@@ -71,6 +71,7 @@ export const dictionaries = {
     },
     footer: {
       reverence: "Built in reverence · A digital House of Worship for seekers",
+      version: "Version",
     },
   },
   sv: {
@@ -137,6 +138,7 @@ export const dictionaries = {
     },
     footer: {
       reverence: "Byggt i vördnad · Ett digitalt tillbedjanshus för sökare",
+      version: "Version",
     },
   },
   fa: {
@@ -203,6 +205,7 @@ export const dictionaries = {
     },
     footer: {
       reverence: "ساخته‌شده با حرمت · خانه‌ای مجازی برای جویندگان",
+      version: "نسخه",
     },
   },
 } as const;
@@ -270,5 +273,6 @@ export type Dictionary = {
   };
   footer: {
     reverence: string;
+    version: string;
   };
 };

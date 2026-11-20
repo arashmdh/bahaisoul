@@ -17,6 +17,8 @@ export type TempleLocaleText = {
 export type TempleImage = {
   id: string;
   src: string;
+  /** Lightweight preview for the mosaic grid; full `src` loads in the lightbox. */
+  thumb?: string;
   region: Exclude<TempleRegion, "all">;
   year?: string;
   featured?: boolean;
@@ -25,6 +27,14 @@ export type TempleImage = {
   sv: TempleLocaleText;
   fa: TempleLocaleText;
 };
+
+/** Optimized mosaic preview path for a temple image. */
+export function templeThumb(img: Pick<TempleImage, "src" | "thumb">): string {
+  if (img.thumb) return img.thumb;
+  const file = img.src.split("/").pop() ?? "";
+  const stem = file.replace(/\.(jpe?g|png|webp|avif)$/i, "");
+  return `/temples/thumbs/${stem}.jpg`;
+}
 
 export const TEMPLE_REGIONS: {
   id: TempleRegion;
@@ -609,51 +619,53 @@ export const TEMPLE_IMAGES: TempleImage[] = [
   },
   {
     id: "battambang-dusk",
-    src: "/temples/2226740-master.jpg",
+    src: "/temples/battambang-local-dusk.jpg",
+    thumb: "/temples/thumbs/battambang-local-dusk.jpg",
     region: "asia",
     year: "2017",
     en: {
-      title: "Local House of Worship — Battambang",
+      title: "Bahá’í Local House of Worship — Battambang",
       location: "Battambang, Cambodia",
       description:
-        "Khmer-inspired roofs glow at blue hour. One of the first local Houses of Worship — rooted in place, open to all.",
+        "Khmer-inspired roofs glow at blue hour. One of the first Bahá’í local Houses of Worship — rooted in place, open to all.",
     },
     sv: {
-      title: "Lokalt tillbedjanshus — Battambang",
+      title: "Bahá’í lokalt tillbedjanshus — Battambang",
       location: "Battambang, Kambodja",
       description:
-        "Khmerinspirerade tak lyser i blå timmen. Ett av de första lokala tillbedjanshusen — rotat i platsen, öppet för alla.",
+        "Khmerinspirerade tak lyser i blå timmen. Ett av de första bahá’íska lokala tillbedjanshusen — rotat i platsen, öppet för alla.",
     },
     fa: {
-      title: "مشرق‌الاذکار محلی — باتامبانگ",
+      title: "مشرق‌الاذکار محلی بهائی — باتامبانگ",
       location: "باتامبانگ، کامبوج",
       description:
-        "بام‌های ملهم از هنر خمر در ساعت آبی می‌درخشند. از نخستین معابد محلی — ریشه در مکان، گشوده به همه.",
+        "بام‌های ملهم از هنر خمر در ساعت آبی می‌درخشند. از نخستین مشرق‌الاذکارهای محلی بهائی — ریشه در مکان، گشوده به همه.",
     },
   },
   {
     id: "battambang-night",
-    src: "/temples/2365018-master.jpg",
+    src: "/temples/battambang-local-night.jpg",
+    thumb: "/temples/thumbs/battambang-local-night.jpg",
     region: "asia",
     year: "2017",
     span: "tall",
     en: {
-      title: "Battambang under Moonlight",
+      title: "Battambang Bahá’í Temple under Moonlight",
       location: "Battambang, Cambodia",
       description:
-        "Warm lantern light beneath a moonlit sky — a community-crafted temple where local heritage meets universal prayer.",
+        "Warm lantern light beneath a moonlit sky — a community-crafted Bahá’í House of Worship where local heritage meets universal prayer.",
     },
     sv: {
-      title: "Battambang under månsken",
+      title: "Battambang bahá’ítempel under månsken",
       location: "Battambang, Kambodja",
       description:
-        "Varmt lyktljus under månhimmel — ett community-byggt tempel där lokalt arv möter universell bön.",
+        "Varmt lyktljus under månhimmel — ett community-byggt bahá’í tillbedjanshus där lokalt arv möter universell bön.",
     },
     fa: {
-      title: "باتامبانگ زیر نور ماه",
+      title: "معبد بهائی باتامبانگ زیر نور ماه",
       location: "باتامبانگ، کامبوج",
       description:
-        "نور گرم فانوس زیر آسمان مهتابی — معبدی ساختهٔ جامعه، جایی که میراث محلی با دعای جهانی می‌آمیزد.",
+        "نور گرم فانوس زیر آسمان مهتابی — مشرق‌الاذکار بهائی ساختهٔ جامعه، جایی که میراث محلی با دعای جهانی می‌آمیزد.",
     },
   },
   {
@@ -712,70 +724,72 @@ export const TEMPLE_IMAGES: TempleImage[] = [
     year: "Design",
     span: "wide",
     en: {
-      title: "Bihar Sharif — Aerial Design",
+      title: "Bahá’í House of Worship — Bihar Sharif Aerial",
       location: "Bihar Sharif, India",
       description:
-        "Terracotta dome and star-shaped gardens from above — a local House of Worship envisioned as sacred landscape.",
+        "Terracotta dome and star-shaped gardens from above — a Bahá’í local House of Worship envisioned as sacred landscape.",
     },
     sv: {
-      title: "Bihar Sharif — flygdesign",
+      title: "Bahá’í tillbedjanshus — Bihar Sharif från luften",
       location: "Bihar Sharif, Indien",
       description:
-        "Terrakottakupa och stjärnformade trädgårdar från ovan — ett lokalt tillbedjanshus tänkt som heligt landskap.",
+        "Terrakottakupa och stjärnformade trädgårdar från ovan — ett bahá’í lokalt tillbedjanshus tänkt som heligt landskap.",
     },
     fa: {
-      title: "بیهاری شریف — طرح هوایی",
+      title: "مشرق‌الاذکار بهائی — طرح هوایی بیهاری شریف",
       location: "بیهاری شریف، هند",
       description:
-        "گنبد سفالین و باغ‌های ستاره‌ای از فراز — مشرق‌الاذکار محلی چون منظرهٔ مقدس.",
+        "گنبد سفالین و باغ‌های ستاره‌ای از فراز — مشرق‌الاذکار محلی بهائی چون منظرهٔ مقدس.",
     },
   },
   {
     id: "bihar-path",
-    src: "/temples/d91ce4-ok.jpg",
+    src: "/temples/bihar-sharif-approach.jpg",
+    thumb: "/temples/thumbs/bihar-sharif-approach.jpg",
     region: "designs",
     year: "Design",
     en: {
-      title: "Bihar Sharif — Approach",
+      title: "Bahá’í House of Worship — Bihar Sharif Approach",
       location: "Bihar Sharif, India",
       description:
-        "Honeycomb brick arches and a winding red path — a temple that rises from the earth of Bihar itself.",
+        "Honeycomb brick arches and a winding red path — a Bahá’í local House of Worship rising from the earth of Bihar itself.",
     },
     sv: {
-      title: "Bihar Sharif — ankomst",
+      title: "Bahá’í tillbedjanshus — Bihar Sharif ankomst",
       location: "Bihar Sharif, Indien",
       description:
-        "Honungskaksbågar i tegel och en slingrande röd stig — ett tempel som växer ur Bihars egen jord.",
+        "Honungskaksbågar i tegel och en slingrande röd stig — ett bahá’í lokalt tillbedjanshus som växer ur Bihars egen jord.",
     },
     fa: {
-      title: "بیهاری شریف — مسیر ورود",
+      title: "مشرق‌الاذکار بهائی — مسیر ورود بیهاری شریف",
       location: "بیهاری شریف، هند",
       description:
-        "قوس‌های آجری لانه‌زنبوری و مسیر سرخ پیچان — معبدی که از خاک خود بیهار برمی‌خیزد.",
+        "قوس‌های آجری لانه‌زنبوری و مسیر سرخ پیچان — مشرق‌الاذکار محلی بهائی که از خاک بیهار برمی‌خیزد.",
     },
   },
   {
     id: "concept-lattice",
-    src: "/temples/1543760473-124600-ok.jpg",
+    src: "/temples/bahai-lattice-concept.jpg",
+    thumb: "/temples/thumbs/bahai-lattice-concept.jpg",
     region: "designs",
     year: "Concept",
     en: {
-      title: "Lattice Dome — Concept Render",
-      location: "Architectural vision",
+      title: "Bahá’í House of Worship — Lattice Concept",
+      location: "Bahá’í architectural vision",
       description:
-        "A diamond-lattice sanctuary glowing at golden hour — contemporary form carrying the eternal nine-door invitation.",
+        "A diamond-lattice Bahá’í sanctuary glowing at golden hour — contemporary form carrying the eternal nine-door invitation.",
     },
     sv: {
-      title: "Gallerkupol — konceptdesign",
-      location: "Arkitektonisk vision",
+      title: "Bahá’í tillbedjanshus — gallerkupolskoncept",
+      location: "Bahá’í arkitektonisk vision",
       description:
-        "En gallerhelgedom som lyser i guldtimmen — samtida form med den eviga inbjudan genom nio dörrar.",
+        "En bahá’í gallerhelgedom som lyser i guldtimmen — samtida form med den eviga inbjudan genom nio dörrar.",
     },
     fa: {
-      title: "گنبد مشبک — رندر مفهومی",
-      location: "چشم‌انداز معماری",
+      title: "مشرق‌الاذکار بهائی — طرح گنبد مشبک",
+      location: "چشم‌انداز معماری بهائی",
       description:
-        "حرمگاهی مشبک در ساعت طلایی — فرمی معاصر با دعوت ازلی نه در.",
+        "مشرق‌الاذکار مشبک بهائی در ساعت طلایی — فرمی معاصر با دعوت ازلی نه در.",
     },
   },
   {
@@ -974,6 +988,366 @@ export const TEMPLE_IMAGES: TempleImage[] = [
       location: "سانتیاگو، شیلی",
       description:
         "برگ روی سنگفرش، پرندگان در آسمان بنفش، و نه بال درخشان — آستانهٔ معبد آمریکای جنوبی.",
+    },
+  },
+  {
+    id: "png-inauguration",
+    src: "/temples/png-inauguration.jpg",
+    thumb: "/temples/thumbs/png-inauguration.jpg",
+    region: "oceania",
+    year: "2024",
+    featured: true,
+    span: "wide",
+    en: {
+      title: "Papua New Guinea — House of Worship Inaugurated",
+      location: "Port Moresby region, Papua New Guinea",
+      description:
+        "Woven lattice glowing at sunset: Oceania’s continental temple opens its nine doors amid tropical gardens and a sky washed in rose and violet.",
+    },
+    sv: {
+      title: "Papua Nya Guinea — tillbedjanshus invigt",
+      location: "Port Moresby-regionen, Papua Nya Guinea",
+      description:
+        "Vävt galler som lyser i solnedgången: Oceanienens kontinentala tempel öppnar nio dörrar bland tropiska trädgårdar under en rosaviolett himmel.",
+    },
+    fa: {
+      title: "پاپوآ گینهٔ نو — افتتاح مشرق‌الاذکار",
+      location: "منطقهٔ پورت مورزبی، پاپوآ گینهٔ نو",
+      description:
+        "مشبک بافته در غروب می‌درخشد: معبد قاره‌ای اقیانوسیه نه در خود را میان باغ‌های استوایی و آسمان گلگون می‌گشاید.",
+    },
+  },
+  {
+    id: "png-handwoven",
+    src: "/temples/png-handwoven.jpg",
+    thumb: "/temples/thumbs/png-handwoven.jpg",
+    region: "oceania",
+    year: "2024",
+    en: {
+      title: "Papua New Guinea — Handwoven Dome at Blue Hour",
+      location: "Papua New Guinea",
+      description:
+        "Diamond windows like stars in a woven sky — local craft and sacred geometry meet under indigo twilight.",
+    },
+    sv: {
+      title: "Papua Nya Guinea — handvävd kupol",
+      location: "Papua Nya Guinea",
+      description:
+        "Rutfönster som stjärnor i en vävd himmel — lokalt hantverk och helig geometri under indigo skymning.",
+    },
+    fa: {
+      title: "پاپوآ گینهٔ نو — گنبد دست‌بافت در ساعت آبی",
+      location: "پاپوآ گینهٔ نو",
+      description:
+        "پنجره‌های لوزی چون ستاره در آسمان بافته — صنعت محلی و هندسهٔ مقدس در شامگاه نیلی.",
+    },
+  },
+  {
+    id: "uhj-arc-mount-carmel",
+    src: "/temples/uhj-arc-mount-carmel.jpg",
+    thumb: "/temples/thumbs/uhj-arc-mount-carmel.jpg",
+    region: "holy-land",
+    year: "1983–2001",
+    featured: true,
+    span: "wide",
+    en: {
+      title: "The Arc — Seat of the Universal House of Justice",
+      location: "Mount Carmel, Haifa, Israel",
+      description:
+        "White marble colonnades and turquoise roofs along the Arc: the administrative heart of the Bahá’í Faith set in cypress gardens above Haifa.",
+    },
+    sv: {
+      title: "Bågen — Universella rättvisans hus",
+      location: "Karmelberget, Haifa, Israel",
+      description:
+        "Vit marmor och turkosa tak längs Bågen: trons administrativa hjärta bland cypressträdgårdar ovanför Haifa.",
+    },
+    fa: {
+      title: "قوس کرمل — مقر بیت‌العدل اعظم",
+      location: "کوه کرمل، حیفا، اسرائیل",
+      description:
+        "ستون‌های مرمرین و بام‌های فیروزه‌ای در امتداد قوس: قلب اداری امر در باغ‌های سرو بر فراز حیفا.",
+    },
+  },
+  {
+    id: "bahai-world-centre-arc",
+    src: "/temples/bahai-world-centre-arc.jpg",
+    thumb: "/temples/thumbs/bahai-world-centre-arc.jpg",
+    region: "holy-land",
+    year: "Holy Land",
+    span: "hero",
+    en: {
+      title: "Bahá’í World Centre — The Arc Gardens",
+      location: "Mount Carmel, Haifa, Israel",
+      description:
+        "Aerial sweep of the Arc buildings and terraced lawns — geometry, greenery, and the city of Haifa sharing one mountain.",
+    },
+    sv: {
+      title: "Bahá’í världscentrum — Bågens trädgårdar",
+      location: "Karmelberget, Haifa, Israel",
+      description:
+        "Flygvy över Bågens byggnader och terrasserade gräsmattor — geometri, grönska och Haifa på samma berg.",
+    },
+    fa: {
+      title: "مرکز جهانی بهائی — باغ‌های قوس",
+      location: "کوه کرمل، حیفا، اسرائیل",
+      description:
+        "نمای هوایی بناهای قوس و چمن‌های مطبق — هندسه، سبزی و شهر حیفا بر یک کوه.",
+    },
+  },
+  {
+    id: "bahai-world-centre-green",
+    src: "/temples/bahai-world-centre-green.jpg",
+    thumb: "/temples/thumbs/bahai-world-centre-green.jpg",
+    region: "holy-land",
+    year: "Holy Land",
+    en: {
+      title: "Mount Carmel — Arc Among the Cypress",
+      location: "Haifa, Israel",
+      description:
+        "Emerald lawns, fan-shaped paths, and classical domes — the World Centre nestled into the Carmel hillside.",
+    },
+    sv: {
+      title: "Karmelberget — Bågen bland cypresser",
+      location: "Haifa, Israel",
+      description:
+        "Smaragdgröna gräsmattor, solfjäderformade stigar och klassiska kupoler — världscentrumet i Karmels sluttning.",
+    },
+    fa: {
+      title: "کوه کرمل — قوس میان سروها",
+      location: "حیفا، اسرائیل",
+      description:
+        "چمن زمردی، مسیرهای بادبزنی و گنبدهای کلاسیک — مرکز جهانی در دامنهٔ کرمل.",
+    },
+  },
+  {
+    id: "shrine-night-ben-gurion",
+    src: "/temples/shrine-night-ben-gurion.jpg",
+    thumb: "/temples/thumbs/shrine-night-ben-gurion.jpg",
+    region: "holy-land",
+    year: "Night",
+    featured: true,
+    span: "tall",
+    en: {
+      title: "Shrine of the Báb — Night from Ben Gurion Avenue",
+      location: "Haifa, Israel",
+      description:
+        "Nineteen terraces of light climb Mount Carmel; the golden dome crowns a vertical path of devotion above the city’s night traffic.",
+    },
+    sv: {
+      title: "Bábs helgedom — natt från Ben Gurion-avenyn",
+      location: "Haifa, Israel",
+      description:
+        "Nitton ljusterrasser klättrar upp Karmel; den gyllene kupolen kröner en vertikal andaktsväg över nattens stad.",
+    },
+    fa: {
+      title: "مقام اعلی — شب از خیابان بن‌گوریون",
+      location: "حیفا، اسرائیل",
+      description:
+        "نوزده تراس نور از کوه کرمل بالا می‌روند؛ گنبد زرین تاج راه عمودی نیایش بر فراز شب شهر است.",
+    },
+  },
+  {
+    id: "shrine-bab-garden-close",
+    src: "/temples/shrine-bab-garden-close.jpg",
+    thumb: "/temples/thumbs/shrine-bab-garden-close.jpg",
+    region: "holy-land",
+    year: "1909–1953",
+    en: {
+      title: "Shrine of the Báb — Among Cypress & Palms",
+      location: "Mount Carmel, Haifa, Israel",
+      description:
+        "Golden dome against Mediterranean sky, framed by cypress, palms, and the quiet geometry of the gardens.",
+    },
+    sv: {
+      title: "Bábs helgedom — bland cypress och palmer",
+      location: "Karmelberget, Haifa, Israel",
+      description:
+        "Gyllene kupol mot medelhavshimmel, inramad av cypress, palmer och trädgårdarnas stilla geometri.",
+    },
+    fa: {
+      title: "مقام اعلی — میان سرو و نخل",
+      location: "کوه کرمل، حیفا، اسرائیل",
+      description:
+        "گنبد زرین در برابر آسمان مدیترانه، در قاب سرو، نخل و هندسهٔ آرام باغ‌ها.",
+    },
+  },
+  {
+    id: "shrine-garden-landscape",
+    src: "/temples/shrine-garden-landscape.jpg",
+    thumb: "/temples/thumbs/shrine-garden-landscape.jpg",
+    region: "holy-land",
+    year: "Gardens",
+    span: "wide",
+    en: {
+      title: "Queen of Carmel — Garden Path",
+      location: "Haifa, Israel",
+      description:
+        "Palms, flower beds, and a pale gravel path lead the eye to the golden dome — pilgrimage made landscape.",
+    },
+    sv: {
+      title: "Karmels drottning — trädgårdsstig",
+      location: "Haifa, Israel",
+      description:
+        "Palmer, blomsterrabatter och en ljus grusväg leder blicken till den gyllene kupolen — pilgrimskap som landskap.",
+    },
+    fa: {
+      title: "ملکهٔ کرمل — مسیر باغ",
+      location: "حیفا، اسرائیل",
+      description:
+        "نخل، باغچهٔ گل و مسیر شن روشن چشم را به گنبد زرین می‌برد — زیارت چون منظره.",
+    },
+  },
+  {
+    id: "haifa-terraces-day",
+    src: "/temples/haifa-terraces-day.jpg",
+    thumb: "/temples/thumbs/haifa-terraces-day.jpg",
+    region: "holy-land",
+    year: "Terraces",
+    en: {
+      title: "Terraces of Light — Daytime Ascent",
+      location: "Mount Carmel, Haifa, Israel",
+      description:
+        "The central staircase rises through emerald lawns and palms toward the Shrine — a daylight hymn of symmetry.",
+    },
+    sv: {
+      title: "Ljusterrasser — dagsstigning",
+      location: "Karmelberget, Haifa, Israel",
+      description:
+        "Den centrala trappan stiger genom smaragdgröna gräsmattor och palmer mot helgedomen — en dagspsalm i symmetri.",
+    },
+    fa: {
+      title: "تراس‌های نور — صعود روزانه",
+      location: "کوه کرمل، حیفا، اسرائیل",
+      description:
+        "پلکان مرکزی از میان چمن زمردی و نخل‌ها به سوی مقام اعلی می‌رود — سرود روز در تقارن.",
+    },
+  },
+  {
+    id: "akko-monument-gardens",
+    src: "/temples/akko-monument-gardens.jpg",
+    thumb: "/temples/thumbs/akko-monument-gardens.jpg",
+    region: "holy-land",
+    year: "Design",
+    en: {
+      title: "Akko — Monument & Gardens Vision",
+      location: "Acre (Akko), Israel",
+      description:
+        "A night rendering of radiating paths and nine-fold geometry — new sacred gardens envisioned near the Holy Land’s northern shore.",
+    },
+    sv: {
+      title: "Akko — monument & trädgårdsvision",
+      location: "Akko, Israel",
+      description:
+        "En nattrendering av strålande stigar och niofaldig geometri — nya heliga trädgårdar vid det heliga landets nordkust.",
+    },
+    fa: {
+      title: "عکا — چشم‌انداز بنای یادبود و باغ‌ها",
+      location: "عکا، اسرائیل",
+      description:
+        "رندر شبانهٔ مسیرهای شعاعی و هندسهٔ نه‌گانه — باغ‌های مقدسی نو در ساحل شمالی ارض اقدس.",
+    },
+  },
+  {
+    id: "lotus-delhi-night",
+    src: "/temples/lotus-delhi-night.jpg",
+    thumb: "/temples/thumbs/lotus-delhi-night.jpg",
+    region: "asia",
+    year: "1986",
+    en: {
+      title: "Lotus Temple — Illuminated Petals",
+      location: "New Delhi, India",
+      description:
+        "Marble petals floodlit against indigo night — the House of Worship opening nine silent invitations to prayer.",
+    },
+    sv: {
+      title: "Lotustemplet — belysta blad",
+      location: "New Delhi, Indien",
+      description:
+        "Marmorblad belysta mot indigo natt — tillbedjanshuset öppnar nio tysta inbjudningar till bön.",
+    },
+    fa: {
+      title: "معبد نیلوفر — گلبرگ‌های نورانی",
+      location: "دهلی نو، هند",
+      description:
+        "گلبرگ‌های مرمرین در شب نیلی — مشرق‌الاذکار با نه دعوت خاموش به دعا.",
+    },
+  },
+  {
+    id: "lotus-reflection-pool",
+    src: "/temples/lotus-reflection-pool.jpg",
+    thumb: "/temples/thumbs/lotus-reflection-pool.jpg",
+    region: "asia",
+    year: "1986",
+    span: "wide",
+    en: {
+      title: "Lotus Temple — Mirror Pool",
+      location: "New Delhi, India",
+      description:
+        "The lotus doubled in still water: starburst lights and white marble reflected as one quiet prayer.",
+    },
+    sv: {
+      title: "Lotustemplet — spegeldamm",
+      location: "New Delhi, Indien",
+      description:
+        "Lotusen dubblerad i stilla vatten: stjärnljus och vit marmor speglas som en enda stilla bön.",
+    },
+    fa: {
+      title: "معبد نیلوفر — حوض آینه",
+      location: "دهلی نو، هند",
+      description:
+        "نیلوفر دوبرابر در آب آرام: نورهای ستاره‌ای و مرمر سفید چون یک دعا.",
+    },
+  },
+  {
+    id: "santiago-interior",
+    src: "/temples/santiago-interior.jpg",
+    thumb: "/temples/thumbs/santiago-interior.jpg",
+    region: "americas",
+    year: "2016",
+    en: {
+      title: "Santiago Interior — Light Through Wings",
+      location: "Santiago, Chile",
+      description:
+        "Translucent marble panels and curved wooden benches — South America’s Temple as a vessel of soft daylight.",
+    },
+    sv: {
+      title: "Santiago interiör — ljus genom vingar",
+      location: "Santiago, Chile",
+      description:
+        "Genomskinliga marmorpaneler och böjda träbänkar — Sydamerikas tempel som ett kärl av mjukt dagsljus.",
+    },
+    fa: {
+      title: "درون سانتیاگو — نور از میان بال‌ها",
+      location: "سانتیاگو، شیلی",
+      description:
+        "ورقه‌های مرمر نیمه‌شفاف و نیمکت‌های چوبی خمیده — معبد آمریکای جنوبی چون ظرف نور نرم.",
+    },
+  },
+  {
+    id: "kinshasa-hero-dusk",
+    src: "/temples/kinshasa-hero-dusk.jpg",
+    thumb: "/temples/thumbs/kinshasa-hero-dusk.jpg",
+    region: "africa",
+    year: "2023",
+    span: "wide",
+    en: {
+      title: "Kinshasa — Gathering at Dusk",
+      location: "Kinshasa, Democratic Republic of the Congo",
+      description:
+        "Friends gather on the steps as the woven dome glows against a violet sky — Africa’s continental temple alive with welcome.",
+    },
+    sv: {
+      title: "Kinshasa — samling i skymning",
+      location: "Kinshasa, Demokratiska republiken Kongo",
+      description:
+        "Vänner samlas på trapporna medan den vävda kupolen lyser mot en violett himmel — Afrikas kontinentala tempel fullt av välkomnande.",
+    },
+    fa: {
+      title: "کینشاسا — گردهمایی در غروب",
+      location: "کینشاسا، جمهوری دموکراتیک کنگو",
+      description:
+        "دوستان بر پله‌ها گرد می‌آیند و گنبد بافته در آسمان بنفش می‌درخشد — معبد قاره‌ای آفریقا سرشار از استقبال.",
     },
   },
 ];

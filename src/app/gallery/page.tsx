@@ -15,13 +15,13 @@ export default function GalleryPage() {
       <section className="relative overflow-hidden bg-indigo pt-24 md:pt-28">
         <div className="absolute inset-0">
           <Image
-            src="/temples/the_bahai_temple_in_haifa_israel-web.jpg"
+            src="/temples/thumbs/the_bahai_temple_in_haifa_israel-web.jpg"
             alt=""
             fill
             priority
             className="object-cover object-center opacity-40"
             sizes="100vw"
-            quality={80}
+            quality={55}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-indigo/70 via-indigo/55 to-alabaster" />
         </div>

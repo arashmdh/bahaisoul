@@ -28,6 +28,8 @@ import { IncenseSmokeCanvas } from "./IncenseSmokeCanvas";
 import { PrayerModal } from "./PrayerModal";
 import { cn } from "@/lib/utils";
 
+type Phase = "compose" | "hidden" | "blessing";
+
 const copy = {
   en: {
     intention: "Prayer Intention",
@@ -36,8 +38,6 @@ const copy = {
     burning: "Your candle is burning in the Sanctuary",
     extinguish: "Extinguish / Reset",
     blessing: "Sacred Blessing",
-    blessingEmpty:
-      "Light a candle to receive a matching Bahá'í prayer for your intention.",
     readFull: "Read Full Prayer",
     readAnother: "Read Another Prayer",
     placeholder:
@@ -54,8 +54,6 @@ const copy = {
     burning: "Ditt ljus brinner i Helgedomen",
     extinguish: "Släck / Återställ",
     blessing: "Helig välsignelse",
-    blessingEmpty:
-      "Tänd ett ljus för att ta emot en matchande bahá'íbön för din avsikt.",
     readFull: "Läs hela bönen",
     readAnother: "Läs en annan bön",
     placeholder:
@@ -72,8 +70,6 @@ const copy = {
     burning: "شمع شما در حرم روشن است",
     extinguish: "خاموش کردن / آغاز دوباره",
     blessing: "دعای خیر و مناجات",
-    blessingEmpty:
-      "شمع را بیافروزید تا دعایی از آثار بهائی متناسب با نیت شما پدیدار شود.",
     readFull: "مطالعه کامل",
     readAnother: "مناجات دیگر",
     placeholder: "«نیت قلبی یا دعای خود را برای عزیزان یا عالم انسانی بنویسید...»",
@@ -85,7 +81,14 @@ const copy = {
 } as const;
 
 const glass =
-  "rounded-2xl border border-amber-400/25 bg-slate-950/55 p-3.5 shadow-2xl backdrop-blur-md sm:bg-slate-950/45 sm:p-4 md:p-5";
+  "w-full max-w-md rounded-2xl border border-amber-400/25 bg-slate-950/55 p-4 shadow-2xl backdrop-blur-md sm:bg-slate-950/45 sm:p-5 md:max-w-4xl md:rounded-xl md:p-4 lg:max-w-5xl";
+
+const phaseMotion = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+  transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+};
 
 export function SanctuaryRoom() {
   const { locale } = useLocale();
@@ -94,6 +97,7 @@ export function SanctuaryRoom() {
   const { setEnabled: setSoundEnabled } = useSoundPreference();
 
   const [ready, setReady] = useState(false);
+  const [phase, setPhase] = useState<Phase>("compose");
   const [session, setSession] = useState<SanctuarySession | null>(null);
   const [prayer, setPrayer] = useState<SanctuaryPrayer | null>(null);
   const [category, setCategory] = useState<PrayerCategory>("healing");
@@ -116,6 +120,7 @@ export function SanctuaryRoom() {
     setIntention("");
     setName("");
     setAnonymous(true);
+    setPhase("compose");
   }, []);
 
   useEffect(() => {
@@ -136,6 +141,7 @@ export function SanctuaryRoom() {
         setSession(patched);
         saveSession(patched);
       }
+      setPhase("blessing");
     }
     setReady(true);
   }, []);
@@ -153,6 +159,7 @@ export function SanctuaryRoom() {
           setIntention("");
           setName("");
           setAnonymous(true);
+          setPhase("compose");
           return null;
         }
         return prev;
@@ -210,6 +217,9 @@ export function SanctuaryRoom() {
     playChime();
     setToast(true);
     window.setTimeout(() => setToast(false), 3200);
+    // Hide the box briefly, then reveal the blessing in the same shell
+    setPhase("hidden");
+    window.setTimeout(() => setPhase("blessing"), 480);
   }, [anonymous, category, intention, name, playChime, setSoundEnabled]);
 
   const anotherPrayer = useCallback(() => {
@@ -282,181 +292,160 @@ export function SanctuaryRoom() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-3 pb-6 pt-20 sm:px-4 sm:pb-8 sm:pt-24 md:px-6 md:pt-28">
-        <div className="grid max-h-[none] grid-cols-1 items-start gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5">
-          {/* Panel 1 — Intention */}
-          <motion.section
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className={glass}
-            dir={isFa ? "rtl" : "ltr"}
-          >
-            <h2 className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-amber-100/95 md:text-xs">
-              {t.intention}
-            </h2>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {PRAYER_CATEGORIES.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setCategory(c.id)}
-                  disabled={isLit}
-                  className={cn(
-                    "rounded-full px-2.5 py-1 font-sans text-[10px] transition md:text-[11px]",
-                    category === c.id
-                      ? "bg-amber-400/25 text-amber-50 ring-1 ring-amber-300/50"
-                      : "bg-white/5 text-white/55 hover:bg-white/10",
-                    isLit && "opacity-70"
-                  )}
-                >
-                  {c[locale]}
-                </button>
-              ))}
-            </div>
-            <textarea
-              value={intention}
-              onChange={(e) => setIntention(e.target.value)}
-              rows={4}
-              disabled={isLit}
-              placeholder={t.placeholder}
-              className={cn(
-                "mt-3 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-[13px] leading-relaxed text-white/90 outline-none placeholder:text-white/35 focus:border-amber-300/40 disabled:opacity-70",
-                isFa ? "prose-fa" : "font-sans"
-              )}
-            />
-            <div className="mt-2.5 flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                disabled={isLit}
-                onClick={() => setAnonymous((v) => !v)}
-                className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 font-sans text-[10px] text-white/65 disabled:opacity-60"
-              >
-                <UserRound size={11} />
-                {anonymous ? t.anonymous : t.named}
-              </button>
-              {!anonymous && (
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  disabled={isLit}
-                  placeholder={t.namePh}
-                  className="min-w-0 flex-1 rounded-lg border border-white/10 bg-black/25 px-2.5 py-1 font-sans text-[12px] text-white outline-none focus:border-amber-300/35 disabled:opacity-60"
-                />
-              )}
-            </div>
-          </motion.section>
-
-          {/* Panel 2 — Ignite */}
-          <motion.section
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.06 }}
-            className={cn(glass, "ring-1 ring-amber-400/20")}
-            dir={isFa ? "rtl" : "ltr"}
-          >
-            <div className="flex flex-col items-center text-center">
-              <Flame
-                size={30}
-                strokeWidth={1.35}
+      {/* Top panel only — keeps center candle flare clear on desktop */}
+      <div className="pointer-events-none relative z-10 flex min-h-[100svh] flex-col px-3 pb-6 pt-20 sm:px-4 sm:pb-8 sm:pt-24 md:px-6 md:pt-24 lg:pt-28">
+        <div className="pointer-events-auto mx-auto w-full max-w-md md:max-w-4xl lg:max-w-5xl">
+          <AnimatePresence mode="wait">
+            {phase === "compose" && (
+              <motion.div
+                key="compose"
+                {...phaseMotion}
                 className={cn(
-                  "text-amber-200 transition",
-                  isLit && "drop-shadow-[0_0_16px_rgba(251,191,36,0.85)]"
+                  glass,
+                  // Desktop: wide horizontal strip so the altar candle stays visible below
+                  "md:flex md:min-h-0 md:items-stretch md:gap-4"
                 )}
-              />
-              <h2 className="mt-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-amber-50 md:text-xs">
-                {t.light}
-              </h2>
-
-              <AnimatePresence mode="wait">
-                {!isLit ? (
-                  <motion.button
-                    key="ignite"
-                    type="button"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={ignite}
-                    disabled={!intention.trim()}
-                    className="candle-shimmer mt-6 w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 px-4 py-3 font-sans text-xs font-semibold uppercase tracking-wider text-slate-950 transition enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-35"
-                  >
-                    {t.lightBtn}
-                  </motion.button>
-                ) : (
-                  <motion.div
-                    key="burning"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="mt-5 w-full"
-                  >
-                    <p
-                      className={cn(
-                        "text-[13px] leading-relaxed text-amber-50/90",
-                        isFa ? "prose-fa" : "font-sans"
-                      )}
-                    >
-                      {t.burning}
-                    </p>
-                    <p className="mt-2 font-sans text-sm tracking-wide text-amber-300">
-                      {session
-                        ? formatCountdown(
-                            session.expiresAt,
-                            now,
-                            locale === "sv" ? "sv" : locale === "fa" ? "fa" : "en"
-                          )
-                        : ""}
-                    </p>
+                dir={isFa ? "rtl" : "ltr"}
+              >
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-amber-100/95 md:text-xs">
+                    {t.intention}
+                  </h2>
+                  <div className="mt-2.5 flex flex-wrap gap-1.5 md:mt-2">
+                    {PRAYER_CATEGORIES.map((c) => (
+                      <button
+                        key={c.id}
+                        type="button"
+                        onClick={() => setCategory(c.id)}
+                        className={cn(
+                          "rounded-full px-2.5 py-1 font-sans text-[10px] transition md:text-[11px]",
+                          category === c.id
+                            ? "bg-amber-400/25 text-amber-50 ring-1 ring-amber-300/50"
+                            : "bg-white/5 text-white/55 hover:bg-white/10"
+                        )}
+                      >
+                        {c[locale]}
+                      </button>
+                    ))}
+                  </div>
+                  <textarea
+                    value={intention}
+                    onChange={(e) => setIntention(e.target.value)}
+                    rows={3}
+                    placeholder={t.placeholder}
+                    className={cn(
+                      "mt-2.5 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-[13px] leading-relaxed text-white/90 outline-none placeholder:text-white/35 focus:border-amber-300/40 md:mt-2 md:min-h-[4.25rem] md:py-2",
+                      isFa ? "prose-fa" : "font-sans"
+                    )}
+                  />
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
                     <button
                       type="button"
-                      onClick={resetToDefault}
-                      className="mt-5 w-full rounded-xl border border-white/20 px-4 py-2.5 font-sans text-[11px] uppercase tracking-wider text-white/70 transition hover:border-amber-300/40 hover:text-amber-100"
+                      onClick={() => setAnonymous((v) => !v)}
+                      className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 font-sans text-[10px] text-white/65"
                     >
-                      {t.extinguish}
+                      <UserRound size={11} />
+                      {anonymous ? t.anonymous : t.named}
                     </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.section>
+                    {!anonymous && (
+                      <input
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder={t.namePh}
+                        className="min-w-0 flex-1 rounded-lg border border-white/10 bg-black/25 px-2.5 py-1 font-sans text-[12px] text-white outline-none focus:border-amber-300/35 md:max-w-[14rem]"
+                      />
+                    )}
+                  </div>
 
-          {/* Panel 3 — Blessing */}
-          <motion.section
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
-            className={glass}
-            dir={isFa ? "rtl" : "ltr"}
-          >
-            <h2 className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-amber-100/95 md:text-xs">
-              {t.blessing}
-            </h2>
-            <AnimatePresence mode="wait">
-              {!prayer || !isLit ? (
-                <motion.p
-                  key="empty"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  {/* Mobile: light button under form */}
+                  <AnimatePresence>
+                    {intention.trim() ? (
+                      <motion.div
+                        key="candle-step-mobile"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className="overflow-hidden md:hidden"
+                      >
+                        <div className="mt-4 border-t border-amber-400/20 pt-4 text-center">
+                          <Flame
+                            size={24}
+                            strokeWidth={1.35}
+                            className="mx-auto text-amber-200 drop-shadow-[0_0_12px_rgba(251,191,36,0.45)]"
+                          />
+                          <button
+                            type="button"
+                            onClick={ignite}
+                            className="candle-shimmer mt-3 w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 px-4 py-3 font-sans text-xs font-semibold uppercase tracking-wider text-slate-950 transition hover:brightness-110"
+                          >
+                            {t.lightBtn}
+                          </button>
+                        </div>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+
+                {/* Desktop: actions on the side — never covers center candle flare */}
+                <div
                   className={cn(
-                    "mt-4 text-[13px] leading-relaxed text-white/55",
-                    isFa ? "prose-fa" : "font-sans"
+                    "hidden shrink-0 md:flex md:w-44 md:flex-col md:justify-center md:gap-3",
+                    "md:border-s md:border-amber-400/20 md:ps-4"
                   )}
                 >
-                  {t.blessingEmpty}
-                </motion.p>
-              ) : (
-                <motion.div
-                  key={prayer.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.55 }}
-                  className="mt-4 space-y-3"
-                >
+                  <div className="flex items-center gap-2 text-amber-100/85">
+                    <Flame
+                      size={22}
+                      strokeWidth={1.4}
+                      className="text-amber-200 drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]"
+                    />
+                    <span className="font-sans text-[10px] uppercase tracking-[0.18em]">
+                      {t.light}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={ignite}
+                    disabled={!intention.trim()}
+                    className="candle-shimmer w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 px-3 py-3 font-sans text-[11px] font-semibold uppercase tracking-wider text-slate-950 transition enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    {t.lightBtn}
+                  </button>
+                </div>
+              </motion.div>
+            )}
+
+            {phase === "blessing" && prayer && (
+              <motion.div
+                key="blessing"
+                {...phaseMotion}
+                className={cn(glass, "md:flex md:items-stretch md:gap-4")}
+                dir={isFa ? "rtl" : "ltr"}
+              >
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-amber-100/95 md:text-xs">
+                      {t.blessing}
+                    </h2>
+                    <Flame
+                      size={18}
+                      strokeWidth={1.5}
+                      className="shrink-0 text-amber-200 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]"
+                    />
+                  </div>
+                  <p className="mt-1.5 font-sans text-[11px] tracking-wide text-amber-300/90">
+                    {session
+                      ? formatCountdown(
+                          session.expiresAt,
+                          now,
+                          locale === "sv" ? "sv" : locale === "fa" ? "fa" : "en"
+                        )
+                      : ""}
+                  </p>
                   <p
                     className={cn(
-                      "line-clamp-4 text-[13px] text-amber-50/95",
+                      "mt-3 line-clamp-4 text-[13px] text-amber-50/95 md:line-clamp-3",
                       locale === "fa"
                         ? "prose-fa leading-[1.95]"
                         : "font-sans leading-relaxed"
@@ -468,7 +457,7 @@ export function SanctuaryRoom() {
                   </p>
                   <p
                     className={cn(
-                      "line-clamp-3 text-[12px] text-white/70",
+                      "mt-2 line-clamp-2 text-[12px] text-white/65",
                       secondaryLocale === "fa"
                         ? "prose-fa leading-[1.9]"
                         : "font-sans leading-relaxed"
@@ -478,33 +467,67 @@ export function SanctuaryRoom() {
                   >
                     {prayer[secondaryLocale]}
                   </p>
-                  <p className="font-sans text-[10px] text-amber-400/75">
+                  <p className="mt-2 font-sans text-[10px] text-amber-400/75">
                     {prayer.attribution[locale]}
                   </p>
+
+                  {/* Mobile buttons */}
+                  <div className="mt-4 flex flex-col gap-2 md:hidden">
+                    <button
+                      type="button"
+                      onClick={() => setModalOpen(true)}
+                      className="w-full rounded-xl border border-amber-400/35 bg-amber-500/10 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-amber-100 transition hover:bg-amber-500/20"
+                    >
+                      {t.readFull}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={anotherPrayer}
+                      className="w-full rounded-xl border border-white/15 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-white/70 transition hover:border-amber-300/35 hover:text-amber-100"
+                    >
+                      {t.readAnother}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={resetToDefault}
+                      className="w-full rounded-xl border border-white/15 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-white/55 transition hover:border-amber-300/35 hover:text-amber-100"
+                    >
+                      {t.extinguish}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Desktop: side actions — clear of center flame */}
+                <div className="hidden shrink-0 md:flex md:w-44 md:flex-col md:justify-center md:gap-2 md:border-s md:border-amber-400/20 md:ps-4">
                   <button
                     type="button"
                     onClick={() => setModalOpen(true)}
-                    className="mt-1 w-full rounded-xl border border-amber-400/35 bg-amber-500/10 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-amber-100 transition hover:bg-amber-500/20"
+                    className="w-full rounded-xl border border-amber-400/35 bg-amber-500/10 px-3 py-2.5 font-sans text-[11px] uppercase tracking-wider text-amber-100 transition hover:bg-amber-500/20"
                   >
                     {t.readFull}
                   </button>
                   <button
                     type="button"
                     onClick={anotherPrayer}
-                    className="w-full rounded-xl border border-white/15 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-white/70 transition hover:border-amber-300/35 hover:text-amber-100"
+                    className="w-full rounded-xl border border-white/15 px-3 py-2.5 font-sans text-[11px] uppercase tracking-wider text-white/70 transition hover:border-amber-300/35 hover:text-amber-100"
                   >
                     {t.readAnother}
                   </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.section>
+                  <button
+                    type="button"
+                    onClick={resetToDefault}
+                    className="w-full rounded-xl border border-white/15 px-3 py-2.5 font-sans text-[11px] uppercase tracking-wider text-white/55 transition hover:border-amber-300/35 hover:text-amber-100"
+                  >
+                    {t.extinguish}
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div
-          className="min-h-[38svh] sm:min-h-[48svh] md:min-h-[58svh]"
-          aria-hidden
-        />
+        {/* Open stage for the candle — no UI over the flare */}
+        <div className="min-h-0 flex-1" aria-hidden />
       </div>
 
       {prayer && isLit && (

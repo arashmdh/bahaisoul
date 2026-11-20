@@ -2,6 +2,7 @@
 
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { NinePointedStar } from "@/components/ui/NinePointedStar";
+import packageJson from "../../../package.json";
 
 export function Footer() {
   const { t, locale } = useLocale();
@@ -21,6 +22,9 @@ export function Footer() {
           dir={isFa ? "rtl" : "ltr"}
         >
           {t.footer.reverence}
+        </p>
+        <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-alabaster/35">
+          {t.footer.version} {packageJson.version}
         </p>
       </div>
     </footer>

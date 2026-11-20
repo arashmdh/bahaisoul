@@ -7,6 +7,7 @@ import { X, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import {
   TEMPLE_IMAGES,
   TEMPLE_REGIONS,
+  templeThumb,
   type TempleImage,
   type TempleRegion,
 } from "@/lib/temples";
@@ -80,13 +81,13 @@ export function TempleGallery() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 py-6 md:px-8 md:py-8">
-        <p className="mb-5 font-sans text-sm text-stone">
+      <div className="mx-auto max-w-6xl px-4 py-5 md:px-6 md:py-6">
+        <p className="mb-4 font-sans text-xs text-stone md:text-sm">
           {t.gallery.count.replace("{n}", String(filtered.length))}
         </p>
 
-        {/* Even mosaic — no oversized empty hero spans */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+        {/* Compact mosaic — detail lives in the lightbox */}
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-2.5">
           {filtered.map((img, index) => {
             const copy = copyFor(img, locale);
 
@@ -95,36 +96,34 @@ export function TempleGallery() {
                 key={img.id}
                 type="button"
                 layout
-                initial={{ opacity: 0, y: 18 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setActive(index)}
                 className={cn(
                   "group relative overflow-hidden text-start outline-none",
                   "focus-visible:ring-2 focus-visible:ring-gold"
                 )}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-indigo/5">
-                  <Image
-                    src={img.src}
+                <div className="relative aspect-[5/4] w-full overflow-hidden bg-indigo/5">
+                  {/* Direct static thumbs — avoids flaky /_next/image failures on some files */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={templeThumb(img)}
                     alt={copy.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition duration-[1.4s] ease-serene group-hover:scale-[1.04]"
-                    quality={85}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-[1.2s] ease-serene group-hover:scale-[1.04]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-indigo/75 via-indigo/10 to-transparent opacity-80 transition duration-700 group-hover:opacity-95" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                    <p className="font-sans text-[10px] uppercase tracking-[0.22em] text-gold">
+                  <div className="absolute inset-0 bg-gradient-to-t from-indigo/80 via-indigo/15 to-transparent opacity-85 transition duration-500 group-hover:opacity-95" />
+                  <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3">
+                    <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-gold sm:text-[9px]">
                       {copy.location}
                     </p>
-                    <h3 className="mt-1.5 font-display text-xl text-alabaster md:text-2xl">
+                    <h3 className="mt-0.5 line-clamp-2 font-display text-sm leading-snug text-alabaster sm:text-base">
                       {copy.title}
                     </h3>
-                    <p className="mt-2 line-clamp-2 max-w-md font-sans text-xs leading-relaxed text-alabaster/70 md:text-sm">
-                      {copy.description}
-                    </p>
                   </div>
                 </div>
               </motion.button>
@@ -155,7 +154,7 @@ export function TempleGallery() {
 
             <button
               type="button"
-              className="absolute start-3 top-1/2 z-10 hidden -translate-y-1/2 text-alabaster/70 transition hover:text-gold md:block"
+              className="absolute start-3 top-1/2 z-10 hidden -translate-y-1/2 text-gold transition hover:text-gold/80 md:block"
               aria-label="Previous"
               onClick={(e) => {
                 e.stopPropagation();
@@ -168,7 +167,7 @@ export function TempleGallery() {
             </button>
             <button
               type="button"
-              className="absolute end-3 top-1/2 z-10 hidden -translate-y-1/2 text-alabaster/70 transition hover:text-gold md:block"
+              className="absolute end-3 top-1/2 z-10 hidden -translate-y-1/2 text-gold transition hover:text-gold/80 md:block"
               aria-label="Next"
               onClick={(e) => {
                 e.stopPropagation();
@@ -188,7 +187,16 @@ export function TempleGallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative aspect-[4/3] bg-black md:aspect-auto md:min-h-[70vh]">
+                {/* Instant thumb (already cached from grid), then full quality on top */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={templeThumb(openItem)}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-contain md:object-cover"
+                  aria-hidden
+                />
                 <Image
+                  key={openItem.src}
                   src={openItem.src}
                   alt={copyFor(openItem, locale).title}
                   fill
