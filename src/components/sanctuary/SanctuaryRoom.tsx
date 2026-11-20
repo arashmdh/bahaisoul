@@ -37,9 +37,12 @@ const copy = {
     lightBtn: "Light a Candle",
     burning: "Your candle is burning in the Sanctuary",
     extinguish: "Extinguish / Reset",
+    extinguishShort: "Reset",
     blessing: "Sacred Blessing",
     readFull: "Read Full Prayer",
+    readFullShort: "Full",
     readAnother: "Read Another Prayer",
+    readAnotherShort: "Another",
     placeholder:
       "Write your prayer intention or spiritual wish for the world or a loved one…",
     namePh: "Name (optional)",
@@ -53,9 +56,12 @@ const copy = {
     lightBtn: "Tänd ett ljus",
     burning: "Ditt ljus brinner i Helgedomen",
     extinguish: "Släck / Återställ",
+    extinguishShort: "Släck",
     blessing: "Helig välsignelse",
     readFull: "Läs hela bönen",
+    readFullShort: "Hela",
     readAnother: "Läs en annan bön",
+    readAnotherShort: "Annan",
     placeholder:
       "Skriv din böneavsikt eller andliga önskan för världen eller en älskad…",
     namePh: "Namn (valfritt)",
@@ -69,9 +75,12 @@ const copy = {
     lightBtn: "افروختن شمع",
     burning: "شمع شما در حرم روشن است",
     extinguish: "خاموش کردن / آغاز دوباره",
+    extinguishShort: "خاموش",
     blessing: "دعای خیر و مناجات",
     readFull: "مطالعه کامل",
+    readFullShort: "کامل",
     readAnother: "مناجات دیگر",
+    readAnotherShort: "دیگر",
     placeholder: "«نیت قلبی یا دعای خود را برای عزیزان یا عالم انسانی بنویسید...»",
     namePh: "نام (اختیاری)",
     anonymous: "ناشناس",
@@ -331,10 +340,11 @@ export function SanctuaryRoom() {
                   <textarea
                     value={intention}
                     onChange={(e) => setIntention(e.target.value)}
-                    rows={3}
+                    rows={2}
                     placeholder={t.placeholder}
                     className={cn(
-                      "mt-2.5 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-[13px] leading-relaxed text-white/90 outline-none placeholder:text-white/35 focus:border-amber-300/40 md:mt-2 md:min-h-[4.25rem] md:py-2",
+                      // text-base (≥16px) on mobile prevents iOS Safari focus-zoom
+                      "mt-2.5 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-base leading-relaxed text-white/90 outline-none placeholder:text-white/35 focus:border-amber-300/40 md:mt-2 md:min-h-[4.25rem] md:py-2 md:text-[13px]",
                       isFa ? "prose-fa" : "font-sans"
                     )}
                   />
@@ -352,39 +362,22 @@ export function SanctuaryRoom() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder={t.namePh}
-                        className="min-w-0 flex-1 rounded-lg border border-white/10 bg-black/25 px-2.5 py-1 font-sans text-[12px] text-white outline-none focus:border-amber-300/35 md:max-w-[14rem]"
+                        className="min-w-0 flex-1 rounded-lg border border-white/10 bg-black/25 px-2.5 py-2 font-sans text-base text-white outline-none focus:border-amber-300/35 md:max-w-[14rem] md:py-1 md:text-[12px]"
                       />
                     )}
                   </div>
 
-                  {/* Mobile: light button under form */}
-                  <AnimatePresence>
-                    {intention.trim() ? (
-                      <motion.div
-                        key="candle-step-mobile"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35 }}
-                        className="overflow-hidden md:hidden"
-                      >
-                        <div className="mt-4 border-t border-amber-400/20 pt-4 text-center">
-                          <Flame
-                            size={24}
-                            strokeWidth={1.35}
-                            className="mx-auto text-amber-200 drop-shadow-[0_0_12px_rgba(251,191,36,0.45)]"
-                          />
-                          <button
-                            type="button"
-                            onClick={ignite}
-                            className="candle-shimmer mt-3 w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 px-4 py-3 font-sans text-xs font-semibold uppercase tracking-wider text-slate-950 transition hover:brightness-110"
-                          >
-                            {t.lightBtn}
-                          </button>
-                        </div>
-                      </motion.div>
-                    ) : null}
-                  </AnimatePresence>
+                  {/* Mobile: compact light CTA — stays inside the strip, clear of flame */}
+                  <div className="mt-2.5 md:hidden">
+                    <button
+                      type="button"
+                      onClick={ignite}
+                      disabled={!intention.trim()}
+                      className="candle-shimmer w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 px-3 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-wider text-slate-950 transition enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-35"
+                    >
+                      {t.lightBtn}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Desktop: actions on the side — never covers center candle flare */}
@@ -445,7 +438,7 @@ export function SanctuaryRoom() {
                   </p>
                   <p
                     className={cn(
-                      "mt-3 line-clamp-4 text-[13px] text-amber-50/95 md:line-clamp-3",
+                      "mt-2.5 line-clamp-3 text-[13px] text-amber-50/95 md:mt-3 md:line-clamp-3",
                       locale === "fa"
                         ? "prose-fa leading-[1.95]"
                         : "font-sans leading-relaxed"
@@ -457,7 +450,7 @@ export function SanctuaryRoom() {
                   </p>
                   <p
                     className={cn(
-                      "mt-2 line-clamp-2 text-[12px] text-white/65",
+                      "mt-1.5 line-clamp-1 text-[12px] text-white/65 md:mt-2 md:line-clamp-2",
                       secondaryLocale === "fa"
                         ? "prose-fa leading-[1.9]"
                         : "font-sans leading-relaxed"
@@ -471,28 +464,28 @@ export function SanctuaryRoom() {
                     {prayer.attribution[locale]}
                   </p>
 
-                  {/* Mobile buttons */}
-                  <div className="mt-4 flex flex-col gap-2 md:hidden">
+                  {/* Mobile: three actions in one row — keeps candle flare clear */}
+                  <div className="mt-3 flex gap-1.5 md:hidden">
                     <button
                       type="button"
                       onClick={() => setModalOpen(true)}
-                      className="w-full rounded-xl border border-amber-400/35 bg-amber-500/10 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-amber-100 transition hover:bg-amber-500/20"
+                      className="min-w-0 flex-1 rounded-lg border border-amber-400/35 bg-amber-500/10 px-1.5 py-2 font-sans text-[10px] uppercase leading-tight tracking-wide text-amber-100 transition hover:bg-amber-500/20"
                     >
-                      {t.readFull}
+                      {t.readFullShort}
                     </button>
                     <button
                       type="button"
                       onClick={anotherPrayer}
-                      className="w-full rounded-xl border border-white/15 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-white/70 transition hover:border-amber-300/35 hover:text-amber-100"
+                      className="min-w-0 flex-1 rounded-lg border border-white/15 px-1.5 py-2 font-sans text-[10px] uppercase leading-tight tracking-wide text-white/75 transition hover:border-amber-300/35 hover:text-amber-100"
                     >
-                      {t.readAnother}
+                      {t.readAnotherShort}
                     </button>
                     <button
                       type="button"
                       onClick={resetToDefault}
-                      className="w-full rounded-xl border border-white/15 px-3 py-2 font-sans text-[11px] uppercase tracking-wider text-white/55 transition hover:border-amber-300/35 hover:text-amber-100"
+                      className="min-w-0 flex-1 rounded-lg border border-white/15 px-1.5 py-2 font-sans text-[10px] uppercase leading-tight tracking-wide text-white/55 transition hover:border-amber-300/35 hover:text-amber-100"
                     >
-                      {t.extinguish}
+                      {t.extinguishShort}
                     </button>
                   </div>
                 </div>
