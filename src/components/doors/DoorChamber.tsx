@@ -127,7 +127,7 @@ export function DoorChamberView({
             href="/#doors"
             className="mt-14 inline-block border-b border-gold/40 pb-1 font-sans text-sm text-gold"
           >
-            {isFa ? "بازگشت به نه در" : "Return to the Nine Doors"}
+            {isFa ? "بازگشت به نُه در" : "Return to the Nine Doors"}
           </Link>
         </div>
       </section>

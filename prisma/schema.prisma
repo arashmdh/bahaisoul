@@ -198,3 +198,13 @@ model SanctuaryPresence {
   sessionId String   @unique
   lastSeen  DateTime @default(now())
 }
+
+// Public reflections under Word of the Day
+model DailyReflection {
+  id         String   @id @default(cuid())
+  name       String
+  content    String
+  wordNumber Int
+  locale     String   @default("en")
+  createdAt  DateTime @default(now())
+}

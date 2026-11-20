@@ -46,6 +46,12 @@ export const dictionaries = {
       reflect: "Reflect",
       reflecting: "Close reflection",
       prompt: "What does this word awaken in your heart today?",
+      namePh: "Your name",
+      send: "Share with the Temple",
+      sending: "Sending…",
+      sent: "Your reflection was received.",
+      sendError: "Could not send. Please try again.",
+      recent: "Recent reflections",
       next: "Next",
       prev: "Previous",
       viewAll: "View all 82",
@@ -106,6 +112,12 @@ export const dictionaries = {
       reflect: "Reflektera",
       reflecting: "Stäng reflektion",
       prompt: "Vad väcker detta ord i ditt hjärta idag?",
+      namePh: "Ditt namn",
+      send: "Dela med templet",
+      sending: "Skickar…",
+      sent: "Din reflektion har mottagits.",
+      sendError: "Kunde inte skicka. Försök igen.",
+      recent: "Senaste reflektioner",
       next: "Nästa",
       prev: "Föregående",
       viewAll: "Visa alla 82",
@@ -131,7 +143,7 @@ export const dictionaries = {
     brand: "بهائی سول",
     brandSub: "معبد مجازی",
     nav: {
-      doors: "نه در",
+      doors: "نُه در",
       about: "درباره",
       history: "تاریخ",
       sanctuary: "حرم",
@@ -153,12 +165,12 @@ export const dictionaries = {
     hero: {
       headline: "حرمگاهی برای قلب تأمل‌گر",
       support:
-        "ابعاد عرفانی، فرهنگی و اجتماعی آیین بهائی را از رهگذر نه در نورانی کاوش کنید.",
+        "ابعاد عرفانی، فرهنگی و اجتماعی آیین بهائی را از رهگذر نُه در نورانی کاوش کنید.",
       ctaPrimary: "از آستانه بگذرید",
       ctaSecondary: "وارد حرم شوید",
     },
     doors: {
-      heading: "نه در",
+      heading: "نُه در",
       sub: "هر در به ستونی از جست‌وجوی روحانی می‌گشاید.",
     },
     quote: {
@@ -166,6 +178,12 @@ export const dictionaries = {
       reflect: "تأمل",
       reflecting: "بستن تأمل",
       prompt: "امروز این کلام چه چیزی را در قلب شما بیدار می‌کند؟",
+      namePh: "نام شما",
+      send: "ارسال به معبد",
+      sending: "در حال ارسال…",
+      sent: "تأمل شما دریافت شد.",
+      sendError: "ارسال نشد. دوباره تلاش کنید.",
+      recent: "تأمل‌های اخیر",
       next: "بعدی",
       prev: "قبلی",
       viewAll: "مشاهدهٔ هر ۸۲",
@@ -227,6 +245,12 @@ export type Dictionary = {
     reflect: string;
     reflecting: string;
     prompt: string;
+    namePh: string;
+    send: string;
+    sending: string;
+    sent: string;
+    sendError: string;
+    recent: string;
     next: string;
     prev: string;
     viewAll: string;

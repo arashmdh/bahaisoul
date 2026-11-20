@@ -297,23 +297,13 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
         className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16"
         dir={isFa ? "rtl" : "ltr"}
       >
-        {/* Text column */}
+        {/* Text column — no opacity-0 entrances (Framer whileInView can stick after refresh) */}
         <div className="min-w-0">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease }}
-            className="font-sans text-[10px] uppercase tracking-[0.32em] text-amber-200/85 sm:text-xs"
-          >
+          <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-amber-200/85 sm:text-xs">
             Mashriqu’l-Adhkár
-          </motion.p>
+          </p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.05, delay: 0.06, ease }}
+          <h2
             className={cn(
               "mt-4 font-display text-alabaster",
               compact
@@ -322,17 +312,11 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
             )}
           >
             {copy.title}
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.14, ease }}
-            className="mt-5 font-display text-lg text-amber-100/95 md:text-xl"
-          >
+          <p className="mt-5 font-display text-lg text-amber-100/95 md:text-xl">
             {copy.subtitle}
-          </motion.p>
+          </p>
 
           <div
             className={cn(
@@ -344,40 +328,23 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
           >
             {(compact ? copy.manifesto.slice(0, 2) : copy.manifesto).map(
               (para, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.9, delay: 0.08 * i, ease }}
-                  className="text-balance text-[#F4F0E6]"
-                >
+                <p key={i} className="text-balance text-[#F4F0E6]">
                   {para}
-                </motion.p>
+                </p>
               )
             )}
           </div>
 
           {!compact && (
             <>
-              <motion.h3
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease }}
-                className="mt-14 font-display text-2xl text-amber-50 md:text-3xl"
-              >
+              <h3 className="mt-14 font-display text-2xl text-amber-50 md:text-3xl">
                 {copy.pillarsHeading}
-              </motion.h3>
+              </h3>
 
               <ol className="mt-8 space-y-7">
                 {copy.pillars.map((p, i) => (
-                  <motion.li
+                  <li
                     key={p.title}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.9, delay: 0.07 * i, ease }}
                     className="border-t border-amber-200/25 pt-5"
                   >
                     <p className="font-display text-lg text-alabaster md:text-xl">
@@ -396,27 +363,21 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
                     >
                       {p.body}
                     </p>
-                  </motion.li>
+                  </li>
                 ))}
               </ol>
             </>
           )}
 
           {compact && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.2, ease }}
-              className="mt-10"
-            >
+            <div className="mt-10">
               <Link
                 href="/about"
                 className="inline-flex border-b border-amber-300/50 pb-1 font-sans text-sm tracking-wide text-amber-50 transition hover:border-amber-100 hover:text-white"
               >
                 {isFa ? "ادامهٔ بیانیه" : "Read the full manifesto"}
               </Link>
-            </motion.div>
+            </div>
           )}
         </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, LayoutGrid, X } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
@@ -12,6 +12,15 @@ import {
   type HiddenWord,
 } from "@/lib/hidden-words";
 import { cn } from "@/lib/utils";
+
+type ReflectionItem = {
+  id: string;
+  name: string;
+  content: string;
+  wordNumber: number;
+  locale: string;
+  createdAt: string;
+};
 
 function textFor(word: HiddenWord, locale: "en" | "sv" | "fa") {
   if (locale === "fa") return word.fa;
@@ -25,14 +34,58 @@ export function DailyQuote() {
   const [index, setIndex] = useState(dailyIndex);
   const [reflecting, setReflecting] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [name, setName] = useState("");
+  const [note, setNote] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+  const [recent, setRecent] = useState<ReflectionItem[]>([]);
 
   const word = getHiddenWord(index);
   const body = textFor(word, locale);
   const isDaily = index === dailyIndex;
 
+  const loadRecent = useCallback(async () => {
+    try {
+      const res = await fetch("/api/reflections");
+      const data = (await res.json()) as { items?: ReflectionItem[] };
+      setRecent(data.items ?? []);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadRecent();
+  }, [loadRecent]);
+
   const go = (delta: number) => {
     setIndex((i) => (i + delta + HIDDEN_WORDS.length) % HIDDEN_WORDS.length);
     setReflecting(false);
+    setStatus("idle");
+  };
+
+  const submit = async () => {
+    if (!name.trim() || !note.trim() || status === "sending") return;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/reflections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          content: note.trim(),
+          wordNumber: word.number,
+          locale,
+        }),
+      });
+      if (!res.ok) throw new Error("fail");
+      setNote("");
+      setStatus("sent");
+      void loadRecent();
+    } catch {
+      setStatus("error");
+    }
   };
 
   const PrevIcon = dir === "rtl" ? ChevronRight : ChevronLeft;
@@ -80,7 +133,6 @@ export function DailyQuote() {
           — {t.quote.author}, {t.quote.source}
         </cite>
 
-        {/* Navigation */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
@@ -140,21 +192,80 @@ export function DailyQuote() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
+              dir={locale === "fa" ? "rtl" : "ltr"}
             >
               <p className="mx-auto mt-8 max-w-md font-sans text-base leading-relaxed text-alabaster/70">
                 {t.quote.prompt}
               </p>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={t.quote.namePh}
+                className={cn(
+                  "mt-6 w-full border border-gold/20 bg-alabaster/5 px-4 py-3 text-sm text-alabaster placeholder:text-alabaster/35 focus:border-gold/50 focus:outline-none",
+                  locale === "fa" ? "prose-fa text-right" : "font-sans"
+                )}
+              />
               <textarea
                 rows={4}
-                className="mt-6 w-full resize-none border border-gold/20 bg-alabaster/5 px-4 py-3 font-sans text-sm text-alabaster placeholder:text-alabaster/35 focus:border-gold/50 focus:outline-none"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                className={cn(
+                  "mt-3 w-full resize-none border border-gold/20 bg-alabaster/5 px-4 py-3 text-sm text-alabaster placeholder:text-alabaster/35 focus:border-gold/50 focus:outline-none",
+                  locale === "fa" ? "prose-fa text-right" : "font-sans"
+                )}
                 placeholder="..."
               />
+              <button
+                type="button"
+                onClick={() => void submit()}
+                disabled={!name.trim() || !note.trim() || status === "sending"}
+                className="mt-4 border border-gold/40 bg-gold/15 px-5 py-2.5 font-sans text-xs uppercase tracking-wider text-gold transition hover:bg-gold/25 disabled:opacity-40"
+              >
+                {status === "sending" ? t.quote.sending : t.quote.send}
+              </button>
+              {status === "sent" && (
+                <p className="mt-3 font-sans text-sm text-gold/80">{t.quote.sent}</p>
+              )}
+              {status === "error" && (
+                <p className="mt-3 font-sans text-sm text-red-300/90">
+                  {t.quote.sendError}
+                </p>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
+
+        {recent.length > 0 && (
+          <div className="mt-14 border-t border-gold/15 pt-10 text-start" dir={locale === "fa" ? "rtl" : "ltr"}>
+            <p className="text-center font-sans text-xs uppercase tracking-[0.24em] text-gold/70">
+              {t.quote.recent}
+            </p>
+            <ul className="mt-6 space-y-4">
+              {recent.slice(0, 6).map((r) => (
+                <li
+                  key={r.id}
+                  className="border border-gold/10 bg-alabaster/[0.03] px-4 py-3"
+                >
+                  <p className="font-sans text-[11px] tracking-wide text-gold/75">
+                    {r.name}
+                    <span className="text-alabaster/35"> · #{r.wordNumber}</span>
+                  </p>
+                  <p
+                    className={cn(
+                      "mt-1.5 text-sm leading-relaxed text-alabaster/75",
+                      r.locale === "fa" ? "prose-fa" : "font-sans"
+                    )}
+                  >
+                    {r.content}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
-      {/* All 82 panel */}
       <AnimatePresence>
         {showAll && (
           <motion.div

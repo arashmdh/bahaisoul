@@ -204,6 +204,11 @@ html[data-locale="fa"] blockquote {
     animation: about-halo-breathe 6.5s ease-in-out infinite;
   }
 
+  /* Twinkle only — never animate transform (avoids fighting layout/text) */
+  .cluster-twinkle {
+    animation: cluster-twinkle 4s ease-in-out infinite;
+  }
+
   /* Square plane → truly circular orbits (not ellipses) */
   .about-solar-system {
     position: absolute;
@@ -350,5 +355,17 @@ html[data-locale="fa"] blockquote {
   50% {
     opacity: 0.55;
     transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes cluster-twinkle {
+  0%,
+  100% {
+    opacity: 0.28;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 0.9;
+    filter: brightness(1.25);
   }
 }

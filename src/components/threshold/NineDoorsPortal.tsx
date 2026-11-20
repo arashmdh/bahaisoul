@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { DOORS } from "@/lib/doors";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { NinePointedStar } from "@/components/ui/NinePointedStar";
 import { Starfield } from "./Starfield";
+import { StarCluster } from "./StarCluster";
+import { ShootingStarCanvas } from "./ShootingStarCanvas";
 import { cn } from "@/lib/utils";
 
-/** Circle radius as % of container — keeps doors inset from edges */
-const RADIUS = 36;
-const ease = [0.22, 1, 0.36, 1] as const;
+/**
+ * Unique solar-system orbit radius (%) for each door-planet.
+ * Inner → outer: each door has its own circular path.
+ */
+const ORBIT_RADII = [18, 22, 26, 29, 32, 35, 38, 41, 44] as const;
 
 export function NineDoorsPortal() {
   const { locale, t } = useLocale();
@@ -26,62 +29,57 @@ export function NineDoorsPortal() {
       }}
     >
       <Starfield />
+      <ShootingStarCanvas />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="mb-8 text-center sm:mb-12 md:mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease }}
-            className="font-sans text-[10px] uppercase tracking-[0.28em] text-gold/70 sm:text-xs"
-          >
+          <p className="font-sans text-[10px] uppercase tracking-[0.28em] text-gold/70 sm:text-xs">
             {t.brandSub}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, delay: 0.1, ease }}
-            className="mt-3 font-display text-3xl text-alabaster sm:text-4xl md:text-5xl"
-          >
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-alabaster sm:text-4xl md:text-5xl">
             {t.doors.heading}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, delay: 0.25, ease }}
+          </h2>
+          <p
             className={
               isFa
-                ? "prose-fa mx-auto mt-4 max-w-lg px-1 text-sm text-alabaster/65 sm:text-base"
-                : "mx-auto mt-4 max-w-lg px-1 font-sans text-sm text-alabaster/60 sm:text-base"
+                ? "prose-fa mx-auto mt-4 max-w-lg px-1 text-sm text-alabaster/80 sm:text-base"
+                : "mx-auto mt-4 max-w-lg px-1 font-sans text-sm text-alabaster/75 sm:text-base"
             }
             dir={isFa ? "rtl" : "ltr"}
           >
             {t.doors.sub}
-          </motion.p>
+          </p>
         </div>
 
-        {/* Astrological circle — same layout phone → desktop; sized to fit viewport */}
         <div
           className={cn(
-            "relative mx-auto aspect-square",
-            /* phone: leave edge margin, never oversized */
+            "relative mx-auto aspect-square overflow-visible",
             "w-[min(100%,20.5rem)]",
             "sm:w-[min(100%,26rem)]",
             "md:w-[min(100%,34rem)]",
             "lg:w-[min(100%,42rem)]"
           )}
+          data-no-star
         >
-          <div className="absolute inset-[16%] rounded-full border border-gold/25 sm:inset-[18%]" />
-          <div className="absolute inset-[26%] rounded-full border border-gold/15 sm:inset-[28%]" />
+          <StarCluster />
 
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <NinePointedStar
-              size={48}
-              className="text-gold sm:hidden"
+          {/* One faint orbit ring per door — solar system */}
+          {ORBIT_RADII.map((r) => (
+            <div
+              key={r}
+              className="pointer-events-none absolute left-1/2 top-1/2 z-[2] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/20"
+              style={{ width: `${r * 2}%`, height: `${r * 2}%` }}
+              aria-hidden
             />
+          ))}
+
+          <button
+            type="button"
+            data-spawn-star
+            className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-full p-2 transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold/50"
+            aria-label={isFa ? "ستارهٔ دنباله‌دار" : "Launch a shooting star"}
+          >
+            <NinePointedStar size={48} className="text-gold sm:hidden" />
             <NinePointedStar
               size={64}
               className="hidden text-gold sm:block md:hidden"
@@ -90,32 +88,36 @@ export function NineDoorsPortal() {
               size={88}
               className="hidden text-gold md:block"
             />
-          </div>
+          </button>
 
           {DOORS.map((door, i) => {
+            const radius = ORBIT_RADII[i] ?? 34;
             const angle = (Math.PI * 2 * i) / 9 - Math.PI / 2;
-            const x = 50 + RADIUS * Math.cos(angle);
-            const y = 50 + RADIUS * Math.sin(angle);
+            const x = 50 + radius * Math.cos(angle);
+            const y = 50 + radius * Math.sin(angle);
             return (
-              <motion.div
+              <div
                 key={door.slug}
                 className={cn(
-                  "absolute -translate-x-1/2 -translate-y-1/2",
-                  "w-[4.25rem] sm:w-[5.5rem] md:w-32 lg:w-36"
+                  "absolute z-30 -translate-x-1/2 -translate-y-1/2",
+                  "w-[4.5rem] sm:w-[5.75rem] md:w-32 lg:w-36"
                 )}
                 style={{ left: `${x}%`, top: `${y}%` }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.08 * i, ease }}
+                data-no-star
               >
+                <div
+                  className="pointer-events-none absolute left-1/2 top-[0.9rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/30 sm:top-[1.05rem] md:top-[1.2rem]"
+                  style={{ width: "2.85rem", height: "2.85rem" }}
+                  aria-hidden
+                />
+
                 <Link
                   href={door.href}
-                  className="group block touch-manipulation text-center outline-none"
+                  className="group relative z-10 block touch-manipulation text-center outline-none"
                 >
                   <span
                     className={cn(
-                      "mx-auto mb-1 flex items-center justify-center rounded-full border border-gold/40 font-sans text-gold transition",
+                      "mx-auto mb-1 flex items-center justify-center rounded-full border border-gold/45 bg-[#0B1126]/80 font-sans text-gold shadow-[0_0_14px_rgba(197,160,89,0.25)] transition",
                       "h-7 w-7 text-[10px]",
                       "sm:mb-1.5 sm:h-8 sm:w-8 sm:text-[11px]",
                       "md:mb-2 md:h-9 md:w-9 md:text-xs",
@@ -127,15 +129,15 @@ export function NineDoorsPortal() {
                   </span>
                   <span
                     className={cn(
-                      "block font-display leading-tight text-alabaster transition group-hover:text-gold",
-                      "text-[10px] sm:text-xs md:text-sm lg:text-base"
+                      "block font-display leading-tight text-alabaster drop-shadow-[0_1px_8px_rgba(5,8,20,0.95)] transition group-hover:text-gold",
+                      "text-[11px] sm:text-xs md:text-sm lg:text-base"
                     )}
                   >
                     {door.title[locale]}
                   </span>
                   <span
                     className={cn(
-                      "mt-0.5 block leading-snug text-alabaster/50",
+                      "mt-0.5 block leading-snug text-alabaster/75 drop-shadow-[0_1px_6px_rgba(5,8,20,0.9)]",
                       "hidden text-[9px] sm:block sm:text-[10px] md:text-[11px] lg:text-xs",
                       isFa ? "prose-fa" : "font-sans"
                     )}
@@ -144,7 +146,7 @@ export function NineDoorsPortal() {
                     {door.subtitle[locale]}
                   </span>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>

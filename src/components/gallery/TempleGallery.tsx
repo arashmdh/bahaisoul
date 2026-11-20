@@ -80,17 +80,15 @@ export function TempleGallery() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
-        <p className="mb-8 font-sans text-sm text-stone">
+      <div className="mx-auto max-w-7xl px-5 py-6 md:px-8 md:py-8">
+        <p className="mb-5 font-sans text-sm text-stone">
           {t.gallery.count.replace("{n}", String(filtered.length))}
         </p>
 
-        {/* Editorial mosaic */}
+        {/* Even mosaic — no oversized empty hero spans */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {filtered.map((img, index) => {
             const copy = copyFor(img, locale);
-            const tall = img.span === "tall";
-            const wide = img.span === "wide" || img.span === "hero";
 
             return (
               <motion.button
@@ -104,27 +102,15 @@ export function TempleGallery() {
                 onClick={() => setActive(index)}
                 className={cn(
                   "group relative overflow-hidden text-start outline-none",
-                  "focus-visible:ring-2 focus-visible:ring-gold",
-                  tall && "sm:row-span-2",
-                  wide && "sm:col-span-2"
+                  "focus-visible:ring-2 focus-visible:ring-gold"
                 )}
               >
-                <div
-                  className={cn(
-                    "relative w-full overflow-hidden bg-indigo/5",
-                    tall ? "aspect-[3/4] sm:h-full sm:min-h-[520px] sm:aspect-auto" : "aspect-[4/3]",
-                    wide && !tall && "aspect-[16/10]"
-                  )}
-                >
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-indigo/5">
                   <Image
                     src={img.src}
                     alt={copy.title}
                     fill
-                    sizes={
-                      wide
-                        ? "(max-width: 768px) 100vw, 66vw"
-                        : "(max-width: 768px) 100vw, 33vw"
-                    }
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition duration-[1.4s] ease-serene group-hover:scale-[1.04]"
                     quality={85}
                   />
