@@ -26,12 +26,52 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* —— Farsi typography —— */
 html[data-locale="fa"] body {
-  font-family: var(--font-vazir), var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-naskh), var(--font-vazir), Tahoma, sans-serif;
+  font-feature-settings: "kern" on, "liga" on;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Titles stay on Vazirmatn (user preference) */
 html[data-locale="fa"] .font-display {
-  font-family: var(--font-vazir), var(--font-display), serif;
+  font-family: var(--font-vazir), Tahoma, sans-serif;
+  letter-spacing: 0;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* Override Tailwind font-sans so body/UI text uses Naskh in FA */
+html[data-locale="fa"] .font-sans {
+  font-family: var(--font-naskh), var(--font-vazir), Tahoma, sans-serif;
+  letter-spacing: 0;
+}
+
+/* Long-form Persian content: airier leading for comfortable reading */
+html[data-locale="fa"] p,
+html[data-locale="fa"] blockquote,
+html[data-locale="fa"] li,
+html[data-locale="fa"] cite,
+html[data-locale="fa"] textarea {
+  line-height: 2;
+  letter-spacing: 0;
+  word-spacing: 0.02em;
+}
+
+html[data-locale="fa"] .prose-fa,
+html[data-locale="fa"] article p,
+html[data-locale="fa"] blockquote p,
+html[data-locale="fa"] section p {
+  font-family: var(--font-naskh), var(--font-vazir), Tahoma, serif;
+  line-height: 2.1;
+  font-weight: 400;
+}
+
+html[data-locale="fa"] blockquote {
+  font-family: var(--font-naskh), var(--font-vazir), serif;
+  font-weight: 500;
+  line-height: 2.2;
 }
 
 ::selection {
@@ -42,6 +82,11 @@ html[data-locale="fa"] .font-display {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .prose-fa {
+    font-family: var(--font-naskh), var(--font-vazir), Tahoma, sans-serif;
+    line-height: 2.05;
   }
 
   /* Atmospheric mountain / temple plane for hero */

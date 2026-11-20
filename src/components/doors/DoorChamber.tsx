@@ -44,10 +44,7 @@ export function DoorChamberView({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
-            className={cn(
-              "mt-3 font-display text-4xl text-alabaster md:text-5xl",
-              isFa && "font-[family-name:var(--font-vazir)]"
-            )}
+            className="mt-3 font-display text-4xl text-alabaster md:text-5xl"
             dir={isFa ? "rtl" : "ltr"}
           >
             {door.title[isFa ? "fa" : "en"]}
@@ -57,8 +54,8 @@ export function DoorChamberView({
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.1, ease }}
             className={cn(
-              "mt-4 font-sans text-alabaster/60",
-              isFa && "font-[family-name:var(--font-vazir)]"
+              "mt-4 text-alabaster/60",
+              isFa ? "prose-fa text-base" : "font-sans"
             )}
             dir={isFa ? "rtl" : "ltr"}
           >
@@ -76,14 +73,26 @@ export function DoorChamberView({
             transition={{ duration: 1, ease }}
             className={cn(
               "-mt-8 border border-gold/25 bg-white/70 px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm md:px-10",
-              isFa && "font-[family-name:var(--font-vazir)] text-right"
+              isFa && "text-right"
             )}
             dir={isFa ? "rtl" : "ltr"}
           >
-            <p className="font-display text-xl leading-relaxed text-indigo md:text-2xl">
+            <p
+              className={cn(
+                "text-indigo",
+                isFa
+                  ? "prose-fa text-xl font-medium md:text-[1.65rem]"
+                  : "font-display text-xl leading-relaxed md:text-2xl"
+              )}
+            >
               “{copy.quote}”
             </p>
-            <cite className="mt-6 block font-sans text-sm not-italic text-gold-deep">
+            <cite
+              className={cn(
+                "mt-6 block not-italic text-gold-deep",
+                isFa ? "prose-fa text-sm" : "font-sans text-sm"
+              )}
+            >
               — {copy.citation}
             </cite>
           </motion.blockquote>
@@ -99,18 +108,15 @@ export function DoorChamberView({
             <p className="font-sans text-xs uppercase tracking-[0.25em] text-sage">
               {isFa ? "مقالهٔ آغازین" : "Starter essay"}
             </p>
-            <h2
-              className={cn(
-                "mt-3 font-display text-3xl text-indigo",
-                isFa && "font-[family-name:var(--font-vazir)]"
-              )}
-            >
+            <h2 className="mt-3 font-display text-3xl text-indigo">
               {copy.articleTitle}
             </h2>
             <p
               className={cn(
-                "mt-6 font-sans text-base leading-relaxed text-stone md:text-lg",
-                isFa && "font-[family-name:var(--font-vazir)]"
+                "mt-6 text-stone",
+                isFa
+                  ? "prose-fa text-[1.08rem] md:text-[1.2rem]"
+                  : "font-sans text-base leading-relaxed md:text-lg"
               )}
             >
               {copy.articleBody}

@@ -63,8 +63,10 @@ export function DailyQuote() {
             </p>
             <blockquote
               className={cn(
-                "mt-5 font-display text-xl leading-relaxed text-alabaster md:text-2xl md:leading-relaxed",
-                locale === "fa" && "font-[family-name:var(--font-vazir)] text-right md:text-2xl"
+                "mt-5 text-alabaster",
+                locale === "fa"
+                  ? "prose-fa text-right text-xl font-medium md:text-[1.65rem]"
+                  : "font-display text-xl leading-relaxed md:text-2xl md:leading-relaxed"
               )}
               dir={locale === "fa" ? "rtl" : "ltr"}
               lang={locale === "fa" ? "fa" : "en"}
@@ -209,8 +211,10 @@ export function DailyQuote() {
                       </span>
                       <span
                         className={cn(
-                          "mt-1 line-clamp-2 block font-display text-sm text-alabaster/85",
-                          locale === "fa" && "font-[family-name:var(--font-vazir)] text-right"
+                          "mt-1 line-clamp-2 block text-sm text-alabaster/85",
+                          locale === "fa"
+                            ? "prose-fa text-right"
+                            : "font-display"
                         )}
                         dir={locale === "fa" ? "rtl" : "ltr"}
                       >

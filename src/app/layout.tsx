@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Source_Sans_3, Vazirmatn } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Noto_Naskh_Arabic,
+  Source_Sans_3,
+  Vazirmatn,
+} from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import { Navigation } from "@/components/layout/Navigation";
@@ -23,8 +28,16 @@ const sans = Source_Sans_3({
 
 const vazir = Vazirmatn({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-vazir",
+  display: "swap",
+});
+
+/** Elegant Persian reading face for body / sacred content */
+const naskh = Noto_Naskh_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-naskh",
   display: "swap",
 });
 
@@ -46,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${display.variable} ${sans.variable} ${vazir.variable} min-h-screen bg-alabaster antialiased`}
+        className={`${display.variable} ${sans.variable} ${vazir.variable} ${naskh.variable} min-h-screen bg-alabaster antialiased`}
       >
         <SessionProvider>
           <LocaleProvider>

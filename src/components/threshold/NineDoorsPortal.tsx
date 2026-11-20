@@ -12,6 +12,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function NineDoorsPortal() {
   const { locale, t } = useLocale();
+  const isFa = locale === "fa";
 
   return (
     <section
@@ -49,7 +50,12 @@ export function NineDoorsPortal() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.4, delay: 0.25, ease }}
-            className="mx-auto mt-4 max-w-lg font-sans text-alabaster/60"
+            className={
+              isFa
+                ? "prose-fa mx-auto mt-4 max-w-lg text-base text-alabaster/65"
+                : "mx-auto mt-4 max-w-lg font-sans text-alabaster/60"
+            }
+            dir={isFa ? "rtl" : "ltr"}
           >
             {t.doors.sub}
           </motion.p>
@@ -88,7 +94,14 @@ export function NineDoorsPortal() {
                   <span className="block font-display text-sm text-alabaster transition group-hover:text-gold md:text-base">
                     {door.title[locale]}
                   </span>
-                  <span className="mt-1 block font-sans text-[10px] leading-snug text-alabaster/50 md:text-[11px]">
+                  <span
+                    className={
+                      isFa
+                        ? "prose-fa mt-1 block text-[11px] text-alabaster/55 md:text-xs"
+                        : "mt-1 block font-sans text-[10px] leading-snug text-alabaster/50 md:text-[11px]"
+                    }
+                    dir={isFa ? "rtl" : "ltr"}
+                  >
                     {door.subtitle[locale]}
                   </span>
                 </Link>

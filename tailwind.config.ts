@@ -31,7 +31,7 @@ const config: Config = {
         display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         vazir: ["var(--font-vazir)", "Tahoma", "sans-serif"],
-        nastaliq: ["var(--font-nastaliq)", "serif"],
+        naskh: ["var(--font-naskh)", "var(--font-vazir)", "Tahoma", "serif"],
       },
       letterSpacing: {
         temple: "0.28em",

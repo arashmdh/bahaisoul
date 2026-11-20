@@ -7,7 +7,8 @@ import { NinePointedStar } from "@/components/ui/NinePointedStar";
 import { VisitorPresence } from "./VisitorPresence";
 
 export function Hero() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isFa = locale === "fa";
 
   return (
     <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-indigo">
@@ -63,7 +64,12 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.75 }}
-          className="mt-4 max-w-md font-sans text-sm leading-relaxed text-alabaster/65 md:text-base"
+          className={
+            isFa
+              ? "prose-fa mt-4 max-w-md text-[0.95rem] text-alabaster/70 md:text-base"
+              : "mt-4 max-w-md font-sans text-sm leading-relaxed text-alabaster/65 md:text-base"
+          }
+          dir={isFa ? "rtl" : "ltr"}
         >
           {t.hero.support}
         </motion.p>

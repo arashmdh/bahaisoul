@@ -34,10 +34,7 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.08, ease }}
-          className={cn(
-            "mt-3 font-display text-3xl text-indigo md:text-4xl",
-            isFa && "font-[family-name:var(--font-vazir)]"
-          )}
+          className="mt-3 font-display text-3xl text-indigo md:text-4xl"
           dir={isFa ? "rtl" : "ltr"}
         >
           {copy.title}
@@ -47,10 +44,7 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.15, ease }}
-          className={cn(
-            "mt-4 font-display text-lg text-gold-deep md:text-xl",
-            isFa && "font-[family-name:var(--font-vazir)]"
-          )}
+          className="mt-4 font-display text-lg text-gold-deep md:text-xl"
           dir={isFa ? "rtl" : "ltr"}
         >
           {copy.subtitle}
@@ -58,8 +52,10 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
 
         <div
           className={cn(
-            "mt-10 space-y-5 font-sans text-base leading-relaxed text-stone",
-            isFa && "font-[family-name:var(--font-vazir)] text-right"
+            "mt-10 space-y-5 text-base text-stone",
+            isFa
+              ? "prose-fa text-right text-[1.05rem] md:text-[1.125rem]"
+              : "font-sans leading-relaxed"
           )}
           dir={isFa ? "rtl" : "ltr"}
         >
@@ -87,7 +83,7 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
               transition={{ duration: 0.9, ease }}
               className={cn(
                 "mt-14 font-display text-2xl text-indigo",
-                isFa && "font-[family-name:var(--font-vazir)] text-right"
+                isFa && "text-right"
               )}
               dir={isFa ? "rtl" : "ltr"}
             >
@@ -104,12 +100,7 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
                   className="border-t border-gold/25 pt-5"
                   dir={isFa ? "rtl" : "ltr"}
                 >
-                  <p
-                    className={cn(
-                      "font-display text-lg text-indigo",
-                      isFa && "font-[family-name:var(--font-vazir)]"
-                    )}
-                  >
+                  <p className="font-display text-lg text-indigo">
                     <span className="me-2 font-sans text-sm text-gold">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -117,8 +108,10 @@ export function AboutSanctuary({ compact = false }: { compact?: boolean }) {
                   </p>
                   <p
                     className={cn(
-                      "mt-2 font-sans text-sm leading-relaxed text-stone",
-                      isFa && "font-[family-name:var(--font-vazir)]"
+                      "mt-2 text-stone",
+                      isFa
+                        ? "prose-fa text-[0.98rem]"
+                        : "font-sans text-sm leading-relaxed"
                     )}
                   >
                     {p.body}
