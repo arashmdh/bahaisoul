@@ -108,8 +108,8 @@ export function ShootingStarCanvas({ className }: Props) {
     if (!ctx) return;
 
     let raf = 0;
-    let stars: ShootingStar[] = [];
-    let dust: Dust[] = [];
+    const stars: ShootingStar[] = [];
+    const dust: Dust[] = [];
     let ambientTimer = 0;
     let nextAmbient = rand(4000, 8000);
     let last = performance.now();
