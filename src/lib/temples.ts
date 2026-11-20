@@ -778,4 +778,202 @@ export const TEMPLE_IMAGES: TempleImage[] = [
         "حرمگاهی مشبک در ساعت طلایی — فرمی معاصر با دعوت ازلی نه در.",
     },
   },
+  {
+    id: "kinshasa-plaza",
+    src: "/temples/bahai-temple-1.jpg",
+    region: "africa",
+    year: "2023",
+    featured: true,
+    span: "wide",
+    en: {
+      title: "House of Worship — Kinshasa",
+      location: "Kinshasa, Democratic Republic of the Congo",
+      description:
+        "Terracotta lattice rising among palms — a continental temple whose woven geometry honors Congolese craft and the oneness of humanity.",
+    },
+    sv: {
+      title: "Tillbedjanshus — Kinshasa",
+      location: "Kinshasa, Demokratiska republiken Kongo",
+      description:
+        "Terrakottagaller bland palmer — ett kontinentalt tempel vars vävda geometri hedrar kongolesiskt hantverk och mänsklighetens enhet.",
+    },
+    fa: {
+      title: "مشرق‌الاذکار — کینشاسا",
+      location: "کینشاسا، جمهوری دموکراتیک کنگو",
+      description:
+        "مشبک سفالین میان نخل‌ها — معبدی قاره‌ای که هندسهٔ بافته‌اش صنعت کنگویی و وحدت بشر را حرمت می‌نهد.",
+    },
+  },
+  {
+    id: "kinshasa-aerial",
+    src: "/temples/bahai-temple-6.jpg",
+    region: "africa",
+    year: "2023",
+    en: {
+      title: "Kinshasa from Above — Star & Water",
+      location: "Kinshasa, Democratic Republic of the Congo",
+      description:
+        "A nine-pointed roof floats on turquoise pools, the Greatest Name at its crown — sacred geometry made landscape.",
+    },
+    sv: {
+      title: "Kinshasa från ovan — stjärna & vatten",
+      location: "Kinshasa, Demokratiska republiken Kongo",
+      description:
+        "Ett niouddigt tak flyter på turkosblå dammar, med Det Största Namnet i kronan — helig geometri som landskap.",
+    },
+    fa: {
+      title: "کینشاسا از فراز — ستاره و آب",
+      location: "کینشاسا، جمهوری دموکراتیک کنگو",
+      description:
+        "بام نه‌پر روی حوض‌های فیروزه‌ای شناور است و اسم اعظم بر تاج آن — هندسهٔ مقدس چون منظره.",
+    },
+  },
+  {
+    id: "kinshasa-dusk",
+    src: "/temples/hope-perspective.jpg",
+    region: "africa",
+    year: "2023",
+    span: "wide",
+    en: {
+      title: "Kinshasa at Dusk — Mirror Pool",
+      location: "Kinshasa, Democratic Republic of the Congo",
+      description:
+        "Golden light against indigo twilight, doubled in still water — hope made visible as architecture.",
+    },
+    sv: {
+      title: "Kinshasa i skymning — spegeldamm",
+      location: "Kinshasa, Demokratiska republiken Kongo",
+      description:
+        "Gyllene ljus mot indigoblå skymning, dubblerad i stilla vatten — hopp synligt som arkitektur.",
+    },
+    fa: {
+      title: "کینشاسا در غروب — حوض آینه‌وار",
+      location: "کینشاسا، جمهوری دموکراتیک کنگو",
+      description:
+        "نور زرین در برابر شامگاه نیلی، دوبرابر در آب آرام — امید چون معماری پدیدار.",
+    },
+  },
+  {
+    id: "congo-design-render",
+    src: "/temples/congo-temple-design.jpg",
+    region: "designs",
+    year: "Design",
+    en: {
+      title: "First Temple in Congo — Design Unveiled",
+      location: "Democratic Republic of the Congo",
+      description:
+        "An unveiled vision for the DRC: warm spire, rhythmic eaves, and gardens that invite an entire people to prayer.",
+    },
+    sv: {
+      title: "Första templet i Kongo — design",
+      location: "Demokratiska republiken Kongo",
+      description:
+        "En avtäckt vision för Kongo: varm spira, rytmiska takutsprång och trädgårdar som bjuder in ett helt folk till bön.",
+    },
+    fa: {
+      title: "نخستین معبد کنگو — رونمایی طرح",
+      location: "جمهوری دموکراتیک کنگو",
+      description:
+        "چشم‌اندازی رونمایی‌شده برای کنگو: منارهٔ گرم، بام‌های موج‌دار، و باغ‌هایی که مردمی را به دعا می‌خوانند.",
+    },
+  },
+  {
+    id: "congo-sunburst",
+    src: "/temples/congo-architect-reflects.jpg",
+    region: "africa",
+    year: "2023",
+    span: "tall",
+    en: {
+      title: "Kinshasa — Sunburst Tower",
+      location: "Kinshasa, Democratic Republic of the Congo",
+      description:
+        "Sun flares through the upper arches of a mosaic tower — light as the first word of worship.",
+    },
+    sv: {
+      title: "Kinshasa — solglimtstornet",
+      location: "Kinshasa, Demokratiska republiken Kongo",
+      description:
+        "Solen bryter genom tornbågarna — ljuset som tillbedjans första ord.",
+    },
+    fa: {
+      title: "کینشاسا — برج نور خورشید",
+      location: "کینشاسا، جمهوری دموکراتیک کنگو",
+      description:
+        "خورشید از کمان‌های بالای برج می‌گذرد — نور به‌مثابهٔ نخستین کلام عبادت.",
+    },
+  },
+  {
+    id: "canada-national-night",
+    src: "/temples/canada-national-design-18.jpg",
+    region: "designs",
+    year: "Design",
+    span: "wide",
+    en: {
+      title: "Canada’s National Temple — Night Design",
+      location: "Canada",
+      description:
+        "Nine warm petals glow in a northern forest at night — a national House of Worship envisioned as a lantern among the trees.",
+    },
+    sv: {
+      title: "Kanadas nationella tempel — natt",
+      location: "Kanada",
+      description:
+        "Nio varma blad lyser i en nordlig skog om natten — ett nationellt tillbedjanshus som en lykta bland träden.",
+    },
+    fa: {
+      title: "معبد ملی کانادا — طرح شب",
+      location: "کانادا",
+      description:
+        "نه گلبرگ گرم در جنگل شمالی شب می‌درخشند — مشرق‌الاذکار ملی چون فانوس میان درختان.",
+    },
+  },
+  {
+    id: "canada-national-forest",
+    src: "/temples/bahai-national-house-of-worship.jpg",
+    region: "designs",
+    year: "Design",
+    span: "tall",
+    en: {
+      title: "Canada’s National Temple — Forest Setting",
+      location: "Canada",
+      description:
+        "Petal façades rising through pine and fern — a design that lets the temple belong to the land before it belongs to the sky.",
+    },
+    sv: {
+      title: "Kanadas nationella tempel — skog",
+      location: "Kanada",
+      description:
+        "Bladfasader mellan tall och ormbunkar — en design där templet tillhör marken innan det tillhör himlen.",
+    },
+    fa: {
+      title: "معبد ملی کانادا — در جنگل",
+      location: "کانادا",
+      description:
+        "نماهای گلبرگی میان کاج و سرخس — طرحی که معبد را پیش از آسمان به زمین می‌سپارد.",
+    },
+  },
+  {
+    id: "santiago-entrance-night",
+    src: "/temples/entrance-night.jpg",
+    region: "americas",
+    year: "2016",
+    en: {
+      title: "Santiago Entrance at Twilight",
+      location: "Santiago, Chile",
+      description:
+        "Leaves on cobblestone, birds in violet sky, and nine glowing wings — the threshold of South America’s Temple.",
+    },
+    sv: {
+      title: "Santiagos entré i skymning",
+      location: "Santiago, Chile",
+      description:
+        "Löv på kullersten, fåglar i violett himmel och nio lysande vingar — tröskeln till Sydamerikas tempel.",
+    },
+    fa: {
+      title: "ورودی سانتیاگو در گرگ‌ومیش",
+      location: "سانتیاگو، شیلی",
+      description:
+        "برگ روی سنگفرش، پرندگان در آسمان بنفش، و نه بال درخشان — آستانهٔ معبد آمریکای جنوبی.",
+    },
+  },
 ];
