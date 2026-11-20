@@ -13,11 +13,19 @@ export const dictionaries = {
     nav: {
       doors: "Nine Doors",
       about: "About",
+      history: "History",
       sanctuary: "Sanctuary",
       gallery: "Gallery",
       scholars: "Scholars",
       dashboard: "Dashboard",
       enter: "Enter",
+    },
+    history: {
+      eyebrow: "Sacred chronicle",
+      menu: "Topics",
+      choose: "Choose a title below to read each chapter of the Faith’s story.",
+      milestones: "Key historical milestones",
+      sources: "Sources",
     },
     gallery: {
       count: "{n} sacred spaces",
@@ -65,11 +73,19 @@ export const dictionaries = {
     nav: {
       doors: "Nio dörrar",
       about: "Om",
+      history: "Historia",
       sanctuary: "Helgedom",
       gallery: "Galleri",
       scholars: "Forskare",
       dashboard: "Instrumentpanel",
       enter: "Stig in",
+    },
+    history: {
+      eyebrow: "Helig krönika",
+      menu: "Ämnen",
+      choose: "Välj en titel nedan för att läsa varje kapitel i trons historia.",
+      milestones: "Viktiga historiska milstolpar",
+      sources: "Källor",
     },
     gallery: {
       count: "{n} heliga platser",
@@ -117,11 +133,19 @@ export const dictionaries = {
     nav: {
       doors: "نه در",
       about: "درباره",
+      history: "تاریخ",
       sanctuary: "حرم",
       gallery: "گالری",
       scholars: "پژوهشگران",
       dashboard: "پیشخوان",
       enter: "ورود",
+    },
+    history: {
+      eyebrow: "سیرهٔ مقدّس",
+      menu: "موضوعات",
+      choose: "عنوان زیر را برگزینید تا هر فصل از تاریخ آیین را بخوانید.",
+      milestones: "نقاط عطف تاریخی",
+      sources: "منابع",
     },
     gallery: {
       count: "{n} مکان مقدس",
@@ -171,11 +195,19 @@ export type Dictionary = {
   nav: {
     doors: string;
     about: string;
+    history: string;
     sanctuary: string;
     gallery: string;
     scholars: string;
     dashboard: string;
     enter: string;
+  };
+  history: {
+    eyebrow: string;
+    menu: string;
+    choose: string;
+    milestones: string;
+    sources: string;
   };
   gallery: {
     count: string;

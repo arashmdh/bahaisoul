@@ -24,7 +24,7 @@ export const DOORS: Door[] = [
     title: {
       en: "Metaphysics",
       sv: "Metafysik",
-      fa: "مابعدالطبیعه",
+      fa: "ماوراءالطبیعه",
     },
     subtitle: {
       en: "The Unseen & Soul's Journey",

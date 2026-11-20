@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { NinePointedStar } from "@/components/ui/NinePointedStar";
@@ -23,6 +23,7 @@ export function Navigation() {
 
   const links = [
     { href: "/about", label: t.nav.about },
+    { href: "/history", label: t.nav.history },
     { href: "/#doors", label: t.nav.doors },
     { href: "/gallery", label: t.nav.gallery },
     { href: "/sanctuary", label: t.nav.sanctuary },
@@ -51,7 +52,7 @@ export function Navigation() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -72,7 +73,7 @@ export function Navigation() {
 
         <button
           type="button"
-          className="inline-flex text-alabaster md:hidden"
+          className="inline-flex text-alabaster lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -87,7 +88,7 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="border-t border-gold/15 bg-indigo px-5 py-6 md:hidden"
+            className="border-t border-gold/15 bg-indigo px-5 py-6 lg:hidden"
           >
             <div className="flex flex-col gap-4">
               {links.map((link) => (

@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { SessionProvider } from "@/components/providers/SessionProvider";
+import { SoundProvider } from "@/components/providers/SoundProvider";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { AudioAmbience } from "@/components/layout/AudioAmbience";
@@ -63,10 +64,12 @@ export default function RootLayout({
       >
         <SessionProvider>
           <LocaleProvider>
-            <Navigation />
-            <main>{children}</main>
-            <Footer />
-            <AudioAmbience />
+            <SoundProvider>
+              <Navigation />
+              <main>{children}</main>
+              <Footer />
+              <AudioAmbience />
+            </SoundProvider>
           </LocaleProvider>
         </SessionProvider>
       </body>

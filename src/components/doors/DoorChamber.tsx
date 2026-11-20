@@ -44,7 +44,7 @@ export function DoorChamberView({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
-            className="mt-3 font-display text-4xl text-alabaster md:text-5xl"
+            className="mt-3 break-words font-display text-3xl text-alabaster sm:text-4xl md:text-5xl"
             dir={isFa ? "rtl" : "ltr"}
           >
             {door.title[isFa ? "fa" : "en"]}

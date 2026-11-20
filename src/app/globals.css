@@ -18,12 +18,22 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent horizontal bleed from wide absolute stages */
+#__next,
+main {
+  overflow-x: clip;
+  max-width: 100vw;
 }
 
 /* —— Farsi typography —— */
@@ -110,5 +120,235 @@ html[data-locale="fa"] blockquote {
       linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .candle-flame {
+    animation: candle-flicker 1.15s ease-in-out infinite alternate;
+    transform-origin: 50% 100%;
+  }
+
+  .candle-shimmer {
+    background-size: 200% 100%;
+    animation: gold-shimmer 2.8s linear infinite;
+  }
+
+  .about-glow-pulse {
+    animation: about-glow-pulse 5.5s ease-in-out infinite;
+  }
+
+  .about-spin-slow {
+    animation: about-spin-slow 120s linear infinite;
+  }
+
+  .about-spin-slower {
+    animation: about-spin-slow 180s linear infinite reverse;
+  }
+
+  .about-ray-breathe {
+    animation: about-ray-breathe 7s ease-in-out infinite;
+  }
+
+  .about-mote {
+    animation: about-mote-drift 9s ease-in-out infinite;
+  }
+
+  .about-soul-ascend {
+    animation: about-soul-ascend 11s ease-in-out infinite;
+  }
+
+  .about-star-breathe {
+    animation: about-star-breathe 6s ease-in-out infinite;
+  }
+
+  .about-orbit {
+    animation: about-spin-slow 90s linear infinite;
+  }
+
+  .about-edge-shimmer {
+    animation: about-edge-shimmer 8s ease-in-out infinite;
+  }
+
+  /* Stronger dissolve — edges/corners melt into page */
+  .about-cosmos-dissolve {
+    -webkit-mask-image: radial-gradient(
+      ellipse 68% 62% at 50% 48%,
+      #000 18%,
+      rgba(0, 0, 0, 0.75) 36%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.1) 68%,
+      transparent 84%
+    );
+    mask-image: radial-gradient(
+      ellipse 68% 62% at 50% 48%,
+      #000 18%,
+      rgba(0, 0, 0, 0.75) 36%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.1) 68%,
+      transparent 84%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .about-aura-ring {
+    animation: about-spin-slow 100s linear infinite;
+  }
+
+  .about-aura-ring-rev {
+    animation: about-spin-slow 140s linear infinite reverse;
+  }
+
+  .about-halo-breathe {
+    animation: about-halo-breathe 6.5s ease-in-out infinite;
+  }
+
+  /* Square plane → truly circular orbits (not ellipses) */
+  .about-solar-system {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(100%, 34rem);
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .about-planet-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 9999px;
+    border: 1px solid rgba(212, 184, 122, 0.14);
+    animation-name: about-spin-slow;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .about-planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-radius: 9999px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes candle-flicker {
+  0% {
+    transform: scaleY(1) scaleX(1) translateX(0);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scaleY(1.08) scaleX(0.92) translateX(0.4px);
+    filter: brightness(1.12);
+  }
+  100% {
+    transform: scaleY(0.94) scaleX(1.06) translateX(-0.5px);
+    filter: brightness(0.92);
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes about-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes about-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes about-ray-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes about-mote-drift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+@keyframes about-soul-ascend {
+  0% {
+    transform: translateY(18%) scale(0.7);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.75;
+  }
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-110%) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes about-star-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.2));
+  }
+  50% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 18px rgba(255, 230, 170, 0.55));
+  }
+}
+
+@keyframes about-edge-shimmer {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes about-halo-breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.05);
   }
 }
