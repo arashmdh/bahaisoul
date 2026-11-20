@@ -12,6 +12,7 @@ export const dictionaries = {
     brandSub: "Virtual Temple",
     nav: {
       doors: "Nine Doors",
+      about: "About",
       sanctuary: "Sanctuary",
       gallery: "Gallery",
       scholars: "Scholars",
@@ -63,6 +64,7 @@ export const dictionaries = {
     brandSub: "Virtuellt tempel",
     nav: {
       doors: "Nio dörrar",
+      about: "Om",
       sanctuary: "Helgedom",
       gallery: "Galleri",
       scholars: "Forskare",
@@ -114,6 +116,7 @@ export const dictionaries = {
     brandSub: "معبد مجازی",
     nav: {
       doors: "نه در",
+      about: "درباره",
       sanctuary: "حرم",
       gallery: "گالری",
       scholars: "پژوهشگران",
@@ -167,6 +170,7 @@ export type Dictionary = {
   brandSub: string;
   nav: {
     doors: string;
+    about: string;
     sanctuary: string;
     gallery: string;
     scholars: string;

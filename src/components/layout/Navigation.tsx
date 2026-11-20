@@ -22,6 +22,7 @@ export function Navigation() {
   }, []);
 
   const links = [
+    { href: "/about", label: t.nav.about },
     { href: "/#doors", label: t.nav.doors },
     { href: "/gallery", label: t.nav.gallery },
     { href: "/sanctuary", label: t.nav.sanctuary },
