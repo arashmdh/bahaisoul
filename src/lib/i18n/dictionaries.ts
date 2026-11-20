@@ -13,9 +13,13 @@ export const dictionaries = {
     nav: {
       doors: "Nine Doors",
       sanctuary: "Sanctuary",
+      gallery: "Gallery",
       scholars: "Scholars",
       dashboard: "Dashboard",
       enter: "Enter",
+    },
+    gallery: {
+      count: "{n} sacred spaces",
     },
     hero: {
       headline: "A sanctuary for the contemplative heart",
@@ -53,9 +57,13 @@ export const dictionaries = {
     nav: {
       doors: "Nio dörrar",
       sanctuary: "Helgedom",
+      gallery: "Galleri",
       scholars: "Forskare",
       dashboard: "Instrumentpanel",
       enter: "Stig in",
+    },
+    gallery: {
+      count: "{n} heliga platser",
     },
     hero: {
       headline: "En helgedom för det kontemplativa hjärtat",
@@ -93,9 +101,13 @@ export const dictionaries = {
     nav: {
       doors: "نه در",
       sanctuary: "حرم",
+      gallery: "گالری",
       scholars: "پژوهشگران",
       dashboard: "پیشخوان",
       enter: "ورود",
+    },
+    gallery: {
+      count: "{n} مکان مقدس",
     },
     hero: {
       headline: "حرمگاهی برای قلب تأمل‌گر",
@@ -135,9 +147,13 @@ export type Dictionary = {
   nav: {
     doors: string;
     sanctuary: string;
+    gallery: string;
     scholars: string;
     dashboard: string;
     enter: string;
+  };
+  gallery: {
+    count: string;
   };
   hero: {
     headline: string;
