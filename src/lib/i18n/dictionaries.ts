@@ -37,6 +37,13 @@ export const dictionaries = {
       reflect: "Reflect",
       reflecting: "Close reflection",
       prompt: "What does this word awaken in your heart today?",
+      next: "Next",
+      prev: "Previous",
+      viewAll: "View all 82",
+      today: "Today",
+      persian: "Persian Hidden Words",
+      source: "The Hidden Words",
+      author: "Bahá'u'lláh",
     },
     presence: {
       alone: "You are alone in the sanctuary",
@@ -81,6 +88,13 @@ export const dictionaries = {
       reflect: "Reflektera",
       reflecting: "Stäng reflektion",
       prompt: "Vad väcker detta ord i ditt hjärta idag?",
+      next: "Nästa",
+      prev: "Föregående",
+      viewAll: "Visa alla 82",
+      today: "Idag",
+      persian: "Persiska Dolda Orden",
+      source: "The Hidden Words",
+      author: "Bahá'u'lláh",
     },
     presence: {
       alone: "Du är ensam i helgedomen",
@@ -125,6 +139,13 @@ export const dictionaries = {
       reflect: "تأمل",
       reflecting: "بستن تأمل",
       prompt: "امروز این کلام چه چیزی را در قلب شما بیدار می‌کند؟",
+      next: "بعدی",
+      prev: "قبلی",
+      viewAll: "مشاهدهٔ هر ۸۲",
+      today: "امروز",
+      persian: "کلمات مکنونۀ فارسی",
+      source: "کلمات مکنونه",
+      author: "حضرت بهاءالله",
     },
     presence: {
       alone: "تنها در حرم هستید",
@@ -170,6 +191,13 @@ export type Dictionary = {
     reflect: string;
     reflecting: string;
     prompt: string;
+    next: string;
+    prev: string;
+    viewAll: string;
+    today: string;
+    persian: string;
+    source: string;
+    author: string;
   };
   presence: {
     alone: string;
