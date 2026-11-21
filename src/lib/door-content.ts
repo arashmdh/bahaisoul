@@ -60,6 +60,11 @@ type ArticleBundle = {
 
 const BRL = "https://www.bahai.org/library";
 const BAHAI = "https://www.bahai.org";
+/** Secondary commentary (not authoritative); cite when discussing life beyond Earth. */
+const BT_LIFE_PLANETS =
+  "https://bahaiteachings.org/bahai-writings-life-planets/";
+const GLEANINGS =
+  `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
 
 const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "worlds-beyond": {
@@ -75,12 +80,13 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "In the Bahá’í Writings, physical life is likened to an embryonic stage. The soul—immortal, conscious, and capable of endless progress—continues after the body’s dissolution toward the presence of God. Bahá’u’lláh teaches that this ascent is neither extinguished by death nor frozen in a static heaven; rather, the soul advances through infinite worlds of God (‘Álam-i-Malakút and beyond) according to its capacity, deeds, and divine grace.",
         "‘Abdu’l-Bahá explains that faculties cultivated here—love, justice, detachment, and knowledge—become the wings of that journey. Just as eyes and ears form in the womb for a world the child has not yet entered, spiritual virtues prepare the soul for realms the senses cannot measure. The “veil” is not a wall of fear, but the limit of material perception; prayer, meditation, and service thin that veil while we yet walk the earth.",
+        "Those same Writings open a still wider horizon of creation. Bahá’u’lláh affirms that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—a vision of inhabited worlds throughout the cosmos, inviting awe rather than idle speculation. The soul’s journey, then, unfolds within a universe already teeming with divine purpose beyond Earth alone.",
         "This door invites contemplation of the architecture of the unseen: progressive revelation as light upon light, the continuity of consciousness, reunion with the Beloved, and the solemn joy of knowing that no sincere aspiration is lost. Death, in this vision, is a birth into wider awareness—an opening, not an end.",
       ],
       sources: [
         {
-          label: "Bahá’u’lláh, Gleanings from the Writings of Bahá’u’lláh (soul after death)",
-          url: `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`,
+          label: "Bahá’u’lláh, Gleanings — every star its planets, every planet its creatures",
+          url: GLEANINGS,
         },
         {
           label: "‘Abdu’l-Bahá, Some Answered Questions — immortality of the spirit",
@@ -90,6 +96,11 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "Bahá’í Reference Library — Life, Death and the Soul",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
         },
+        {
+          label:
+            "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
+          url: BT_LIFE_PLANETS,
+        },
       ],
     },
     fa: {
@@ -97,12 +108,13 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "در آثار بهائی، حیات جسمانی چون دوران جنینی توصیف شده است. روح—جاودان، آگاه و توانا به ترقی بی‌پایان—پس از انحلال جسم به‌سوی حضور الهی ادامه می‌یابد. حضرت بهاءالله می‌فرمایند این عروج با مرگ خاموش نمی‌شود و در بهشتی ایستا منجمد نمی‌گردد؛ بلکه روح بر وفق استعداد، اعمال و فضل الهی در عوالم بی‌کران خداوند (عالم ملکوت و فراتر) سیر می‌کند.",
         "حضرت عبدالبهاء تبیین می‌فرمایند که فضایل پروریده‌شده در این عالم—عشق، عدالت، انقطاع و معرفت—بال‌های آن سفرند. همان‌گونه که چشم و گوش در رحم برای جهانی شکل می‌گیرند که هنوز درک نشده، فضایل روحانی روح را برای اقالیمی آماده می‌کنند که حواس ظاهری اندازه نمی‌گیرند. «پرده» دیوار بیم نیست، بلکه حد ادراک مادی است؛ دعا، مراقبه و خدمت این پرده را در همین جهان نازک می‌سازند.",
+        "همان آثار افقی وسیع‌تر از خلقت می‌گشایند. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود را دارد و هر سیاره‌ای مخلوقات خود را—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. این نگاه، جهان را سرشار از حکمت الهی می‌بیند و سفر روح را در کیهانی قرار می‌دهد که مقصود الهی‌اش به زمین محدود نیست.",
         "این دروازه به تأمل در هندسهٔ غیب فرامی‌خواند: ظهور تدریجی چون نور علی نور، پیوستگی آگاهی، وصال محبوب، و شادی سنگین این یقین که هیچ آرزوی صادقی تباه نمی‌شود. مرگ در این نگاه، تولدی در آگاهی وسیع‌تر است—گشایش، نه پایان.",
       ],
       sources: [
         {
-          label: "حضرت بهاءالله، منتخباتی از آثار — بقای روح",
-          url: `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`,
+          label: "حضرت بهاءالله، منتخباتی از آثار — هر ستاره سیارات و هر سیاره مخلوقات دارد",
+          url: GLEANINGS,
         },
         {
           label: "حضرت عبدالبهاء، مفاوضات — بقای روح",
@@ -111,6 +123,11 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "کتابخانهٔ مرجع بهائی — روح انسانی",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
+        },
+        {
+          label:
+            "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
+          url: BT_LIFE_PLANETS,
         },
       ],
     },
@@ -325,20 +342,26 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "‘Abdu’l-Bahá famously teaches that science and religion are as two wings of one bird—both required for ascent. Bahá’í cosmology affirms a universe of purpose: progressive revelation, the essential harmony of truth, and a human consciousness capable of knowing both material law and spiritual meaning.",
         "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; dogma that contradicts demonstrated truth is to be set aside; yet science without spiritual values risks becoming a cold instrument of power. Consciousness itself—self-aware, ethical, creative—bridges laboratory and sanctuary.",
+        "That harmony shines when we ask whether life exists beyond Earth. Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—words that meet today’s search for exoplanets and astrobiology without fear. Science advances the evidence; revelation widens the horizon of meaning. Planetary unity on Earth remains the first task; wonder at a living cosmos is its companion.",
         "This door explores that harmony: reading nature as a book of divine signs, studying the cosmos without losing the soul, and cultivating a civilization where technology serves unity, justice, and the flourishing of every people.",
       ],
       sources: [
+        {
+          label: "Bahá’u’lláh, Gleanings — stars, planets, and creatures beyond count",
+          url: GLEANINGS,
+        },
         {
           label: "‘Abdu’l-Bahá, Paris Talks — science and religion",
           url: `${BRL}/authoritative-texts/abdul-baha/paris-talks/`,
         },
         {
-          label: "Bahá’í International Community — science, religion and development",
-          url: "https://www.bic.org/",
-        },
-        {
           label: "Harmony of science and religion — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
+        },
+        {
+          label:
+            "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
+          url: BT_LIFE_PLANETS,
         },
       ],
     },
@@ -347,9 +370,14 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "حضرت عبدالبهاء می‌فرمایند علم و دین چون دو بال یک پرنده‌اند—هر دو برای عروج لازم است. کیهان‌شناسی بهائی جهانی هدفمند را تصدیق می‌کند: ظهور تدریجی، هماهنگی ذاتی حقیقت، و آگاهی انسانی که هم قانون مادی و هم معنای روحانی را می‌تواند شناخت.",
         "آثار مبارکه نه‌تنها با پژوهش تجربی مخالف نیستند، بلکه علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جزم مخالف حقیقت مبرهن کنار نهاده می‌شود؛ اما علم بی‌ارزش‌های روحانی خطر ابزار سرد قدرت شدن دارد. خود آگاهی—اخلاقی، خلاق، خودآگاه—آزمایشگاه و حرم را پل می‌زند.",
+        "این هماهنگی آن‌گاه می‌درخشد که بپرسیم آیا حیات فراتر از زمین هست. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—کلامی که جستجوی امروزِ سیارات فراخورشیدی و اخترزیست‌شناسی را بی‌هراس می‌پذیرد. علم شواهد را پیش می‌برد؛ وحی افق معنا را می‌گشاید. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده، هم‌سفر آن.",
         "این دروازه آن هماهنگی را می‌کاود: خواندن طبیعت چون کتاب آیات، مطالعهٔ کیهان بی‌از‌دست‌دادن روح، و پرورش تمدنی که فناوری در خدمت وحدت، عدالت و شکوفایی همهٔ اقوام باشد.",
       ],
       sources: [
+        {
+          label: "حضرت بهاءالله، منتخباتی از آثار — ستارگان، سیارات و مخلوقات بی‌شمار",
+          url: GLEANINGS,
+        },
         {
           label: "حضرت عبدالبهاء، خطابات پاریس — علم و دین",
           url: `${BRL}/authoritative-texts/abdul-baha/paris-talks/`,
@@ -357,6 +385,11 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "هماهنگی علم و دین — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
+        },
+        {
+          label:
+            "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
+          url: BT_LIFE_PLANETS,
         },
       ],
     },
