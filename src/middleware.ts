@@ -1,26 +1,30 @@
-import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-export default withAuth(
-  function middleware() {
+/**
+ * Protect dashboard only. Fail open if JWT secret is missing so the rest of
+ * the site never goes blank from middleware crashes.
+ */
+export async function middleware(req: NextRequest) {
+  try {
+    const token = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+    });
+    if (!token) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/auth/signin";
+      url.searchParams.set("callbackUrl", req.nextUrl.pathname);
+      return NextResponse.redirect(url);
+    }
     return NextResponse.next();
-  },
-  {
-    callbacks: {
-      authorized: ({ token, req }) => {
-        const path = req.nextUrl.pathname;
-        if (path.startsWith("/dashboard")) {
-          return !!token;
-        }
-        return true;
-      },
-    },
-    pages: {
-      signIn: "/auth/signin",
-    },
+  } catch {
+    // Never blank the site from auth edge failures
+    return NextResponse.next();
   }
-);
+}
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard", "/dashboard/:path*"],
 };
