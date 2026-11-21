@@ -66,6 +66,12 @@ const BT = {
     "https://bahaiteachings.org/defining-four-different-types-of-love/",
   loveUnity:
     "https://bahaiteachings.org/eternal-rule-concentrating-our-hearts-on-love-and-unity/",
+  onenessHumanity:
+    "https://bahaiteachings.org/bahai-principles-oneness-of-humanity/",
+  careNature: "https://bahaiteachings.org/why-should-we-care-about-nature/",
+  bodyEarth: "https://bahaiteachings.org/your-body-your-earth/",
+  etMessage:
+    "https://bahaiteachings.org/sending-message-extraterrestrial-civilizations/",
 } as const;
 
 const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
@@ -567,6 +573,124 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "با پژواک سخن بودا که نفرت جز به عشق باز نمی‌ایستد، این تفسیر بر امر حضرت عبدالبهاء تکیه می‌کند: همهٔ افکار قلب را بر عشق و وحدت متمرکز کن. فکر جنگ را با فکر قوی‌تر صلح پاسخ ده؛ نفرت را با عشقی نیرومندتر نابود کن. آرزوی روحانی مثبت، اگر خالص باشد، می‌تواند گسترش یابد تا آرزوی ذهن‌های بسیار شود.",
           "عشق نفس ابدی روح‌القدس تعریف می‌شود—پیوند در حقایق اشیا، قانون عصر، نیرویی که تمدن راستین می‌سازد. وقتی ملل به جنگ و خود می‌اندیشند، بهائیان به صلح‌سازی، توجه به دیگران و بیداری خوانده می‌شوند. تمرکز قلب بر عشق و وحدت کیمیای روزانه‌ای است که جهان زخمی را روحانی می‌کند.",
+        ],
+      }
+    ),
+    sec(
+      BT.onenessHumanity,
+      {
+        title: "Oneness of Humanity—Unity Among Ourselves",
+        linkLabel: "David Langness, “Oneness of Humanity”",
+        paragraphs: [
+          "The entire structure of Bahá’í teaching revolves around the oneness of humanity: one ancestry, one shared home, one Creator. Bahá’u’lláh addresses the whole race—“Ye are the fruits of one tree, and the leaves of one branch”—and calls for love, harmony, and fellowship among all peoples. Distinctions of race and nation have no standing before God; all are submerged in the ocean of His oneness.",
+          "‘Abdu’l-Bahá frames this age as humanity’s maturity: childhood’s playthings no longer suffice. Unity is not uniformity—the sick need healing, the immature education, the asleep awakening—yet all must be loved. Recognizing scientific kinship and spiritual solidarity becomes the commitment that turns world citizenship from ideal into daily practice.",
+        ],
+      },
+      {
+        title: "وحدت نوع انسان—یگانگی انسان با انسان",
+        linkLabel: "دیوید لانگنس، «وحدت نوع انسان»",
+        paragraphs: [
+          "تمام ساختار تعالیم بهائی بر وحدت نوع انسان می‌چرخد: یک تبار، یک خانهٔ مشترک، یک آفریدگار. حضرت بهاءالله به همهٔ بشر خطاب می‌فرمایند—«شما میوه‌های یک درخت و برگ‌های یک شاخه‌اید»—و به عشق، الفت و دوستی میان همهٔ اقوام فرامی‌خوانند. تمایز نژاد و ملت نزد خدا اعتباری ندارد؛ همه در اقیانوس وحدت او غرق‌اند.",
+          "حضرت عبدالبهاء این عصر را بلوغ نوع انسان می‌دانند: اسباب کودکی دیگر بس نیست. وحدت یک‌شکلی نیست—بیمار را باید شفا داد، نابالغ را تربیت، خفته را بیدار—اما همه را باید دوست داشت. شناخت خویشاوندی علمی و همبستگی روحانی تعهدی است که شهروندی جهانی را از آرمان به تمرین روزانه بدل می‌کند.",
+        ],
+      }
+    ),
+    sec(
+      BT.careNature,
+      {
+        title: "Unity with All Living Beings—Why Care for Nature",
+        linkLabel: "Deborah Clark Vance, “Why Should We Care About Nature?”",
+        paragraphs: [
+          "Unity does not stop at the human circle. ‘Abdu’l-Bahá teaches that all beings are linked like a chain; reciprocal help and interaction cause existence, growth, and development. Plants and animals exchange what each needs; humans, whose minds grant freer choice, bear special responsibility as stewards—not owners—of creation.",
+          "The Báb and Bahá’u’lláh call for purity of the elements, mercy to animals, and humility before the earth that feeds every prosperity. Caring for nature is devotion: an act offered to God that mirrors the same love demanded among peoples. Environmental harm and social injustice are one crisis; firmly establishing human unity is the condition of lasting peace and security for the whole living world.",
+        ],
+      },
+      {
+        title: "وحدت با همهٔ موجودات زنده—چرا به طبیعت اهمیت دهیم",
+        linkLabel: "دبورا کلارک ونس، «چرا باید به طبیعت اهمیت دهیم؟»",
+        paragraphs: [
+          "وحدت در دایرهٔ انسان نمی‌ماند. حضرت عبدالبهاء می‌فرمایند همهٔ موجودات چون زنجیر به هم پیوسته‌اند؛ کمک متقابل و تأثیر متقابل سبب وجود، رشد و ترقی است. گیاه و حیوان آنچه را هر یک نیاز دارد مبادله می‌کنند؛ انسان، که ذهن اختیار بیشتری می‌دهد، مسئولیت ویژهٔ امانت‌داری—نه مالکیت—خلقت را دارد.",
+          "حضرت باب و حضرت بهاءالله به پاکی عناصر، رحمت به حیوانات و فروتنی در برابر زمینی که هر رفاهی از آن است فرامی‌خوانند. مراقبت از طبیعت عبادت است: عملی پیشکش خدا که همان عشقی را بازمی‌تاباند که میان انسان‌ها خواسته شده. آسیب محیط‌زیست و بی‌عدالتی اجتماعی یک بحران‌اند؛ استقرار وحدت بشر شرط صلح و امنیت پایدار برای تمام جهان زنده است.",
+        ],
+      }
+    ),
+    sec(
+      BT.bodyEarth,
+      {
+        title: "One Living World—Body, Earth, and Reciprocity",
+        linkLabel: "David Langness, “Your Body, Your Earth”",
+        paragraphs: [
+          "‘Abdu’l-Bahá likens the temple of the world to the human body: outwardly many limbs, inwardly one coherent being. Cooperation, mutual aid, and reciprocity are essential traits of the unified body of existence; estrangement leads to disturbance and decay. Every part of the universe is connected to every other by powerful ties that admit no lasting imbalance.",
+          "This organic vision—long before modern ecology popularized it—grounds unity in the structure of creation itself. To proclaim the oneness of humanity while harming the living systems that sustain every people is contradiction. Affinity and attraction bring plants, animals, and humans into being; division decomposes what love holds together.",
+        ],
+      },
+      {
+        title: "یک جهان زنده—جسم، زمین و همیاری",
+        linkLabel: "دیوید لانگنس، «جسم تو، زمین تو»",
+        paragraphs: [
+          "حضرت عبدالبهاء هیکل عالم را به جسم انسان تشبیه می‌فرمایند: ظاهراً اعضا بسیار، باطناً یک وجود منسجم. تعاون، کمک متقابل و همیاری از صفات ذاتی پیکر واحد هستی‌اند؛ بیگانگی به آشوب و زوال می‌انجامد. هر جزء کیهان با جزء دیگر به پیوندهایی نیرومند بسته است که سستی پایدار نمی‌پذیرد.",
+          "این نگاه اندام‌وار—پیش از آنکه بوم‌شناسی مدرن آن را رایج کند—وحدت را در ساختار خود خلقت ریشه می‌دهد. وحدت نوع انسان را اعلام کردن و در همان حال به سامانه‌های زنده‌ای که همهٔ اقوام را نگه می‌دارند آسیب زدن، تناقض است. الفت و جاذبه گیاه و حیوان و انسان را پدید می‌آورد؛ تفرقه آنچه عشق نگاه می‌دارد را می‌پاشاند.",
+        ],
+      }
+    ),
+    sec(
+      BT.ufoThreat,
+      {
+        title: "From World Unity to Universal Unity—Beyond Fear of the Other",
+        linkLabel: "Susan Gammage, “Why Do We See UFOs as a Threat?”",
+        paragraphs: [
+          "If creation already teems with creatures beyond Earth—as Bahá’u’lláh affirms of every planet—why train the imagination to meet them only as enemies? This commentary asks whether the reflex of fear toward the unknown sky mirrors the same prejudice that divides nations on Earth. The spirit of this age, ‘Abdu’l-Bahá writes, lies in the oneness of humanity and universal brotherhood.",
+          "Central Bahá’í teaching presents humanity as one interconnected family; the essay suggests that principle can widen, in time, toward a universal family that includes possible extraterrestrial civilizations. Contact imagined through unity, science, and peace—not conquest myths—extends the eternal rule of love beyond the planet where it must first take root.",
+        ],
+      },
+      {
+        title: "از وحدت جهانی تا وحدت کیهانی—فراتر از ترس از دیگری",
+        linkLabel: "سوزان گَمِج، «چرا یوفوها را تهدید می‌بینیم؟»",
+        paragraphs: [
+          "اگر خلقت، چنان‌که حضرت بهاءالله دربارهٔ هر سیاره می‌فرمایند، از پیش از مخلوقات فراتر از زمین سرشار است، چرا خیال را فقط برای دیدار دشمنانه تربیت کنیم؟ این تفسیر می‌پرسد آیا بازتاب ترس از آسمان ناشناخته همان تعصبی نیست که ملل زمین را می‌گسلد. حضرت عبدالبهاء می‌فرمایند روح این عصر در وحدت عالم انسانی و اخوت عمومی است.",
+          "تعالیم بهائی بشر را یک خانوادهٔ پیوسته می‌نمایاند؛ مقاله پیشنهاد می‌کند این اصل روزی بتواند به‌سوی خانوادهٔ کیهانی—شامل تمدن‌های احتمالی فرازمینی—گسترده شود. تماس خیال‌شده از راه وحدت، علم و صلح—نه افسانه‌های فتح—قانون ابدی عشق را فراتر از سیاره‌ای می‌برد که باید نخست در آن ریشه بدواند.",
+        ],
+      }
+    ),
+    sec(
+      BT.etMessage,
+      {
+        title: "A Message of Kindness to Every Creature—Including Beyond Earth",
+        linkLabel:
+          "David Langness, “Sending a Message to Extraterrestrial Civilizations”",
+        paragraphs: [
+          "What would humanity say to another civilization? Drawing on Bahá’u’lláh’s affirmation of creatures on every planet and ‘Abdu’l-Bahá’s counsel that dwellers elsewhere accord with their spheres, this essay turns communication into an ethic: first build friendship, then speech. Higher intelligence, it suggests, often deepens the capacity to feel—and feeling opens to kindness.",
+          "‘Abdu’l-Bahá requires loving-kindness not only to fellow humans but to every living creature; none are strangers, but family and friends, each a sign of God. A message worthy of Earth would therefore extend the same mercy that heals human division—practicing planetary unity here as the apprenticeship for any wider unity yet to come.",
+        ],
+      },
+      {
+        title: "پیام مهر به هر مخلوق—حتی فراتر از زمین",
+        linkLabel:
+          "دیوید لانگنس، «فرستادن پیام به تمدن‌های فرازمینی»",
+        paragraphs: [
+          "بشر به تمدنی دیگر چه بگوید؟ با تکیه بر تأیید حضرت بهاءالله دربارهٔ مخلوقات هر سیاره و تبیین حضرت عبدالبهاء که ساکنان دیگر با عناصر سپهر خویش سازگارند، این مقاله ارتباط را به اخلاق بدل می‌کند: نخست دوستی بساز، آن‌گاه سخن بگو. هوش برتر، پیشنهاد می‌کند، اغلب ظرفیت احساس را ژرف‌تر می‌کند—و احساس به مهر گشوده می‌شود.",
+          "حضرت عبدالبهاء نه فقط به انسان‌ها که به هر موجود زنده‌ای نهایت محبت می‌طلبند؛ هیچ‌کس بیگانه نیست، بلکه خانواده و دوست است، هر یک آیت خدا. پیامی شایستهٔ زمین همان رحمتی را می‌گستراند که تفرقهٔ بشری را شفا می‌دهد—وحدت سیاره‌ای اینجا را کارآموزی هر وحدت وسیع‌تری می‌سازد که هنوز در راه است.",
+        ],
+      }
+    ),
+    sec(
+      BT.lifePlanets,
+      {
+        title: "Planetary Unity First—Then Interplanetary Horizon",
+        linkLabel:
+          "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets”",
+        paragraphs: [
+          "While science gathers evidence of life beyond Earth, Bahá’í teaching already widens the horizon: every fixed star its planets, every planet its creatures. Yet the same essay insists that the first labor remains the unification of the human family and the building of just global order. Only a people practiced in oneness is ready for whatever contact the future may hold.",
+          "Essential unity transcends nationality, religion, and race—just as physical law governs Earth and sky alike. Wherever the soul might travel in space, Bahá’u’lláh reminds, rest is found only in submission to God. Unity among humans, with living nature, and—prospectively—with beings beyond Earth, are nested circles of one spiritual law.",
+        ],
+      },
+      {
+        title: "نخست وحدت سیاره‌ای—سپس افق میان‌سیاره‌ای",
+        linkLabel:
+          "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»",
+        paragraphs: [
+          "در حالی که علم گواه حیات فراتر از زمین می‌جوید، تعالیم بهائی افق را از پیش گشوده‌اند: هر ستارهٔ ثابت سیارات خود، هر سیاره مخلوقات خود. اما همان مقاله تأکید می‌کند نخستین کار همچنان وحدت خانوادهٔ بشری و بنای نظم عادل جهانی است. تنها قومی که در یگانگی تمرین کرده برای هر تماسی که آینده آورد آماده است.",
+          "وحدت ذاتی از ملیت، دین و نژاد فراتر می‌رود—همان‌گونه که قانون فیزیکی زمین و آسمان را یکسان اداره می‌کند. هرجا روح در فضا سیر کند، حضرت بهاءالله یادآور می‌شوند که آرامش جز در تسلیم به امر الهی نیست. وحدت میان انسان‌ها، با طبیعت زنده، و—در افق—با باشندگان فراتر از زمین، دایره‌های تودرتوی یک قانون روحانی‌اند.",
         ],
       }
     ),

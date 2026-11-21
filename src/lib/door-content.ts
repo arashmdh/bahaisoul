@@ -614,9 +614,10 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       title: "The Eternal Rule: Concentrating Our Hearts on Love and Unity",
       paragraphs: [
         "‘Abdu’l-Bahá teaches that unity is the binding force of the universe and the foundation of lasting peace. The eternal rule is simple and demanding: concentrate the heart on love and unity. Where hearts are divided by prejudice, nation, race, or creed, civilization frays; where love gathers them, the world can be remade.",
-        "Bahá’í mysticism does not end in private ecstasy. Bahá’u’lláh’s revelation unites the transformation of the heart with the rebuilding of society: the oneness of humanity, the equality of women and men, the elimination of extremes of wealth and poverty, universal education, and governance by consultation. Unity is not uniformity—it is harmony among diverse notes.",
-        "“Guidance hath ever been given by words, and now it is given by deeds,” declare the Hidden Words. Inner awakening that never touches justice remains incomplete. Conversely, social action without spiritual roots withers. The Mashriqu’l-Adhkár itself is conceived as a dawning-place of praise surrounded by dependencies of service—education, healing, and care for the poor.",
-        "Concentrating the heart on love and unity is daily practice: speaking with kindness, consulting instead of contending, refusing prejudice, and building communities where every soul belongs. This door closes the circle of the Nine—how the soul’s journey, self-knowledge, mystical wayfaring, symbols, intuition, cosmic wonder, sacred art, and love become a living force that spiritualizes neighborhoods, nations, and the planet—quietly, steadily, and for all.",
+        "Unity begins among human beings themselves. Bahá’u’lláh’s revelation rebuilds society on the oneness of humanity—“fruits of one tree, leaves of one branch”—with equality of women and men, the elimination of extremes of wealth and poverty, universal education, and governance by consultation. Unity is not uniformity; it is harmony among diverse notes.",
+        "The same law widens to all living beings. ‘Abdu’l-Bahá describes creation as a chain of reciprocal help: every part of the universe is tied to every other. Kindness is owed not only to fellow humans but to every creature; the earth itself is likened to one living body. Stewardship of nature is devotion, and environmental care is inseparable from social justice.",
+        "A still wider circle opens in the Writings: every fixed star hath its planets, and every planet its creatures. Practiced unity on Earth—peace instead of fear, friendship instead of otherness—becomes the apprenticeship for any encounter beyond our sky. Planetary oneness first; then, if contact comes, a universal family under one Creator.",
+        "“Guidance hath ever been given by words, and now it is given by deeds,” declare the Hidden Words. Concentrating the heart on love and unity is daily practice that spiritualizes neighborhoods, nations, the living Earth, and—prospectively—the wider cosmos. This door closes the circle of the Nine.",
       ],
       sources: [
         {
@@ -624,22 +625,31 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           url: `${BRL}/authoritative-texts/bahaullah/hidden-words/`,
         },
         {
-          label: "Universal House of Justice — letters on social action and community building",
-          url: `${BRL}/authoritative-texts/the-universal-house-of-justice/`,
+          label: "Bahá’u’lláh, Gleanings — every planet its creatures",
+          url: GLEANINGS,
         },
         {
-          label: "What Bahá’ís believe — society and oneness",
-          url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
-        }
+          label: "‘Abdu’l-Bahá, Selections — loving-kindness to every living creature",
+          url: `${BRL}/authoritative-texts/abdul-baha/selections-writings-abdul-baha/`,
+        },
+        {
+          label: "Nature and the environment — bahai.org",
+          url: `${BAHAI}/beliefs/god-his-creation/nature/`,
+        },
+        {
+          label: "Universal House of Justice — social action and community building",
+          url: `${BRL}/authoritative-texts/the-universal-house-of-justice/`,
+        },
       ],
     },
     fa: {
       title: "قانون ابدی: تمرکز قلوب بر عشق و وحدت",
       paragraphs: [
         "حضرت عبدالبهاء می‌فرمایند وحدت نیروی پیونددهندهٔ عالم هستی و اساس صلح پایدار است. قانون ابدی ساده و سخت است: قلب را بر عشق و وحدت متمرکز کن. آنجا که قلوب با تعصب، ملت، نژاد یا کیش پراکنده شده‌اند، تمدن می‌گسلد؛ آنجا که عشق آنان را گرد آورد، جهان بازساخته می‌شود.",
-        "عرفان بهائی در خلسهٔ خصوصی پایان نمی‌یابد. ظهور حضرت بهاءالله تحول قلب را با بنای جامعه پیوند می‌دهد: وحدت نوع انسان، برابری زن و مرد، رفع تضادهای ثروت و فقر، تعليم عمومی، و حکمرانی بر پایهٔ مشورت. وحدت یک‌شکلی نیست—هماهنگی میان نغمه‌های گوناگون است.",
-        "کلمات مکنونه می‌فرماید هدایت پیش‌تر به کلام بود و اکنون به اعمال است. بیداری درونی که هرگز به عدالت نرسد ناتمام است. در مقابل، کنش اجتماعی بی‌ریشهٔ روحانی پژمرده می‌شود. خود مشرق‌الاذکار طلوع‌گاه ستایشی است که وابسته‌های خدمت—آموزش، شفا و حمایت فقرا—آن را احاطه می‌کنند.",
-        "تمرکز قلب بر عشق و وحدت تمرین روزانه است: سخن به مهربانی، مشورت به‌جای ستیز، نفی تعصب، و ساختن جوامعی که هر نفسی در آن جای دارد. این دروازه دایرهٔ نُه را می‌بندد—چگونه سفر روح، خودشناسی، سلوک، رموز، شهود، شگفتی کیهانی، هنر قدسی و عشق به نیرویی زنده بدل می‌شوند که محله‌ها، ملت‌ها و کرهٔ زمین را—آرام، پایدار و برای همه—روحانی می‌سازند.",
+        "وحدت نخست میان خود انسان‌هاست. ظهور حضرت بهاءالله جامعه را بر وحدت نوع انسان بازمی‌سازد—«میوه‌های یک درخت و برگ‌های یک شاخه»—با برابری زن و مرد، رفع تضادهای ثروت و فقر، تعليم عمومی، و حکمرانی بر پایهٔ مشورت. وحدت یک‌شکلی نیست؛ هماهنگی میان نغمه‌های گوناگون است.",
+        "همان قانون به همهٔ موجودات زنده گسترش می‌یابد. حضرت عبدالبهاء خلقت را زنجیرهٔ کمک متقابل می‌دانند: هر جزء کیهان به جزء دیگر بسته است. مهر نه فقط به انسان که به هر مخلوقی واجب است؛ خود زمین چون یک پیکر زنده تشبیه شده. امانت‌داری طبیعت عبادت است، و مراقبت محیط‌زیست از عدالت اجتماعی جدایی‌ناپذیر.",
+        "دایره‌ای وسیع‌تر در آثار گشوده می‌شود: هر ستارهٔ ثابت سیارات خود و هر سیاره مخلوقات خود را دارد. وحدت تمرین‌شده روی زمین—صلح به‌جای ترس، دوستی به‌جای بیگانگی—کارآموزی هر دیداری فراتر از آسمان ماست. نخست یگانگی سیاره‌ای؛ آن‌گاه، اگر تماسی آید، خانوادهٔ کیهانی زیر یک آفریدگار.",
+        "کلمات مکنونه می‌فرماید هدایت پیش‌تر به کلام بود و اکنون به اعمال است. تمرکز قلب بر عشق و وحدت تمرین روزانه‌ای است که محله‌ها، ملت‌ها، زمین زنده و—در افق—کیهان وسیع‌تر را روحانی می‌سازد. این دروازه دایرهٔ نُه را می‌بندد.",
       ],
       sources: [
         {
@@ -647,13 +657,21 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           url: `${BRL}/authoritative-texts/bahaullah/hidden-words/`,
         },
         {
-          label: "بیت‌العدل اعظم — نامه‌ها دربارهٔ عمل اجتماعی",
-          url: `${BRL}/authoritative-texts/the-universal-house-of-justice/`,
+          label: "حضرت بهاءالله، منتخباتی از آثار — هر سیاره مخلوقات خود",
+          url: GLEANINGS,
         },
         {
-          label: "وحدت نوع انسان — bahai.org",
-          url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
-        }
+          label: "حضرت عبدالبهاء، منتخبات آثار — محبت به هر موجود زنده",
+          url: `${BRL}/authoritative-texts/abdul-baha/selections-writings-abdul-baha/`,
+        },
+        {
+          label: "طبیعت و محیط‌زیست — bahai.org",
+          url: `${BAHAI}/beliefs/god-his-creation/nature/`,
+        },
+        {
+          label: "بیت‌العدل اعظم — عمل اجتماعی و بنای جامعه",
+          url: `${BRL}/authoritative-texts/the-universal-house-of-justice/`,
+        },
       ],
     },
   },

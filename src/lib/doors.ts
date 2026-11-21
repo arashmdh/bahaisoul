@@ -159,9 +159,9 @@ export const DOORS: Door[] = [
       sv: "Världens förandligande & levande enhet",
     },
     subtitle: {
-      fa: "چگونه بیداری درونی، عدالت و وحدت عالم را می‌سازد",
-      en: "How inner awakening transforms society through justice and oneness",
-      sv: "Hur inre uppvaknande förvandlar världen genom rättvisa och enhet",
+      fa: "وحدت انسان با انسان، با موجودات زنده، و افق خانوادهٔ کیهانی",
+      en: "Oneness among humans, with all beings, and toward a universal family",
+      sv: "Enhet mellan människor, med allt liv, och mot en universell familj",
     },
     shortTitle: { fa: "وحدت", en: "Unity", sv: "Enhet" },
     href: "/doors/spiritualizing-world",
