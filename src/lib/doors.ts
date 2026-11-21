@@ -31,9 +31,9 @@ export const DOORS: Door[] = [
       sv: "De osynliga världarna & själens resa",
     },
     subtitle: {
-      fa: "ملکوت، عوالم بی‌کران، و حیات در سیارات دیگر",
-      en: "Malakút, infinite worlds, and life beyond Earth",
-      sv: "Malakút, oändliga världar och liv bortom jorden",
+      fa: "ملکوت، بقای روح، و عوالم بی‌کران الهی",
+      en: "Malakút, the immortal soul, and the infinite worlds of God",
+      sv: "Malakút, den odödliga själen och Guds oändliga världar",
     },
     shortTitle: { fa: "غیب", en: "Unseen", sv: "Osynligt" },
     href: "/doors/worlds-beyond",

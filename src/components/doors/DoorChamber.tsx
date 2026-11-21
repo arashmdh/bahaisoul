@@ -166,6 +166,66 @@ export function DoorChamberView({
               ))}
             </div>
 
+            {copy.sourceSections.length > 0 && (
+              <div className="mt-14 space-y-12">
+                <p className="font-sans text-xs uppercase tracking-[0.25em] text-sage">
+                  {isFa
+                    ? "خلاصه‌ها از منابع مرتبط"
+                    : locale === "sv"
+                      ? "Sammanfattningar från källor"
+                      : "From related sources"}
+                </p>
+                {copy.sourceSections.map((section) => (
+                  <section
+                    key={section.source.url + section.title}
+                    className="border-t border-gold/20 pt-8"
+                  >
+                    <h3
+                      className={cn(
+                        "font-display text-2xl text-indigo md:text-[1.65rem]",
+                        isFa && "prose-fa"
+                      )}
+                    >
+                      {section.title}
+                    </h3>
+                    <div className="mt-4 space-y-4">
+                      {section.paragraphs.map((para, i) => (
+                        <p
+                          key={i}
+                          className={cn(
+                            "text-stone",
+                            isFa
+                              ? "prose-fa text-[1.05rem] md:text-[1.15rem]"
+                              : "font-sans text-base leading-relaxed md:text-lg"
+                          )}
+                        >
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                    <p
+                      className={cn(
+                        "mt-5 text-gold-deep",
+                        isFa ? "prose-fa text-sm" : "font-sans text-sm"
+                      )}
+                    >
+                      <span className="text-stone/70">
+                        {isFa ? "منبع: " : "Source: "}
+                      </span>
+                      <a
+                        href={section.source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline-offset-2 transition hover:underline"
+                      >
+                        {section.source.label}
+                      </a>
+                    </p>
+                  </section>
+                ))}
+              </div>
+            )}
+
             {copy.sources.length > 0 && (
               <aside className="mt-10 border-t border-gold/25 pt-6">
                 <h3

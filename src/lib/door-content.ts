@@ -1,5 +1,11 @@
 import type { DoorSlug } from "./doors";
 import { HIDDEN_WORDS, type HiddenWord } from "./hidden-words";
+import {
+  getDoorSourceSections,
+  type DoorSourceSection,
+} from "./door-source-sections";
+
+export type { DoorSourceSection };
 
 export type DoorSource = { label: string; url: string };
 
@@ -9,6 +15,8 @@ export type DoorLocaleContent = {
   articleTitle: string;
   /** Multi-paragraph essay body */
   articleParagraphs: string[];
+  /** Paraphrased commentary blocks; each ends with a source link */
+  sourceSections: DoorSourceSection[];
   sources: DoorSource[];
 };
 
@@ -58,244 +66,57 @@ type ArticleBundle = {
   imagePosition?: string;
 };
 
-const BRL = "https://www.bahai.org/library";
-const BAHAI = "https://www.bahai.org";
-const GLEANINGS = `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
-
-/** BahaiTeachings.org & research links on cosmos / extraterrestrial life (commentary unless noted). */
-const COSMOS_LINKS = {
-  btSomethingElse: "https://bahaiteachings.org/is-there-something-else-out-there/",
-  btCaseLife: "https://bahaiteachings.org/case-life-beyond-earth/",
-  btScienceSpace: "https://bahaiteachings.org/science-space-spirituality/",
-  btUfoThreat: "https://bahaiteachings.org/why-do-we-see-ufos-threat/",
-  btLifePlanets: "https://bahaiteachings.org/bahai-writings-life-planets/",
-  btEveryPlanet: "https://bahaiteachings.org/every-planet-its-own-creatures/",
-  bahaipediaET: "https://bahaipedia.org/Extraterrestrial_life",
-  libraryET: "https://bahai-library.com/compilation_extraterrestrial_life/",
-  libraryUniverse: "https://bahai-library.com/jones_bahai_teachings_universe",
-  libraryTroxel: "https://bahai-library.com/troxel_extraterrestrials_exotheology",
-  babCosmology: "https://www.obeisancebaha.org/cosmology-of-the-bab/",
-} as const;
-
-const COSMOS_SOURCES_EN: DoorSource[] = [
-  {
-    label:
-      "Mateen Taghizadeh, “Is There Something Else Out There?,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btSomethingElse,
-  },
-  {
-    label:
-      "David Langness, “The Case for Life Beyond Earth,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btCaseLife,
-  },
-  {
-    label:
-      "“Science, Space and Spirituality,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btScienceSpace,
-  },
-  {
-    label:
-      "Susan Gammage, “Why Do We See UFOs as a Threat?,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btUfoThreat,
-  },
-  {
-    label:
-      "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btLifePlanets,
-  },
-  {
-    label:
-      "“Every Planet its Own Creatures,” BahaiTeachings.org (commentary)",
-    url: COSMOS_LINKS.btEveryPlanet,
-  },
+/** Research / encyclopedia links for the Cosmos door (BT essays live in sourceSections). */
+const COSMOS_REF_SOURCES_EN: DoorSource[] = [
   {
     label: "Extraterrestrial life — Bahaipedia (encyclopedia survey of quotes)",
-    url: COSMOS_LINKS.bahaipediaET,
+    url: "https://bahaipedia.org/Extraterrestrial_life",
   },
   {
-    label:
-      "Extraterrestrial Life — Bahá’í Library compilation (Troxel)",
-    url: COSMOS_LINKS.libraryET,
+    label: "Extraterrestrial Life — Bahá’í Library compilation (Troxel)",
+    url: "https://bahai-library.com/compilation_extraterrestrial_life/",
   },
   {
-    label:
-      "Ernie Jones (comp.), Bahá’í Teachings on The Universe — Bahá’í Library",
-    url: COSMOS_LINKS.libraryUniverse,
+    label: "Ernie Jones (comp.), Bahá’í Teachings on The Universe — Bahá’í Library",
+    url: "https://bahai-library.com/jones_bahai_teachings_universe",
   },
   {
     label:
       "Duane Troxel, Intelligent Life in the Universe & Exotheology — Bahá’í Library",
-    url: COSMOS_LINKS.libraryTroxel,
+    url: "https://bahai-library.com/troxel_extraterrestrials_exotheology",
   },
   {
     label: "Cosmology of the Báb — ObeisanceBaha (essay)",
-    url: COSMOS_LINKS.babCosmology,
+    url: "https://www.obeisancebaha.org/cosmology-of-the-bab/",
   },
 ];
 
-const COSMOS_SOURCES_FA: DoorSource[] = [
-  {
-    label:
-      "متین تقی‌زاده، «آیا چیزی دیگر آن‌جا هست؟»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btSomethingElse,
-  },
-  {
-    label:
-      "دیوید لانگنس، «دلیل حیات فراتر از زمین»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btCaseLife,
-  },
-  {
-    label: "«علم، فضا و روحانیت»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btScienceSpace,
-  },
-  {
-    label:
-      "سوزان گَمِج، «چرا یوفوها را تهدید می‌بینیم؟»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btUfoThreat,
-  },
-  {
-    label:
-      "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btLifePlanets,
-  },
-  {
-    label: "«هر سیاره مخلوقات خود را دارد»، BahaiTeachings.org (تفسیر شخصی)",
-    url: COSMOS_LINKS.btEveryPlanet,
-  },
+const COSMOS_REF_SOURCES_FA: DoorSource[] = [
   {
     label: "حیات فرازمینی — Bahaipedia (گردآوری نقل‌قول‌های معتبر)",
-    url: COSMOS_LINKS.bahaipediaET,
+    url: "https://bahaipedia.org/Extraterrestrial_life",
   },
   {
     label: "حیات فرازمینی — مجموعهٔ Bahá’í Library (تروکسل)",
-    url: COSMOS_LINKS.libraryET,
+    url: "https://bahai-library.com/compilation_extraterrestrial_life/",
   },
   {
     label: "ارنی جونز، تعالیم بهائی دربارهٔ کیهان — Bahá’í Library",
-    url: COSMOS_LINKS.libraryUniverse,
+    url: "https://bahai-library.com/jones_bahai_teachings_universe",
   },
   {
     label: "دوئین تروکسل، حیات هوشمند در کیهان و الهیات فرازمینی — Bahá’í Library",
-    url: COSMOS_LINKS.libraryTroxel,
+    url: "https://bahai-library.com/troxel_extraterrestrials_exotheology",
   },
   {
     label: "کیهان‌شناسی حضرت باب — ObeisanceBaha (مقاله)",
-    url: COSMOS_LINKS.babCosmology,
+    url: "https://www.obeisancebaha.org/cosmology-of-the-bab/",
   },
 ];
 
-/** Per-door BahaiTeachings.org essays (commentary) mapped to the Nine Doors. */
-function btSrc(enTitle: string, faTitle: string, url: string): {
-  en: DoorSource;
-  fa: DoorSource;
-} {
-  return {
-    en: {
-      label: `${enTitle}, BahaiTeachings.org (commentary)`,
-      url,
-    },
-    fa: {
-      label: `${faTitle}، BahaiTeachings.org (تفسیر شخصی)`,
-      url,
-    },
-  };
-}
-
-const DOOR_BT = {
-  "worlds-beyond": [
-    btSrc(
-      "“The Immortal Soul and the Afterlife”",
-      "«روح جاودان و حیات پس از مرگ»",
-      "https://bahaiteachings.org/immortal-soul-and-afterlife/"
-    ),
-    btSrc(
-      "“The Hidden Nature of Life After Death”",
-      "«ماهیت پنهان حیات پس از مرگ»",
-      "https://bahaiteachings.org/hidden-nature-life-after-death/"
-    ),
-  ],
-  "self-knowledge": [
-    btSrc(
-      "Makeena Rivers, “Seeking Self-Knowledge”",
-      "مکینا ریورز، «در طلب خودشناسی»",
-      "https://bahaiteachings.org/seeking-self-knowledge/"
-    ),
-    btSrc(
-      "“What Is Self-Reflection and Why Is it Important?”",
-      "«خوداندیشی چیست و چرا مهم است؟»",
-      "https://bahaiteachings.org/what-is-self-reflection-why-important/"
-    ),
-  ],
-  "seven-valleys": [
-    btSrc(
-      "“Baha’u’llah’s Seven Valleys: the Mystical Journey Towards the Light”",
-      "«هفت وادی حضرت بهاءالله: سفر عرفانی به‌سوی نور»",
-      "https://bahaiteachings.org/bahaullahs-seven-valleys-mystical-journey-light/"
-    ),
-    btSrc(
-      "“Seven Valleys of Spiritual Growth and Development”",
-      "«هفت وادی رشد و تکامل روحانی»",
-      "https://bahaiteachings.org/seven-valleys-spiritual-growth-development/"
-    ),
-  ],
-  "sacred-symbols": [
-    btSrc(
-      "“What Do the Baha’i Symbols Mean?”",
-      "«نمادهای بهائی چه معنایی دارند؟»",
-      "https://bahaiteachings.org/what-do-the-bahai-symbols-mean/"
-    ),
-    btSrc(
-      "“How to Understand the Spiritual Symbols in Divine Scriptures”",
-      "«چگونه نمادهای روحانی کتب آسمانی را بفهمیم»",
-      "https://bahaiteachings.org/seeing-nature-and-the-world-symbolically/"
-    ),
-  ],
-  "dreams-intuition": [
-    btSrc(
-      "“Dreams and Visions of the Soul”",
-      "«رؤیاها و مکاشفات روح»",
-      "https://bahaiteachings.org/dreams-and-visions-of-the-soul/"
-    ),
-    btSrc(
-      "“Exploring the Deep Mystery of Sleep and Dreams”",
-      "«کاوش راز ژرف خواب و رؤیا»",
-      "https://bahaiteachings.org/exploring-the-deep-mystery-of-sleep-and-dreams/"
-    ),
-  ],
-  "sacred-arts": [
-    btSrc(
-      "“Drawing on the Spiritual Power of the Arts”",
-      "«بهره‌گیری از نیروی روحانی هنرها»",
-      "https://bahaiteachings.org/drawing-on-the-spiritual-power-of-the-arts/"
-    ),
-    btSrc(
-      "Mike Solomon, “Why We Need Artists to Perfect Civilization”",
-      "مایک سولومون، «چرا برای کمال تمدن به هنرمندان نیاز داریم»",
-      "https://bahaiteachings.org/why-we-need-artists-to-perfect-civilization/"
-    ),
-  ],
-  "love-alchemy": [
-    btSrc(
-      "Radiance Talley, “Defining the 4 Different Types of Love”",
-      "رِیدیِنس تَلی، «تعریف چهار گونهٔ محبت»",
-      "https://bahaiteachings.org/defining-four-different-types-of-love/"
-    ),
-  ],
-  "spiritualizing-world": [
-    btSrc(
-      "“The Eternal Rule: Concentrating Our Hearts on Love and Unity”",
-      "«قانون ابدی: تمرکز قلوب بر عشق و وحدت»",
-      "https://bahaiteachings.org/eternal-rule-concentrating-our-hearts-on-love-and-unity/"
-    ),
-  ],
-} as const;
-
-function doorBtEn(slug: keyof typeof DOOR_BT): DoorSource[] {
-  return DOOR_BT[slug].map((s) => s.en);
-}
-function doorBtFa(slug: keyof typeof DOOR_BT): DoorSource[] {
-  return DOOR_BT[slug].map((s) => s.fa);
-}
+const BRL = "https://www.bahai.org/library";
+const BAHAI = "https://www.bahai.org";
+const GLEANINGS = `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
 
 const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "worlds-beyond": {
@@ -326,8 +147,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Bahá’í Reference Library — Life, Death and the Soul",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        },
-        ...doorBtEn("worlds-beyond"),
+        }
       ],
     },
     fa: {
@@ -350,8 +170,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "کتابخانهٔ مرجع بهائی — روح انسانی",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        },
-        ...doorBtFa("worlds-beyond"),
+        }
       ],
     },
   },
@@ -384,8 +203,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "‘Abdu’l-Bahá on education and the human soul as a mine of gems",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        },
-        ...doorBtEn("self-knowledge"),
+        }
       ],
     },
     fa: {
@@ -409,8 +227,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "حضرت عبدالبهاء — روح انسانی معدن جواهر",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        },
-        ...doorBtFa("self-knowledge"),
+        }
       ],
     },
   },
@@ -440,8 +257,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Bahá’í Reference Library — Mysticism and the Spiritual Journey",
           url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
-        },
-        ...doorBtEn("seven-valleys"),
+        }
       ],
     },
     fa: {
@@ -461,8 +277,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "کتابخانهٔ مرجع بهائی — عرفان و سیر روحانی",
           url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
-        },
-        ...doorBtFa("seven-valleys"),
+        }
       ],
     },
   },
@@ -495,8 +310,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "The Greatest Name — Bahá’í Reference Library / teachings",
           url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
-        },
-        ...doorBtEn("sacred-symbols"),
+        }
       ],
     },
     fa: {
@@ -516,8 +330,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "حضرت بهاءالله، کتاب اقدس و حواشی",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
-        },
-        ...doorBtFa("sacred-symbols"),
+        }
       ],
     },
   },
@@ -550,8 +363,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Prayer and meditation — bahai.org",
           url: `${BAHAI}/beliefs/life-spirit/devotion/`,
-        },
-        ...doorBtEn("dreams-intuition"),
+        }
       ],
     },
     fa: {
@@ -571,8 +383,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "حضرت بهاءالله، کلمات مکنونه",
           url: `${BRL}/authoritative-texts/bahaullah/hidden-words/`,
-        },
-        ...doorBtFa("dreams-intuition"),
+        }
       ],
     },
   },
@@ -606,7 +417,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "Harmony of science and religion — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
         },
-        ...COSMOS_SOURCES_EN,
+        ...COSMOS_REF_SOURCES_EN,
       ],
     },
     fa: {
@@ -631,7 +442,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "هماهنگی علم و دین — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
         },
-        ...COSMOS_SOURCES_FA,
+        ...COSMOS_REF_SOURCES_FA,
       ],
     },
   },
@@ -659,8 +470,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Houses of Worship — architecture of unity",
           url: `${BAHAI}/action/houses-worship/`,
-        },
-        ...doorBtEn("sacred-arts"),
+        }
       ],
     },
     fa: {
@@ -679,8 +489,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "مشارق‌الاذکار — معماری وحدت",
           url: `${BAHAI}/action/houses-worship/`,
-        },
-        ...doorBtFa("sacred-arts"),
+        }
       ],
     },
   },
@@ -713,8 +522,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Love and unity — bahai.org",
           url: `${BAHAI}/beliefs/essential-relationships/god/`,
-        },
-        ...doorBtEn("love-alchemy"),
+        }
       ],
     },
     fa: {
@@ -738,8 +546,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "عشق و وحدت — bahai.org",
           url: `${BAHAI}/beliefs/essential-relationships/god/`,
-        },
-        ...doorBtFa("love-alchemy"),
+        }
       ],
     },
   },
@@ -771,8 +578,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "What Bahá’ís believe — society and oneness",
           url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
-        },
-        ...doorBtEn("spiritualizing-world"),
+        }
       ],
     },
     fa: {
@@ -795,8 +601,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "وحدت نوع انسان — bahai.org",
           url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
-        },
-        ...doorBtFa("spiritualizing-world"),
+        }
       ],
     },
   },
@@ -807,6 +612,7 @@ function buildDoor(slug: DoorSlug): DoorChamber {
   const w = hwByNumber(n);
   const c = citations(n);
   const a = ARTICLES[slug];
+  const sections = getDoorSourceSections(slug);
   return {
     image: a.image,
     imageAlt: a.imageAlt,
@@ -816,6 +622,7 @@ function buildDoor(slug: DoorSlug): DoorChamber {
       citation: c.en,
       articleTitle: a.en.title,
       articleParagraphs: a.en.paragraphs,
+      sourceSections: sections.en,
       sources: a.en.sources,
     },
     fa: {
@@ -823,6 +630,7 @@ function buildDoor(slug: DoorSlug): DoorChamber {
       citation: c.fa,
       articleTitle: a.fa.title,
       articleParagraphs: a.fa.paragraphs,
+      sourceSections: sections.fa,
       sources: a.fa.sources,
     },
   };
