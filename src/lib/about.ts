@@ -2,10 +2,11 @@ export const ABOUT = {
   en: {
     title: "About Bahá’í Soul — A Digital Mashriqu’l-Adhkár",
     subtitle:
-      "Ascending above the noise of the world into stillness, light, and timeless truth.",
+      "A deep sanctuary for the unseen dimensions of the Bahá’í Faith.",
     manifesto: [
+      "The purpose of Bahá’í Soul is to enter the depths of the Bahá’í Faith from angles seldom opened—beyond familiar introductions, into the mystical, metaphysical, artistic, and contemplative horizons that live within the Sacred Writings. Here we seek not a surface map of belief, but a living encounter with the inner face of Bahá’í revelation: ‘irfán, the journey of the soul, the harmony of worlds seen and unseen, and the quiet radiance of a Faith that asks every heart to investigate truth for itself.",
       "Throughout the ages, humanity built sacred temples atop mountains—quiet sanctuaries above the clamor of daily life where seekers, philosophers, and the pure-hearted could ascend to reflect on the eternal mysteries of existence.",
-      "Bahá’í Soul is a contemporary Virtual Temple inspired by the nine-sided sacred geometry and spiritual purpose of the Bahá’í House of Worship (Mashriqu’l-Adhkár — the Dawning-Place of the Praise of God). Rooted in the authoritative Writings of Bahá’u’lláh, the Báb, and ‘Abdu’l-Bahá, this sanctuary moves beyond surface-level introductions to explore the profound metaphysical, mystical, artistic, and social dimensions of the Faith.",
+      "Bahá’í Soul is a contemporary Virtual Temple inspired by the nine-sided sacred geometry and spiritual purpose of the Bahá’í House of Worship (Mashriqu’l-Adhkár — the Dawning-Place of the Praise of God). Rooted in the authoritative Writings of Bahá’u’lláh, the Báb, and ‘Abdu’l-Bahá, this sanctuary invites a profound reading of the Faith’s mystical, cultural, and social dimensions.",
       "In the Bahá’í dispensation, there is no clergy; instead, every soul is called to independently investigate truth, and dedicated scholars, educators, and artists share the fruits of their study in a spirit of humble service. Whether you are contemplating the journey of the soul beyond the veil, exploring the harmony of science and spirit, or seeking quietude in prayer, these Nine Doors stand open to all humanity.",
     ],
     pillarsHeading: "The Three Pillars of the Temple",
@@ -27,10 +28,11 @@ export const ABOUT = {
   sv: {
     title: "Om Bahá’í Soul — Ett digitalt Mashriqu’l-Adhkár",
     subtitle:
-      "Uppstigande från världens brus till stillhet, ljus och tidlös sanning.",
+      "En djup helgedom för bahá’í-trons sällan synliga dimensioner.",
     manifesto: [
+      "Syftet med Bahá’í Soul är att gå in i bahá’í-trons djup från vinklar som sällan öppnats — bortom bekanta introduktioner, in i de mystiska, metafysiska, konstnärliga och kontemplativa horisonter som lever i de heliga skrifterna. Här söker vi inte en ytlig karta över tron, utan ett levande möte med dess inre ansikte: ‘irfán, själens resa, harmonin mellan synliga och osynliga världar, och det stilla ljuset hos en tro som ber varje hjärta att själv undersöka sanningen.",
       "Genom tiderna byggde människan heliga tempel på bergstoppar — tysta fristäder ovanför vardagens larm, där sökare, tänkare och rena hjärtan kunde stiga upp för att begrunda tillvarons eviga hemligheter.",
-      "Bahá’í Soul är ett samtida virtuellt tempel, inspirerat av den niosidiga heliga geometrin och det andliga syftet hos bahá’í-trons tillbedjanshus (Mashriqu’l-Adhkár — lovprisningens gryningsplats). Förankrat i Bahá’u’lláhs, Bábs och ‘Abdu’l-Bahás autentiska skrifter går detta helgedomsrum bortom ytliga introduktioner och öppnar de metafysiska, mystiska, konstnärliga och sociala djupen i tron.",
+      "Bahá’í Soul är ett samtida virtuellt tempel, inspirerat av den niosidiga heliga geometrin och det andliga syftet hos bahá’í-trons tillbedjanshus (Mashriqu’l-Adhkár — lovprisningens gryningsplats). Förankrat i Bahá’u’lláhs, Bábs och ‘Abdu’l-Bahás autentiska skrifter inbjuder detta helgedomsrum till en djup läsning av trons mystiska, kulturella och sociala dimensioner.",
       "I bahá’í-uppenbarelsen finns ingen prästerskap; varje själ är kallad att själv undersöka sanningen, medan forskare, pedagoger och konstnärer delar frukterna av sitt studium i ödmjuk tjänst. Oavsett om du begrundar själens resa bortom slöjan, söker harmoni mellan vetenskap och ande, eller längtar efter stillhet i bön — dessa nio dörrar står öppna för hela mänskligheten.",
     ],
     pillarsHeading: "Templets tre pelare",
@@ -51,10 +53,11 @@ export const ABOUT = {
   },
   fa: {
     title: "دربارهٔ روح بهائی — مشرق‌الاذکاری در فضای مجازی",
-    subtitle: "عروج از هیاهوی جهان به‌سوی سکوت، نور و حقیقتی جاودان.",
+    subtitle: "حرمگاهی ژرف برای ابعاد کمتر دیده‌شدهٔ آیین بهائی.",
     manifesto: [
+      "هدف «روح بهائی» آن است که به ژرفای آیین بهائی بپردازیم — از زاویه‌هایی که کمتر بدان‌ها پرداخته شده است. اینجا مجال معرفی‌های سطحی نیست؛ بلکه دعوتی است برای کاوشی عمیق در وجوه عرفانی، متافیزیکی، هنری، اجتماعی و روحانی این ظهور الهی. می‌خواهیم با لایهٔ باطنی آثار مبارکه روبه‌رو شویم: عرفان، سفر روح، هماهنگی عوالم غیب و شهود، و آن نور آرامی که آیین بهائی در قلب هر جوینده‌ای می‌افروزد تا خود حقیقت را تحری کند.",
       "در طول تاریخ، انسان‌ها معابد مقدس را بر فراز کوه‌ها بنا می‌کردند؛ پناهگاه‌هایی آرام و دور از هیاهوی روزمره که در آن جویندگان حقیقت، اندیشمندان و پاک‌دلان می‌توانستند به تأمل در اسرار ابدی هستی بپردازند.",
-      "روح بهائی یک معبد مجازی معاصر است که با الهام از هندسهٔ مقدس نُه‌ضلعی و روح مشرق‌الاذکار — طلوع‌گاه ستایش پروردگار — طراحی شده است. این فضا بر پایهٔ آثار اصیل حضرت بهاءالله، حضرت باب و حضرت عبدالبهاء بنا گردیده و فراتر از معرفی‌های سطحی، به لایه‌های عمیق عرفانی، متافیزیکی، هنری، خانوادگی و اجتماعی آیین بهائی می‌پردازد.",
+      "روح بهائی یک معبد مجازی معاصر است که با الهام از هندسهٔ مقدس نُه‌ضلعی و روح مشرق‌الاذکار — طلوع‌گاه ستایش پروردگار — طراحی شده است. این فضا بر پایهٔ آثار اصیل حضرت بهاءالله، حضرت باب و حضرت عبدالبهاء بنا گردیده و خوانشی ژرف از ابعاد عرفانی، فرهنگی و اجتماعی آیین بهائی را پیش می‌نهد.",
       "در آیین بهائی طبقهٔ روحانیون وجود ندارد؛ هر انسانی خود مسئول تحری حقیقت است و پژوهشگران، نویسندگان و هنرمندان یافته‌های خود را با تواضع و در مسیر خدمت به اشتراک می‌گذارند. چه در اندیشهٔ سفر روح پس از این جهان باشید، چه در جستجوی هماهنگی علم و دین، و چه نیازمند خلوتی برای دعا، این نُه در به روی همهٔ جویندگان حقیقت گشوده است.",
     ],
     pillarsHeading: "سه رکن بنیادین معبد",
