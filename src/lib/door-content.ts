@@ -60,11 +60,129 @@ type ArticleBundle = {
 
 const BRL = "https://www.bahai.org/library";
 const BAHAI = "https://www.bahai.org";
-/** Secondary commentary (not authoritative); cite when discussing life beyond Earth. */
-const BT_LIFE_PLANETS =
-  "https://bahaiteachings.org/bahai-writings-life-planets/";
-const GLEANINGS =
-  `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
+const GLEANINGS = `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
+
+/** BahaiTeachings.org & research links on cosmos / extraterrestrial life (commentary unless noted). */
+const COSMOS_LINKS = {
+  btSomethingElse: "https://bahaiteachings.org/is-there-something-else-out-there/",
+  btCaseLife: "https://bahaiteachings.org/case-life-beyond-earth/",
+  btScienceSpace: "https://bahaiteachings.org/science-space-spirituality/",
+  btUfoThreat: "https://bahaiteachings.org/why-do-we-see-ufos-threat/",
+  btLifePlanets: "https://bahaiteachings.org/bahai-writings-life-planets/",
+  btEveryPlanet: "https://bahaiteachings.org/every-planet-its-own-creatures/",
+  bahaipediaET: "https://bahaipedia.org/Extraterrestrial_life",
+  libraryET: "https://bahai-library.com/compilation_extraterrestrial_life/",
+  libraryUniverse: "https://bahai-library.com/jones_bahai_teachings_universe",
+  libraryTroxel: "https://bahai-library.com/troxel_extraterrestrials_exotheology",
+  babCosmology: "https://www.obeisancebaha.org/cosmology-of-the-bab/",
+} as const;
+
+const COSMOS_SOURCES_EN: DoorSource[] = [
+  {
+    label:
+      "Mateen Taghizadeh, “Is There Something Else Out There?,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btSomethingElse,
+  },
+  {
+    label:
+      "David Langness, “The Case for Life Beyond Earth,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btCaseLife,
+  },
+  {
+    label:
+      "“Science, Space and Spirituality,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btScienceSpace,
+  },
+  {
+    label:
+      "Susan Gammage, “Why Do We See UFOs as a Threat?,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btUfoThreat,
+  },
+  {
+    label:
+      "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btLifePlanets,
+  },
+  {
+    label:
+      "“Every Planet its Own Creatures,” BahaiTeachings.org (commentary)",
+    url: COSMOS_LINKS.btEveryPlanet,
+  },
+  {
+    label: "Extraterrestrial life — Bahaipedia (encyclopedia survey of quotes)",
+    url: COSMOS_LINKS.bahaipediaET,
+  },
+  {
+    label:
+      "Extraterrestrial Life — Bahá’í Library compilation (Troxel)",
+    url: COSMOS_LINKS.libraryET,
+  },
+  {
+    label:
+      "Ernie Jones (comp.), Bahá’í Teachings on The Universe — Bahá’í Library",
+    url: COSMOS_LINKS.libraryUniverse,
+  },
+  {
+    label:
+      "Duane Troxel, Intelligent Life in the Universe & Exotheology — Bahá’í Library",
+    url: COSMOS_LINKS.libraryTroxel,
+  },
+  {
+    label: "Cosmology of the Báb — ObeisanceBaha (essay)",
+    url: COSMOS_LINKS.babCosmology,
+  },
+];
+
+const COSMOS_SOURCES_FA: DoorSource[] = [
+  {
+    label:
+      "متین تقی‌زاده، «آیا چیزی دیگر آن‌جا هست؟»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btSomethingElse,
+  },
+  {
+    label:
+      "دیوید لانگنس، «دلیل حیات فراتر از زمین»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btCaseLife,
+  },
+  {
+    label: "«علم، فضا و روحانیت»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btScienceSpace,
+  },
+  {
+    label:
+      "سوزان گَمِج، «چرا یوفوها را تهدید می‌بینیم؟»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btUfoThreat,
+  },
+  {
+    label:
+      "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btLifePlanets,
+  },
+  {
+    label: "«هر سیاره مخلوقات خود را دارد»، BahaiTeachings.org (تفسیر شخصی)",
+    url: COSMOS_LINKS.btEveryPlanet,
+  },
+  {
+    label: "حیات فرازمینی — Bahaipedia (گردآوری نقل‌قول‌های معتبر)",
+    url: COSMOS_LINKS.bahaipediaET,
+  },
+  {
+    label: "حیات فرازمینی — مجموعهٔ Bahá’í Library (تروکسل)",
+    url: COSMOS_LINKS.libraryET,
+  },
+  {
+    label: "ارنی جونز، تعالیم بهائی دربارهٔ کیهان — Bahá’í Library",
+    url: COSMOS_LINKS.libraryUniverse,
+  },
+  {
+    label: "دوئین تروکسل، حیات هوشمند در کیهان و الهیات فرازمینی — Bahá’í Library",
+    url: COSMOS_LINKS.libraryTroxel,
+  },
+  {
+    label: "کیهان‌شناسی حضرت باب — ObeisanceBaha (مقاله)",
+    url: COSMOS_LINKS.babCosmology,
+  },
+];
 
 const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "worlds-beyond": {
@@ -80,8 +198,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "In the Bahá’í Writings, physical life is likened to an embryonic stage. The soul—immortal, conscious, and capable of endless progress—continues after the body’s dissolution toward the presence of God. Bahá’u’lláh teaches that this ascent is neither extinguished by death nor frozen in a static heaven; rather, the soul advances through infinite worlds of God (‘Álam-i-Malakút and beyond) according to its capacity, deeds, and divine grace.",
         "‘Abdu’l-Bahá explains that faculties cultivated here—love, justice, detachment, and knowledge—become the wings of that journey. Just as eyes and ears form in the womb for a world the child has not yet entered, spiritual virtues prepare the soul for realms the senses cannot measure. The “veil” is not a wall of fear, but the limit of material perception; prayer, meditation, and service thin that veil while we yet walk the earth.",
-        "Those same Writings open a still wider horizon of creation. Bahá’u’lláh affirms that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—a vision of inhabited worlds throughout the cosmos, inviting awe rather than idle speculation. The soul’s journey, then, unfolds within a universe already teeming with divine purpose beyond Earth alone.",
-        "This door invites contemplation of the architecture of the unseen: progressive revelation as light upon light, the continuity of consciousness, reunion with the Beloved, and the solemn joy of knowing that no sincere aspiration is lost. Death, in this vision, is a birth into wider awareness—an opening, not an end.",
+        "Those same Writings open a still wider horizon of creation. Bahá’u’lláh affirms that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—a vision of inhabited worlds throughout the cosmos, inviting awe rather than idle speculation. Shoghi Effendi notes that the nature of those creatures remains for science to discover; ‘Abdu’l-Bahá affirms other worlds inhabited by beings capable of knowing God. The soul’s journey, then, unfolds within a universe already teeming with divine purpose beyond Earth alone.",
+        "This door invites contemplation of the architecture of the unseen: progressive revelation as light upon light, the continuity of consciousness, reunion with the Beloved, and the solemn joy of knowing that no sincere aspiration is lost. Death, in this vision, is a birth into wider awareness—an opening, not an end. For further study, see the encyclopedia and research sources listed below.",
       ],
       sources: [
         {
@@ -96,11 +214,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "Bahá’í Reference Library — Life, Death and the Soul",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
         },
-        {
-          label:
-            "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
-          url: BT_LIFE_PLANETS,
-        },
+        ...COSMOS_SOURCES_EN,
       ],
     },
     fa: {
@@ -108,8 +222,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "در آثار بهائی، حیات جسمانی چون دوران جنینی توصیف شده است. روح—جاودان، آگاه و توانا به ترقی بی‌پایان—پس از انحلال جسم به‌سوی حضور الهی ادامه می‌یابد. حضرت بهاءالله می‌فرمایند این عروج با مرگ خاموش نمی‌شود و در بهشتی ایستا منجمد نمی‌گردد؛ بلکه روح بر وفق استعداد، اعمال و فضل الهی در عوالم بی‌کران خداوند (عالم ملکوت و فراتر) سیر می‌کند.",
         "حضرت عبدالبهاء تبیین می‌فرمایند که فضایل پروریده‌شده در این عالم—عشق، عدالت، انقطاع و معرفت—بال‌های آن سفرند. همان‌گونه که چشم و گوش در رحم برای جهانی شکل می‌گیرند که هنوز درک نشده، فضایل روحانی روح را برای اقالیمی آماده می‌کنند که حواس ظاهری اندازه نمی‌گیرند. «پرده» دیوار بیم نیست، بلکه حد ادراک مادی است؛ دعا، مراقبه و خدمت این پرده را در همین جهان نازک می‌سازند.",
-        "همان آثار افقی وسیع‌تر از خلقت می‌گشایند. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود را دارد و هر سیاره‌ای مخلوقات خود را—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. این نگاه، جهان را سرشار از حکمت الهی می‌بیند و سفر روح را در کیهانی قرار می‌دهد که مقصود الهی‌اش به زمین محدود نیست.",
-        "این دروازه به تأمل در هندسهٔ غیب فرامی‌خواند: ظهور تدریجی چون نور علی نور، پیوستگی آگاهی، وصال محبوب، و شادی سنگین این یقین که هیچ آرزوی صادقی تباه نمی‌شود. مرگ در این نگاه، تولدی در آگاهی وسیع‌تر است—گشایش، نه پایان.",
+        "همان آثار افقی وسیع‌تر از خلقت می‌گشایند. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود را دارد و هر سیاره‌ای مخلوقات خود را—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. حضرت شوقی افندی می‌فرمایند ماهیت این مخلوقات را علم روزی کشف خواهد کرد؛ و حضرت عبدالبهاء از عوالمی سخن می‌گویند که باشندگانی قادر به عرفان حق در آن‌ها ساکن‌اند. سفر روح در کیهانی است که مقصود الهی‌اش به زمین محدود نیست.",
+        "این دروازه به تأمل در هندسهٔ غیب فرامی‌خواند: ظهور تدریجی چون نور علی نور، پیوستگی آگاهی، وصال محبوب، و شادی سنگین این یقین که هیچ آرزوی صادقی تباه نمی‌شود. مرگ در این نگاه، تولدی در آگاهی وسیع‌تر است—گشایش، نه پایان. برای مطالعهٔ بیشتر، منابع پژوهشی زیر را ببینید.",
       ],
       sources: [
         {
@@ -124,11 +238,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "کتابخانهٔ مرجع بهائی — روح انسانی",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
         },
-        {
-          label:
-            "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
-          url: BT_LIFE_PLANETS,
-        },
+        ...COSMOS_SOURCES_FA,
       ],
     },
   },
@@ -160,6 +270,14 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "‘Abdu’l-Bahá on education and the human soul as a mine of gems",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
         },
+        {
+          label: "Cosmology of the Báb — consciousness, self-knowledge, and cosmos (essay)",
+          url: COSMOS_LINKS.babCosmology,
+        },
+        {
+          label: "Ernie Jones (comp.), Bahá’í Teachings on The Universe — Bahá’í Library",
+          url: COSMOS_LINKS.libraryUniverse,
+        },
       ],
     },
     fa: {
@@ -181,6 +299,14 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "حضرت عبدالبهاء — روح انسانی معدن جواهر",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
+        },
+        {
+          label: "کیهان‌شناسی حضرت باب — آگاهی، خودشناسی و کیهان (مقاله)",
+          url: COSMOS_LINKS.babCosmology,
+        },
+        {
+          label: "ارنی جونز، تعالیم بهائی دربارهٔ کیهان — Bahá’í Library",
+          url: COSMOS_LINKS.libraryUniverse,
         },
       ],
     },
@@ -342,8 +468,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "‘Abdu’l-Bahá famously teaches that science and religion are as two wings of one bird—both required for ascent. Bahá’í cosmology affirms a universe of purpose: progressive revelation, the essential harmony of truth, and a human consciousness capable of knowing both material law and spiritual meaning.",
         "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; dogma that contradicts demonstrated truth is to be set aside; yet science without spiritual values risks becoming a cold instrument of power. Consciousness itself—self-aware, ethical, creative—bridges laboratory and sanctuary.",
-        "That harmony shines when we ask whether life exists beyond Earth. Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—words that meet today’s search for exoplanets and astrobiology without fear. Science advances the evidence; revelation widens the horizon of meaning. Planetary unity on Earth remains the first task; wonder at a living cosmos is its companion.",
-        "This door explores that harmony: reading nature as a book of divine signs, studying the cosmos without losing the soul, and cultivating a civilization where technology serves unity, justice, and the flourishing of every people.",
+        "That harmony shines when we ask whether life exists beyond Earth. Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute—words that meet today’s search for exoplanets, astrobiology, and open scientific inquiry into UAPs without fear or superstition. Science advances the evidence; revelation widens the horizon of meaning. Planetary unity on Earth remains the first task; wonder at a living cosmos is its companion.",
+        "This door explores that harmony: reading nature as a book of divine signs, studying the cosmos without losing the soul, and cultivating a civilization where technology serves unity, justice, and the flourishing of every people. Analytical essays and research compilations are gathered in the sources below.",
       ],
       sources: [
         {
@@ -358,11 +484,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "Harmony of science and religion — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
         },
-        {
-          label:
-            "Sagar Bhatia, “What the Bahá’í Writings Say About Life On Other Planets,” BahaiTeachings.org (commentary)",
-          url: BT_LIFE_PLANETS,
-        },
+        ...COSMOS_SOURCES_EN,
       ],
     },
     fa: {
@@ -370,8 +492,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "حضرت عبدالبهاء می‌فرمایند علم و دین چون دو بال یک پرنده‌اند—هر دو برای عروج لازم است. کیهان‌شناسی بهائی جهانی هدفمند را تصدیق می‌کند: ظهور تدریجی، هماهنگی ذاتی حقیقت، و آگاهی انسانی که هم قانون مادی و هم معنای روحانی را می‌تواند شناخت.",
         "آثار مبارکه نه‌تنها با پژوهش تجربی مخالف نیستند، بلکه علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جزم مخالف حقیقت مبرهن کنار نهاده می‌شود؛ اما علم بی‌ارزش‌های روحانی خطر ابزار سرد قدرت شدن دارد. خود آگاهی—اخلاقی، خلاق، خودآگاه—آزمایشگاه و حرم را پل می‌زند.",
-        "این هماهنگی آن‌گاه می‌درخشد که بپرسیم آیا حیات فراتر از زمین هست. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—کلامی که جستجوی امروزِ سیارات فراخورشیدی و اخترزیست‌شناسی را بی‌هراس می‌پذیرد. علم شواهد را پیش می‌برد؛ وحی افق معنا را می‌گشاید. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده، هم‌سفر آن.",
-        "این دروازه آن هماهنگی را می‌کاود: خواندن طبیعت چون کتاب آیات، مطالعهٔ کیهان بی‌از‌دست‌دادن روح، و پرورش تمدنی که فناوری در خدمت وحدت، عدالت و شکوفایی همهٔ اقوام باشد.",
+        "این هماهنگی آن‌گاه می‌درخشد که بپرسیم آیا حیات فراتر از زمین هست. حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—کلامی که جستجوی امروزِ سیارات فراخورشیدی، اخترزیست‌شناسی و پژوهش علمی پدیده‌های ناشناختهٔ هوایی را بی‌هراس و بی‌خرافه می‌پذیرد. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده، هم‌سفر آن.",
+        "این دروازه آن هماهنگی را می‌کاود: خواندن طبیعت چون کتاب آیات، مطالعهٔ کیهان بی‌از‌دست‌دادن روح، و پرورش تمدنی که فناوری در خدمت وحدت، عدالت و شکوفایی همهٔ اقوام باشد. مقالات تحلیلی و منابع پژوهشی در فهرست زیر آمده است.",
       ],
       sources: [
         {
@@ -386,11 +508,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "هماهنگی علم و دین — bahai.org",
           url: `${BAHAI}/beliefs/god-his-creation/nature/`,
         },
-        {
-          label:
-            "ساگار باتیا، «آثار بهائی دربارهٔ حیات در سیارات دیگر»، BahaiTeachings.org (تفسیر شخصی)",
-          url: BT_LIFE_PLANETS,
-        },
+        ...COSMOS_SOURCES_FA,
       ],
     },
   },
@@ -501,7 +619,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "Bahá’í mysticism does not end in private ecstasy. Bahá’u’lláh’s revelation unites the transformation of the heart with the rebuilding of society: the oneness of humanity, the equality of women and men, the elimination of extremes of wealth and poverty, universal education, and governance by consultation.",
         "“Guidance hath ever been given by words, and now it is given by deeds,” declare the Hidden Words. Inner ‘irfán that never touches justice remains incomplete. Conversely, social action without spiritual roots withers. The Mashriqu’l-Adhkár itself is conceived as a dawning-place of praise surrounded by dependencies of service—education, healing, and care for the poor.",
-        "This door closes the circle of the Nine: how the soul’s journey, self-knowledge, mystical wayfaring, symbols, intuition, cosmic reason, sacred art, and love become a living force that spiritualizes neighborhoods, nations, and the planet—quietly, steadily, and for all.",
+        "This door closes the circle of the Nine: how the soul’s journey, self-knowledge, mystical wayfaring, symbols, intuition, cosmic reason, sacred art, and love become a living force that spiritualizes neighborhoods, nations, and the planet—quietly, steadily, and for all. The same ethic of oneness that heals Earth also reshapes how we imagine the unknown beyond it—replacing fear-driven myths with curiosity, justice, and scientific honesty.",
       ],
       sources: [
         {
@@ -516,6 +634,20 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           label: "What Bahá’ís believe — society and oneness",
           url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
         },
+        {
+          label:
+            "Susan Gammage, “Why Do We See UFOs as a Threat?,” BahaiTeachings.org (commentary)",
+          url: COSMOS_LINKS.btUfoThreat,
+        },
+        {
+          label:
+            "Mateen Taghizadeh, “Is There Something Else Out There?,” BahaiTeachings.org (commentary)",
+          url: COSMOS_LINKS.btSomethingElse,
+        },
+        {
+          label: "Extraterrestrial life — Bahaipedia",
+          url: COSMOS_LINKS.bahaipediaET,
+        },
       ],
     },
     fa: {
@@ -523,7 +655,7 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "عرفان بهائی در خلسهٔ خصوصی پایان نمی‌یابد. ظهور حضرت بهاءالله تحول قلب را با بنای جامعه پیوند می‌دهد: وحدت نوع انسان، برابری زن و مرد، رفع تضادهای ثروت و فقر، تعليم عمومی، و حکمرانی بر پایهٔ مشورت.",
         "کلمات مکنونه می‌فرماید هدایت پیش‌تر به کلام بود و اکنون به اعمال است. عرفانی که هرگز به عدالت نرسد ناتمام است. در مقابل، کنش اجتماعی بی‌ریشهٔ روحانی پژمرده می‌شود. خود مشرق‌الاذکار طلوع‌گاه ستایشی است که وابسته‌های خدمت—آموزش، شفا و حمایت فقرا—آن را احاطه می‌کنند.",
-        "این دروازه دایرهٔ نُه را می‌بندد: چگونه سفر روح، خودشناسی، سلوک، رموز، شهود، خرد کیهانی، هنر قدسی و عشق به نیرویی زنده بدل می‌شوند که محله‌ها، ملت‌ها و کرهٔ زمین را—آرام، پایدار و برای همه—روحانی می‌سازند.",
+        "این دروازه دایرهٔ نُه را می‌بندد: چگونه سفر روح، خودشناسی، سلوک، رموز، شهود، خرد کیهانی، هنر قدسی و عشق به نیرویی زنده بدل می‌شوند که محله‌ها، ملت‌ها و کرهٔ زمین را—آرام، پایدار و برای همه—روحانی می‌سازند. همان اخلاق وحدت که زمین را شفا می‌دهد، شیوهٔ رویارویی با ناشناختهٔ کیهانی را نیز از ترس به کنجکاوی، عدالت و صداقت علمی بدل می‌کند.",
       ],
       sources: [
         {
@@ -537,6 +669,20 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "وحدت نوع انسان — bahai.org",
           url: `${BAHAI}/beliefs/essential-relationships/humanity/`,
+        },
+        {
+          label:
+            "سوزان گَمِج، «چرا یوفوها را تهدید می‌بینیم؟»، BahaiTeachings.org (تفسیر شخصی)",
+          url: COSMOS_LINKS.btUfoThreat,
+        },
+        {
+          label:
+            "متین تقی‌زاده، «آیا چیزی دیگر آن‌جا هست؟»، BahaiTeachings.org (تفسیر شخصی)",
+          url: COSMOS_LINKS.btSomethingElse,
+        },
+        {
+          label: "حیات فرازمینی — Bahaipedia",
+          url: COSMOS_LINKS.bahaipediaET,
         },
       ],
     },
