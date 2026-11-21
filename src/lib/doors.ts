@@ -79,9 +79,9 @@ export const DOORS: Door[] = [
       sv: "Heliga symboler, bokstäver & geometri",
     },
     subtitle: {
-      fa: "اسرار اسم اعظم، عدد ۹ و اشارات باطنی در آثار مبارکه",
-      en: "Mysteries of the Greatest Name, the number 9, and hidden allusions",
-      sv: "Mysterierna kring det Största Namnet, talet 9 och dolda tecken",
+      fa: "اسم اعظم، عدد ۹، زبان رمزی کتاب و خوانش ستارگان",
+      en: "Greatest Name, the number 9, scriptural cipher, and reading the stars",
+      sv: "Det Största Namnet, talet 9, skriftens tecken och stjärnornas språk",
     },
     shortTitle: { fa: "رموز", en: "Symbols", sv: "Symboler" },
     href: "/doors/sacred-symbols",

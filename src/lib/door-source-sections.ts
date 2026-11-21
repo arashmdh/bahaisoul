@@ -336,6 +336,46 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         ],
       }
     ),
+    sec(
+      BT.astrologyExplored,
+      {
+        title: "Is It Written in the Stars? Astrology and Cosmic Interconnection",
+        linkLabel:
+          "David Langness, “Is it Written in the Stars? Astrology Explored”",
+        paragraphs: [
+          "In Some Answered Questions, ‘Abdu’l-Bahá addresses whether stars influence the human soul. Certain celestial bodies—above all the sun—have clear material effects on earth. As for spiritual influence, He rejects the predictive “decrees” of old astrologers as imagination and myth, yet affirms that the limitless universe is like a living body whose members are strongly connected and mutually influence one another, materially and spiritually.",
+          "Sound that moves the heart illustrates how a subtle material vibration can produce deep spiritual effect; likewise the cosmos is organically linked even when science cannot yet map every tie. The teaching here is interconnection—not horoscope fate. Reading the heavens as a book of relationship, not fortune-telling, keeps poetic star-language subordinate to reason, revelation, and free moral choice.",
+        ],
+      },
+      {
+        title: "آیا در ستارگان نوشته شده؟ نجوم احکامی و پیوند کیهانی",
+        linkLabel:
+          "دیوید لانگنس، «آیا در ستارگان نوشته شده؟ کاوش در نجوم احکامی»",
+        paragraphs: [
+          "در مفاوضات، حضرت عبدالبهاء می‌پرسند آیا ستارگان بر روح انسان اثر دارند. برخی اجرام—به‌ویژه خورشید—اثر مادی آشکار بر زمین دارند. دربارهٔ تأثیر روحانی، «احکام» پیش‌گویانهٔ منجمان قدیم را خیال و افسانه می‌دانند، اما می‌فرمایند کیهان بی‌کران چون پیکری زنده است که اعضایش سخت به هم پیوسته‌اند و مادی و روحانی بر یکدیگر اثر می‌گذارند.",
+          "صدا که قلب را می‌جنباند نشان می‌دهد ارتعاش مادی لطیف چگونه اثر روحانی ژرف می‌آفریند؛ کیهان نیز اندام‌وار پیوند دارد هرچند علم هنوز همهٔ بندها را نشناسد. تعلیم اینجا همبستگی است—نه سرنوشت طالع. خواندن آسمان چون کتاب رابطه، نه فال‌بینی، زبان شاعرانهٔ ستارگان را تابع عقل، وحی و اختیار اخلاقی نگه می‌دارد.",
+        ],
+      }
+    ),
+    sec(
+      BT.ageAquarius,
+      {
+        title: "The Age of Aquarius—Zodiac as Allegory of a New Age",
+        linkLabel: "David Langness, “What is the Age of Aquarius, Anyway?”",
+        paragraphs: [
+          "Bahá’í teaching generally treats predictive astrology as superstition out of step with the harmony of science and religion; Shoghi Effendi urged patience with believers who cling to it while weaning reliance away, and distinguished astronomy (a science) from astrology. Yet the Writings sometimes borrow zodiac imagery as allegory: when the Sun of Reality rises from a new point on the spiritual horizon, a springtime of civilization begins.",
+          "‘Abdu’l-Bahá likens progressive revelation to the physical sun appearing from different zodiacal signs—Cancer, Libra, Aquarius, Aries—while remaining one sun. Lovers of the sun seek the light itself, not a fixed rising-point. Thus “Aquarius” language can point to a new prophetic cycle without endorsing horoscope practice.",
+        ],
+      },
+      {
+        title: "عصر دلو—منطقة‌البروج چون تمثیل دور جدید",
+        linkLabel: "دیوید لانگنس، «عصر دلو اصلاً چیست؟»",
+        paragraphs: [
+          "تعالیم بهائی عموماً نجوم احکامیِ پیش‌گویانه را خرافه و ناساز با هماهنگی علم و دین می‌دانند؛ حضرت شوقی افندی به صبر با مؤمنانی که بدان وابسته‌اند و تدریجاً رها کردنشان سفارش فرموده‌اند و اخترشناسی (علم) را از نجوم احکامی جدا ساخته‌اند. با این‌همه آثار گاه تصویر منطقة‌البروج را چون تمثیل به‌کار می‌برند: چون شمس حقیقت از نقطه‌ای نو در افق روحانی برآید، بهار تمدن آغاز می‌شود.",
+          "حضرت عبدالبهاء ظهور تدریجی را به خورشید مادی تشبیه می‌فرمایند که از برج‌های گوناگون—سرطان، میزان، دلو، حمل—طلوع می‌کند و با این‌همه یک خورشید است. عاشقان خورشید خود نور را می‌جویند نه نقطهٔ ثابت طلوع را. پس زبان «دلو» می‌تواند به دور نبوی نو اشاره کند بی‌آنکه عمل طالع‌بینی را تأیید کند.",
+        ],
+      }
+    ),
   ],
 
   "dreams-intuition": [
@@ -494,46 +534,6 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "کودکی در تماشای ستارگان به تصریح قرن‌نوزدهمی حضرت بهاءالله می‌رسد که هر سیاره مخلوقات خود را دارد، و به تعلیم حضرت عبدالبهاء که اجرام ستاره‌ای مسکون‌اند به باشندگانی متناسب با عناصر خویش—نه لزوماً با آگاهی زمینی. شگفتی جای غرور فرض تنها بودن زمین را می‌گیرد.",
           "چون سر بلند کنیم نور گذشته را می‌بینیم؛ چون به وحی بنگریم کیهانی را می‌یابیم که پیش‌تر مسکون تصدیق شده. دعوت ساده است: بیرون برو، چشم بردار، و بگذار فروتنی و حیرت یک آسمان را شریک شوند.",
-        ],
-      }
-    ),
-    sec(
-      BT.astrologyExplored,
-      {
-        title: "Is It Written in the Stars? Astrology and Cosmic Interconnection",
-        linkLabel:
-          "David Langness, “Is it Written in the Stars? Astrology Explored”",
-        paragraphs: [
-          "In Some Answered Questions, ‘Abdu’l-Bahá addresses whether stars influence the human soul. Certain celestial bodies—above all the sun—have clear material effects on earth. As for spiritual influence, He rejects the predictive “decrees” of old astrologers as imagination and myth, yet affirms that the limitless universe is like a living body whose members are strongly connected and mutually influence one another, materially and spiritually.",
-          "Sound that moves the heart illustrates how a subtle material vibration can produce deep spiritual effect; likewise the cosmos is organically linked even when science cannot yet map every tie. The teaching here is interconnection—not horoscope fate. Reading the heavens as a book of relationship, not fortune-telling, keeps poetic star-language subordinate to reason, revelation, and free moral choice.",
-        ],
-      },
-      {
-        title: "آیا در ستارگان نوشته شده؟ نجوم احکامی و پیوند کیهانی",
-        linkLabel:
-          "دیوید لانگنس، «آیا در ستارگان نوشته شده؟ کاوش در نجوم احکامی»",
-        paragraphs: [
-          "در مفاوضات، حضرت عبدالبهاء می‌پرسند آیا ستارگان بر روح انسان اثر دارند. برخی اجرام—به‌ویژه خورشید—اثر مادی آشکار بر زمین دارند. دربارهٔ تأثیر روحانی، «احکام» پیش‌گویانهٔ منجمان قدیم را خیال و افسانه می‌دانند، اما می‌فرمایند کیهان بی‌کران چون پیکری زنده است که اعضایش سخت به هم پیوسته‌اند و مادی و روحانی بر یکدیگر اثر می‌گذارند.",
-          "صدا که قلب را می‌جنباند نشان می‌دهد ارتعاش مادی لطیف چگونه اثر روحانی ژرف می‌آفریند؛ کیهان نیز اندام‌وار پیوند دارد هرچند علم هنوز همهٔ بندها را نشناسد. تعلیم اینجا همبستگی است—نه سرنوشت طالع. خواندن آسمان چون کتاب رابطه، نه فال‌بینی، زبان شاعرانهٔ ستارگان را تابع عقل، وحی و اختیار اخلاقی نگه می‌دارد.",
-        ],
-      }
-    ),
-    sec(
-      BT.ageAquarius,
-      {
-        title: "The Age of Aquarius—Zodiac as Allegory of a New Age",
-        linkLabel: "David Langness, “What is the Age of Aquarius, Anyway?”",
-        paragraphs: [
-          "Bahá’í teaching generally treats predictive astrology as superstition out of step with the harmony of science and religion; Shoghi Effendi urged patience with believers who cling to it while weaning reliance away, and distinguished astronomy (a science) from astrology. Yet the Writings sometimes borrow zodiac imagery as allegory: when the Sun of Reality rises from a new point on the spiritual horizon, a springtime of civilization begins.",
-          "‘Abdu’l-Bahá likens progressive revelation to the physical sun appearing from different zodiacal signs—Cancer, Libra, Aquarius, Aries—while remaining one sun. Lovers of the sun seek the light itself, not a fixed rising-point. Thus “Aquarius” language can point to a new prophetic cycle without endorsing horoscope practice.",
-        ],
-      },
-      {
-        title: "عصر دلو—منطقة‌البروج چون تمثیل دور جدید",
-        linkLabel: "دیوید لانگنس، «عصر دلو اصلاً چیست؟»",
-        paragraphs: [
-          "تعالیم بهائی عموماً نجوم احکامیِ پیش‌گویانه را خرافه و ناساز با هماهنگی علم و دین می‌دانند؛ حضرت شوقی افندی به صبر با مؤمنانی که بدان وابسته‌اند و تدریجاً رها کردنشان سفارش فرموده‌اند و اخترشناسی (علم) را از نجوم احکامی جدا ساخته‌اند. با این‌همه آثار گاه تصویر منطقة‌البروج را چون تمثیل به‌کار می‌برند: چون شمس حقیقت از نقطه‌ای نو در افق روحانی برآید، بهار تمدن آغاز می‌شود.",
-          "حضرت عبدالبهاء ظهور تدریجی را به خورشید مادی تشبیه می‌فرمایند که از برج‌های گوناگون—سرطان، میزان، دلو، حمل—طلوع می‌کند و با این‌همه یک خورشید است. عاشقان خورشید خود نور را می‌جویند نه نقطهٔ ثابت طلوع را. پس زبان «دلو» می‌تواند به دور نبوی نو اشاره کند بی‌آنکه عمل طالع‌بینی را تأیید کند.",
         ],
       }
     ),

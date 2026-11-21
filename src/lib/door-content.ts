@@ -356,43 +356,51 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       fa: "کهکشان هندسه و عدد — رموز قدسی در نظم کیهانی",
     },
     en: {
-      title: "What Bahá’í Symbols Mean—and How to Read the Language of Scripture",
+      title: "Sacred Symbols, Stars, and How to Read Celestial Signs",
       paragraphs: [
-        "Bahá’í sacred culture is rich in symbols that point beyond themselves. The nine-pointed star recalls the numerical value of “Bahá” (glory) in the abjad system and the completeness of a new cycle of revelation; nine-sided Houses of Worship embody that same completeness in stone and light. Calligraphic forms of the Greatest Name—Yá Bahá’u’l-Abhá and related invocations—concentrate remembrance into visible beauty, a daily invitation to turn the heart toward God.",
-        "The ringstone symbol, designed under ‘Abdu’l-Bahá’s guidance, gathers layered meaning into a single emblem: two five-pointed stars for the Báb and Bahá’u’lláh as Twin Manifestations; three horizontal lines suggesting the world of God, the world of Manifestation, and the world of creation; and a vertical line joining them—the Holy Spirit that links heaven and earth. Worn as a ring or seal, it is not a charm but a reminder of covenant and station.",
-        "How, then, should we read spiritual symbols in the divine scriptures? The Writings teach that sacred texts speak in metaphor as often as in plain speech. Mountains may mean religions; sun and moon may mean Manifestations and their mirrors; stars, lesser guides; gardens, veils, wine, and nightingales open inner meanings. The Manifestation of God unlocks the Book; independent investigation, prayer, and consultation keep interpretation humble.",
-        "Celestial images in prophecy are therefore sacred cipher—not fortune-telling. Distinguishing scriptural metaphor from predictive astrology (treated elsewhere under Cosmic Order) keeps the reading of symbols clean: the sky in the Book maps guidance and revelation, while astronomy maps physical light. Every atom, Bahá’u’lláh writes, can still disclose the knowledge of God to the pure of heart.",
-        "This door explores how form becomes prayer: nine-pointed star, Greatest Name, ringstone, architecture, and the living metaphors of scripture—companions to contemplation, always subordinate to justice, love, and deeds.",
+        "Bahá’í sacred culture is rich in symbols that point beyond themselves. The nine-pointed star recalls the numerical value of “Bahá” and the completeness of a new cycle; nine-sided Houses of Worship embody that wholeness. Calligraphy of the Greatest Name and the ringstone—God, Manifestation, and creation joined by the Holy Spirit, with twin stars for the Báb and Bahá’u’lláh—turn remembrance into visible form.",
+        "Scripture speaks in metaphor as often as in plain speech: sun and moon may mean Manifestations and their mirrors; stars, religious leaders; heavens, religions themselves. The Manifestation of God unlocks the Book; independent investigation, prayer, and consultation keep interpretation humble.",
+        "What of astrology and the influence of the stars? In Some Answered Questions, ‘Abdu’l-Bahá affirms real material effects of celestial bodies (the sun above all) and a deep interconnection of the universe like a living body—yet He rejects the predictive decrees of ancient astrologers as imagination and myth. Shoghi Effendi distinguishes astronomy (a science) from astrology (largely superstition) and asks that horoscopes be given no importance.",
+        "Zodiac language may still appear as allegory of progressive revelation: the Sun of Reality rising from a new spiritual point, as from a new sign. Lovers of the sun seek the light itself—not fortune written in charts. Reading the heavens as sacred symbol and cosmic kinship, not as fate, keeps celestial wisdom aligned with reason and revelation.",
+        "This door explores how form becomes prayer: Bahá’í emblems, scriptural cipher, and a clear Bahá’í reading of stars—companions to contemplation, never substitutes for justice, love, and deeds.",
       ],
       sources: [
+        {
+          label: "‘Abdu’l-Bahá, Some Answered Questions — Influence of the Stars",
+          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
+        },
         {
           label: "Bahá’í World — Houses of Worship and sacred architecture",
           url: `${BAHAI}/action/houses-worship/`,
         },
         {
-          label: "Bahá’u’lláh, The Kitáb-i-Aqdas and Notes (on symbols and ordinances)",
+          label: "Bahá’u’lláh, The Kitáb-i-Aqdas and Notes",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
-        },
-        {
-          label: "The Greatest Name — Bahá’í Reference Library / teachings",
-          url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
         },
         {
           label: "Bahá’u’lláh, The Kitáb-i-Íqán — symbolic language of scripture",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
         },
+        {
+          label: "The Greatest Name / progressive revelation — bahai.org",
+          url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
+        },
       ],
     },
     fa: {
-      title: "معنای نمادهای بهائی—و چگونه زبان رمزی کتب آسمانی را بخوانیم",
+      title: "رموز قدسی، ستارگان و چگونه آیات آسمانی را بخوانیم",
       paragraphs: [
-        "فرهنگ قدسی بهائی از رموزی سرشار است که فراتر از ظاهر خویش اشاره می‌کنند. ستارهٔ نُه‌پر ارزش عددی «بهاء» در حساب ابجد و کمال دور جدید را به یاد می‌آورد؛ مشارق‌الاذکار نُه‌ضلعی همان کمال را در سنگ و نور مجسم می‌کنند. صورت‌های خوشنویسی اسم اعظم—یا بهاءالابهی و اذکار وابسته—ذکر را به زیبایی مرئی بدل می‌کنند؛ دعوتی روزانه برای روی آوردن قلب به‌سوی خدا.",
-        "نماد نگین انگشتری، به هدایت حضرت عبدالبهاء، معانی لایه‌لایه را در یک نشان گرد می‌آورد: دو ستارهٔ پنج‌پر برای حضرت باب و حضرت بهاءالله به‌مثابه مظاهر توأم؛ سه خط افقی اشاره به عالم حق، عالم امر (ظهور) و عالم خلق؛ و خط عمودی پیونددهنده—روح‌القدس که آسمان و زمین را می‌پیوندد. این طلسم نیست؛ یادآور عهد و مقام است.",
-        "پس زبان استعاری کتب آسمانی را چگونه بفهمیم؟ آثار می‌آموزند که متون قدسی به اندازهٔ کلام صریح، به استعاره سخن می‌گویند. کوه ممکن است ادیان باشد؛ خورشید و ماه مظاهر و آیینه‌هایشان؛ ستارگان، رهبران کوچک‌تر؛ باغ، پرده، باده و بلبل معانی باطنی می‌گشایند. مظهر الهی کتاب را می‌گشاید؛ تحری حقیقت، دعا و مشورت تفسیر را فروتن نگه می‌دارند.",
-        "تصاویر آسمانی در نبوت‌ها رمز قدسی‌اند—نه فال‌بینی. تمایز استعارهٔ کتاب از نجوم احکامیِ پیش‌گویانه (که در درب نظم کیهانی آمده) خواندن رموز را پاک نگه می‌دارد: آسمان در کتاب نقشهٔ هدایت و ظهور است، و اخترشناسی نقشهٔ نور مادی. حضرت بهاءالله می‌فرمایند هر ذره‌ای می‌تواند معرفت خدا را بر قلب پاک بگشاید.",
-        "این دروازه می‌کاود که چگونه صورت به دعا بدل می‌شود: ستارهٔ نه‌پر، اسم اعظم، نگین، معماری و استعارات زندهٔ کتاب—همراهان تأمل، همواره تابع عدالت، عشق و عمل.",
+        "فرهنگ قدسی بهائی از رموزی سرشار است که فراتر از ظاهر اشاره می‌کنند. ستارهٔ نُه‌پر ارزش «بهاء» و کمال دور جدید را به یاد می‌آورد؛ مشارق‌الاذکار نُه‌ضلعی همان کمال را مجسم می‌کنند. خوشنویسی اسم اعظم و نماد نگین—حق، ظهور و خلق پیوندخورده با روح‌القدس، با دو ستاره برای حضرت باب و حضرت بهاءالله—ذکر را به صورت مرئی بدل می‌کنند.",
+        "کتاب به اندازهٔ کلام صریح، به استعاره سخن می‌گوید: خورشید و ماه ممکن است مظاهر و آیینه‌هایشان باشند؛ ستارگان، رهبران دینی؛ آسمان‌ها، خود ادیان. مظهر الهی کتاب را می‌گشاید؛ تحری حقیقت، دعا و مشورت تفسیر را فروتن نگه می‌دارند.",
+        "نجوم احکامی و تأثیر ستارگان چه می‌شود؟ در مفاوضات، حضرت عبدالبهاء اثر مادی اجرام (به‌ویژه خورشید) و همبستگی ژرف کیهان چون پیکر زنده را تصدیق می‌فرمایند—اما احکام پیش‌گویانهٔ منجمان قدیم را خیال و افسانه می‌دانند. حضرت شوقی افندی اخترشناسی را علم و نجوم احکامی را اغلب خرافه می‌شمارند و می‌فرمایند به طالع اهمیت ندهیم.",
+        "زبان منطقة‌البروج هنوز می‌تواند تمثیل ظهور تدریجی باشد: شمس حقیقت از نقطه‌ای نو در افق روحانی—چون از برجی نو—طلوع می‌کند. عاشقان خورشید خود نور را می‌جویند—نه سرنوشت نوشته در زایجه. خواندن آسمان چون رمز قدسی و خویشاوندی کیهانی، نه چون تقدیر، حکمت سماوی را با عقل و وحی هم‌راستا نگه می‌دارد.",
+        "این دروازه می‌کاود که چگونه صورت به دعا بدل می‌شود: نشانه‌های بهائی، رمز کتاب، و خوانش روشن بهائی از ستارگان—همراهان تأمل، هرگز جایگزین عدالت، عشق و عمل نیستند.",
       ],
       sources: [
+        {
+          label: "حضرت عبدالبهاء، مفاوضات — تأثیر ستارگان",
+          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
+        },
         {
           label: "مشارق‌الاذکار و معماری قدسی — bahai.org",
           url: `${BAHAI}/action/houses-worship/`,
@@ -402,12 +410,12 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
         },
         {
-          label: "اسم اعظم / ظهور تدریجی — bahai.org",
-          url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
-        },
-        {
           label: "حضرت بهاءالله، کتاب ایقان — زبان رمزی کتاب",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
+        },
+        {
+          label: "اسم اعظم / ظهور تدریجی — bahai.org",
+          url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
         },
       ],
     },
@@ -474,22 +482,18 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       fa: "مراقبه، دی‌ان‌ای نور و ستارهٔ نه‌پر — علم در کنار روح",
     },
     en: {
-      title: "Life Beyond Earth—Stars, Science, and Cosmic Interconnection",
+      title: "Life Beyond Earth—and a Cosmos Where Science Meets Spirit",
       paragraphs: [
         "‘Abdu’l-Bahá famously teaches that science and religion are as two wings of one bird—both required for ascent. Bahá’í cosmology affirms a universe of purpose: progressive revelation, the essential harmony of truth, and a human consciousness capable of knowing both material law and spiritual meaning.",
         "What do the Writings say about life on other planets? Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute. ‘Abdu’l-Bahá affirms worlds inhabited by beings capable of knowing God. Shoghi Effendi notes that the nature of those creatures remains for science to discover—inviting awe rather than fear.",
-        "In Some Answered Questions—“The Influence of the Stars”—‘Abdu’l-Bahá affirms real material effects of celestial bodies (the sun above all) and a deep interconnection of the universe like a living body, while rejecting the predictive decrees of ancient astrologers as imagination. Shoghi Effendi distinguishes astronomy (a science) from astrology (largely superstition) and asks that horoscopes be given no importance. Zodiac imagery may still appear as allegory of progressive revelation: one Sun of Reality rising from new spiritual points.",
-        "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; today’s search for exoplanets, astrobiology, and open study of unknown aerial phenomena can proceed without panic myths. Planetary unity on Earth remains the first task; wonder at a living, interconnected cosmos is its companion.",
-        "This chamber gathers that vision: two wings in flight, creatures beyond count, stars linked without fate written in charts—and one God.",
+        "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; today’s search for exoplanets, astrobiology, and open study of unknown aerial phenomena can proceed without panic myths. Planetary unity on Earth remains the first task; wonder at a living cosmos is its companion.",
+        "The parts of this infinite universe are connected and influence one another—materially and spiritually—yet that kinship is not fate written in horoscopes (see the Symbols door for the Bahá’í reading of astrology and celestial signs). Here the focus stays on inhabited worlds, scientific honesty, and one Creator of a vast creation.",
+        "This chamber gathers that vision: two wings in flight, creatures beyond count, and quiet confidence that creation is wide enough for countless beings—and one God.",
       ],
       sources: [
         {
           label: "Bahá’u’lláh, Gleanings — stars, planets, and creatures beyond count",
           url: GLEANINGS,
-        },
-        {
-          label: "‘Abdu’l-Bahá, Some Answered Questions — Influence of the Stars",
-          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
         },
         {
           label: "‘Abdu’l-Bahá, Paris Talks — science and religion",
@@ -503,22 +507,18 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       ],
     },
     fa: {
-      title: "حیات فراتر از زمین—ستارگان، علم و همبستگی کیهانی",
+      title: "حیات فراتر از زمین—و کیهانی که علم در آن با روح دیدار می‌کند",
       paragraphs: [
         "حضرت عبدالبهاء می‌فرمایند علم و دین چون دو بال یک پرنده‌اند—هر دو برای عروج لازم است. کیهان‌شناسی بهائی جهانی هدفمند را تصدیق می‌کند: ظهور تدریجی، هماهنگی ذاتی حقیقت، و آگاهی انسانی که هم قانون مادی و هم معنای روحانی را می‌تواند شناخت.",
         "آثار دربارهٔ حیات در سیارات دیگر چه می‌گویند؟ حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. حضرت عبدالبهاء از عوالمی سخن می‌گویند که باشندگانی قادر به عرفان حق در آن‌ها ساکن‌اند. حضرت شوقی افندی می‌فرمایند ماهیت این مخلوقات را علم روزی کشف خواهد کرد—شگفتی می‌طلبد، نه ترس.",
-        "در مفاوضات—«تأثیر ستارگان»—حضرت عبدالبهاء اثر مادی اجرام (به‌ویژه خورشید) و همبستگی ژرف کیهان چون پیکر زنده را تصدیق می‌فرمایند، اما احکام پیش‌گویانهٔ منجمان قدیم را خیال می‌دانند. حضرت شوقی افندی اخترشناسی را علم و نجوم احکامی را اغلب خرافه می‌شمارند و می‌فرمایند به طالع اهمیت ندهیم. زبان منطقة‌البروج هنوز می‌تواند تمثیل ظهور تدریجی باشد: یک شمس حقیقت از نقاط نو روحانی طلوع می‌کند.",
-        "آثار علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جستجوی سیارات فراخورشیدی، اخترزیست‌شناسی و پژوهش پدیده‌های ناشناخته می‌تواند بی‌افسانه‌های هراس پیش رود. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده و پیوسته، هم‌سفر آن.",
-        "این حجره آن چشم‌انداز را گرد می‌آورد: دو بال در پرواز، مخلوقات بی‌شمار، ستارگان پیوندخورده بی‌سرنوشت نوشته در زایجه—و یک خدا.",
+        "آثار علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جستجوی سیارات فراخورشیدی، اخترزیست‌شناسی و پژوهش پدیده‌های ناشناخته می‌تواند بی‌افسانه‌های هراس پیش رود. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده، هم‌سفر آن.",
+        "اجزای این کیهان بی‌کران به هم پیوسته‌اند و بر یکدیگر اثر می‌گذارند—مادی و روحانی—اما این خویشاوندی سرنوشت نوشته در طالع نیست (خوانش بهائی از نجوم احکامی و آیات آسمانی را در درب رموز ببینید). اینجا تمرکز بر عوالم مسکون، صداقت علمی، و یک آفریدگار خلقتی وسیع است.",
+        "این حجره آن چشم‌انداز را گرد می‌آورد: دو بال در پرواز، مخلوقات بی‌شمار، و اطمینان آرام که خلقت برای باشندگان بی‌شمار—و یک خدا—وسعت دارد.",
       ],
       sources: [
         {
           label: "حضرت بهاءالله، منتخباتی از آثار — ستارگان، سیارات و مخلوقات بی‌شمار",
           url: GLEANINGS,
-        },
-        {
-          label: "حضرت عبدالبهاء، مفاوضات — تأثیر ستارگان",
-          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
         },
         {
           label: "حضرت عبدالبهاء، خطابات پاریس — علم و دین",
