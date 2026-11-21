@@ -118,6 +118,56 @@ const BRL = "https://www.bahai.org/library";
 const BAHAI = "https://www.bahai.org";
 const GLEANINGS = `${BRL}/authoritative-texts/bahaullah/gleanings-writings-bahaullah/`;
 
+/** Authoritative / compilation links for the Arts door (BT essays live in sourceSections). */
+const ARTS_REF_SOURCES_EN: DoorSource[] = [
+  {
+    label:
+      "Compilation of Extracts from the Bahá’í Writings on Music — Bahá’í Reference Library",
+    url: `${BRL}/authoritative-texts/compilations/music/`,
+  },
+  {
+    label:
+      "The Importance of the Arts in Promoting the Faith — Bahá’í Reference Library",
+    url: `${BRL}/authoritative-texts/compilations/importance-art/`,
+  },
+  {
+    label:
+      "The Institution of the Mashriqu’l-Adhkár — Bahá’í Reference Library",
+    url: `${BRL}/authoritative-texts/compilations/institution-mashriqul-adhkar/`,
+  },
+  {
+    label: "Bahá’u’lláh, The Kitáb-i-Aqdas — music as a ladder for the soul (§51)",
+    url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
+  },
+  {
+    label: "Music — Bahá’í Library compilation (UHJ Research Department)",
+    url: "https://bahai-library.com/compilation_music",
+  },
+];
+
+const ARTS_REF_SOURCES_FA: DoorSource[] = [
+  {
+    label: "مجموعهٔ منتخبات آثار دربارهٔ موسیقی — کتابخانهٔ مرجع بهائی",
+    url: `${BRL}/authoritative-texts/compilations/music/`,
+  },
+  {
+    label: "اهمیت هنرها در ترویج امر — کتابخانهٔ مرجع بهائی",
+    url: `${BRL}/authoritative-texts/compilations/importance-art/`,
+  },
+  {
+    label: "مؤسسهٔ مشرق‌الاذکار — کتابخانهٔ مرجع بهائی",
+    url: `${BRL}/authoritative-texts/compilations/institution-mashriqul-adhkar/`,
+  },
+  {
+    label: "حضرت بهاءالله، کتاب اقدس — موسیقی چون نردبان روح (بند ۵۱)",
+    url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
+  },
+  {
+    label: "موسیقی — مجموعهٔ Bahá’í Library (دپارتمان تحقیق بیت‌العدل)",
+    url: "https://bahai-library.com/compilation_music",
+  },
+];
+
 const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "worlds-beyond": {
     image: "/images/doors/worlds-beyond-v3.jpg",
@@ -457,8 +507,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
     en: {
       title: "Drawing on the Spiritual Power of the Arts—Why Civilization Needs Artists",
       paragraphs: [
-        "Bahá’u’lláh elevates arts, crafts, and sciences as means of exalting the world of being. Music, when purified of passion that degrades the soul, can draw hearts toward prayer; calligraphy renders the Word visible; architecture of the Mashriqu’l-Adhkár gathers humanity under one luminous roof. Art, in this vision, is a gift of the Holy Spirit—a form of worship that draws the human spirit nearer to God.",
-        "Why do we need artists to perfect civilization? Because laws and factories alone cannot remake the inner world. Beauty softens hardened hearts; story and song carry truths that argument cannot; design shapes spaces where unity feels possible. ‘Abdu’l-Bahá and Shoghi Effendi encouraged beauty in worship and culture without reducing devotion to spectacle. A civilization worthy of the name needs creators who translate the ineffable into forms every soul can approach.",
+        "Bahá’u’lláh elevates arts, crafts, and sciences as means of exalting the world of being. In the Kitáb-i-Aqdas He makes music lawful and names it a ladder for the soul—lifted toward the realm on high when purified of passion that degrades. Calligraphy and the visual arts render the Word visible; crafts perfected with utmost care rebuild earth; architecture of the Mashriqu’l-Adhkár gathers humanity under one luminous roof. Art, in this vision, is a gift of the Holy Spirit—a form of worship that draws the human spirit nearer to God.",
+        "Why do we need artists to perfect civilization? Because laws and factories alone cannot remake the inner world. Beauty softens hardened hearts; story and song carry truths that argument cannot; design shapes spaces where unity feels possible. ‘Abdu’l-Bahá and Shoghi Effendi encouraged beauty in worship and culture without reducing devotion to spectacle—and in the House of Worship, sacred texts are sung a cappella so melody serves the Word. A civilization worthy of the name needs creators who translate the ineffable into forms every soul can approach.",
         "Sacred art in the Bahá’í view is not ornament for leisure alone—it is a language of the spirit. The artist who creates in a spirit of service becomes a channel; the audience who receives with an open heart becomes a co-worshipper. When beauty is wedded to truth and justice, it becomes a ladder for the soul’s ascent—and a force that transforms both the private self and the public square.",
         "This door listens for the nightingale of meaning in melody and silence alike: how craft becomes prayer, how culture becomes covenant, and how the arts help build a world that is not only efficient, but luminous.",
       ],
@@ -470,14 +520,15 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "Houses of Worship — architecture of unity",
           url: `${BAHAI}/action/houses-worship/`,
-        }
+        },
+        ...ARTS_REF_SOURCES_EN,
       ],
     },
     fa: {
       title: "نیروی روحانی هنرها—چرا تمدن به هنرمند نیاز دارد",
       paragraphs: [
-        "حضرت بهاءالله صنایع و علوم را سبب علوّ عالم وجود می‌دانند. موسیقی، چون از هوایی که روح را پست می‌کند پاک شود، قلوب را به‌سوی دعا می‌کشد؛ خوشنویسی کلام را مرئی می‌سازد؛ معماری مشرق‌الاذکار بشریت را زیر یک سقف نورانی گرد می‌آورد. هنر در این نگاه موهبتی از روح‌القدس است—عبادتی که روح انسان را به خداوند نزدیک می‌کند.",
-        "چرا برای کمال تمدن به هنرمندان نیاز داریم؟ زیرا قانون و کارخانه به‌تنهایی دنیای درون را باز نمی‌سازند. زیبایی دل‌های سخت را نرم می‌کند؛ داستان و نغمه حقایقی را می‌برند که استدلال نمی‌تواند؛ طراحی فضاهایی می‌سازد که وحدت در آن‌ها ممکن به نظر می‌رسد. حضرت عبدالبهاء و حضرت شوقی افندی زیبایی در عبادت و فرهنگ را تشویق فرمودند بی‌آنکه عبادت به تماشا فروکاهد. تمدنی شایستهٔ نام، نیازمند آفرینندگانی است که ناگفتنی را به صورتی درآورند که هر نفسی بتواند نزدیک شود.",
+        "حضرت بهاءالله صنایع و علوم را سبب علوّ عالم وجود می‌دانند. در کتاب اقدس موسیقی را حلال می‌فرمایند و نردبان روح می‌نامند—که چون از هوایی پست‌کننده پاک شود، به‌سوی عوالم عالیه برکشد. خوشنویسی و هنرهای بصری کلام را مرئی می‌سازند؛ صنایع با نهایت اتقان زمین را نو می‌سازند؛ معماری مشرق‌الاذکار بشریت را زیر یک سقف نورانی گرد می‌آورد. هنر در این نگاه موهبتی از روح‌القدس است—عبادتی که روح انسان را به خداوند نزدیک می‌کند.",
+        "چرا برای کمال تمدن به هنرمندان نیاز داریم؟ زیرا قانون و کارخانه به‌تنهایی دنیای درون را باز نمی‌سازند. زیبایی دل‌های سخت را نرم می‌کند؛ داستان و نغمه حقایقی را می‌برند که استدلال نمی‌تواند؛ طراحی فضاهایی می‌سازد که وحدت در آن‌ها ممکن به نظر می‌رسد. حضرت عبدالبهاء و حضرت شوقی افندی زیبایی در عبادت و فرهنگ را تشویق فرمودند بی‌آنکه عبادت به تماشا فروکاهد—و در معبد، نصوص مقدس بی‌ساز سروده می‌شوند تا نغمه در خدمت کلام باشد. تمدنی شایستهٔ نام، نیازمند آفرینندگانی است که ناگفتنی را به صورتی درآورند که هر نفسی بتواند نزدیک شود.",
         "هنر قدسی در نگاه بهائی آرایهٔ تفنن تنها نیست—زبانی از روح است. هنرمندی که به روح خدمت بیافریند مجرا می‌شود؛ مخاطبی که با قلب باز دریافت کند هم‌نیایش می‌گردد. وقتی زیبایی با حقیقت و عدالت پیوند خورد، نردبان عروج روح می‌شود—و نیرویی که هم خود خصوصی و هم میدان عمومی را دگرگون می‌کند.",
         "این دروازه به بلبل معنا در نغمه و سکوت گوش می‌سپارد: چگونه صنعت به دعا بدل می‌شود، چگونه فرهنگ به عهد می‌پیوندد، و چگونه هنرها جهانی می‌سازند که نه‌تنها کارآمد، بلکه نورانی است.",
       ],
@@ -489,7 +540,8 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "مشارق‌الاذکار — معماری وحدت",
           url: `${BAHAI}/action/houses-worship/`,
-        }
+        },
+        ...ARTS_REF_SOURCES_FA,
       ],
     },
   },

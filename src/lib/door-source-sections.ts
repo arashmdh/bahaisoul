@@ -54,6 +54,14 @@ const BT = {
     "https://bahaiteachings.org/drawing-on-the-spiritual-power-of-the-arts/",
   artistsCiv:
     "https://bahaiteachings.org/why-we-need-artists-to-perfect-civilization/",
+  musicLadder:
+    "https://bahaiteachings.org/using-music-as-a-ladder-for-the-soul/",
+  musicAwaken:
+    "https://bahaiteachings.org/can-music-melody-awaken-true-nature/",
+  artArchitecture:
+    "https://bahaiteachings.org/art-architecture-unite-proclaim-bahai-message/",
+  sacredMusicTemple:
+    "https://bahaiteachings.org/transported-rapture-sacred-music/",
   fourLoves:
     "https://bahaiteachings.org/defining-four-different-types-of-love/",
   loveUnity:
@@ -394,6 +402,67 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
 
   "sacred-arts": [
     sec(
+      BT.musicLadder,
+      {
+        title: "Using Music as a Ladder for the Soul",
+        linkLabel: "Peter Gyulay, “Using Music as a Ladder for the Soul”",
+        paragraphs: [
+          "Bahá’u’lláh makes music lawful and names it a ladder whereby souls may be lifted toward the realm on high—yet warns against making it wings to self and passion. The essay reads this as placing melody beside prayer, meditation, and good works: a means of spiritual ascent when the heart turns toward God.",
+          "‘Abdu’l-Bahá distinguishes divine music that exhilarates the spirit from earthly music that chiefly moves the body, and urges bringing earthly tunes into harmony with celestial melody—especially by setting the verses of God to song. Conscience, not fashion, judges which music raises the soul and which feeds the lower self.",
+        ],
+      },
+      {
+        title: "موسیقی چون نردبان روح",
+        linkLabel: "پیتر گیولای، «استفاده از موسیقی چون نردبان روح»",
+        paragraphs: [
+          "حضرت بهاءالله شنیدن موسیقی را حلال می‌فرمایند و آن را نردبانی می‌نامند که نفوس را به‌سوی عوالم عالیه برکشد—و هشدار می‌دهند که بال نفس و هوی نشود. مقاله این را در کنار دعا، مراقبه و اعمال خیر می‌نهد: وسیلهٔ عروج روحانی وقتی قلب به‌سوی خدا روی آورد.",
+          "حضرت عبدالبهاء موسیقی الهی را که روح را بهجت بخشد از موسیقی زمینی که بیشتر بر جسم اثر کند جدا می‌کنند و به هماهنگی نغمهٔ ارضی با لحن سماوی می‌خوانند—به‌ویژه با گذاشتن آیات الهی بر آهنگ. وجدان، نه مد، داوری می‌کند کدام موسیقی روح را بالا برد و کدام نفس سفلی را تغذیه کند.",
+        ],
+      }
+    ),
+    sec(
+      BT.musicAwaken,
+      {
+        title: "Can Music and Melody Awaken Our True Nature?",
+        linkLabel:
+          "Shadi Toloui-Wallace, “Can Music and Melody Awaken Our True Nature?”",
+        paragraphs: [
+          "Drawing on ‘Abdu’l-Bahá, this essay treats melody as material vibration with spiritual consequence: music is food of the soul, uplifts the spirit, and works powerfully on pure children’s hearts—hence the call to teach every child something of music and to vivify schools with song.",
+          "Whatever already lives in the heart—love or hatred, compassion or anger—melody intensifies. Music can reassert a soul’s kinder nature after a wave of irritation, and a pure voice joined to pure intention multiplies generosity. Melodies thus become a mirror and a magnifier of the listener’s inner state.",
+        ],
+      },
+      {
+        title: "آیا موسیقی و نغمه طبیعت راستین ما را بیدار می‌کند؟",
+        linkLabel:
+          "شادی طلوعی‌والاس، «آیا موسیقی و نغمه طبیعت راستین ما را بیدار می‌کند؟»",
+        paragraphs: [
+          "با تکیه بر حضرت عبدالبهاء، این مقاله نغمه را ارتعاش مادی با پیامد روحانی می‌بیند: موسیقی غذای روح است، جان را بالا می‌برد، و بر قلوب پاک کودکان سخت اثر می‌کند—از این رو هر کودک باید چیزی از موسیقی بداند و مدارس با سرود زنده شوند.",
+          "هرچه در قلب باشد—عشق یا کینه، شفقت یا خشم—نغمه آن را شدت می‌بخشد. موسیقی می‌تواند طبیعت مهربان‌تر روح را پس از موجی از آزردگی بازآورد، و صوت پاک با نیت پاک سخاوت را چند برابر کند. بدین‌سان ملودی‌ها آینه و ذره‌بین حال درونی شنونده می‌شوند.",
+        ],
+      }
+    ),
+    sec(
+      BT.sacredMusicTemple,
+      {
+        title: "Transported by the Rapture of Sacred Music",
+        linkLabel:
+          "Shadi Toloui-Wallace, “Transported by the Rapture of Sacred Music”",
+        paragraphs: [
+          "In the Mashriqu’l-Adhkár, sacred texts are chanted or sung a cappella—voices alone, without instruments—so that melody serves the Word rather than spectacle. ‘Abdu’l-Bahá praises music as a science worthy at the Threshold of God, urging hymns that enrapture gatherings and bring earthly song into celestial harmony.",
+          "Musical style may vary by culture; what matters is dignity, clarity of the sacred text, and the heart’s attraction. Temple music aims to make scripture more accessible than speech alone—sensual beauty harnessed to understanding, not to entertainment for its own sake.",
+        ],
+      },
+      {
+        title: "ربایش موسیقی قدسی",
+        linkLabel:
+          "شادی طلوعی‌والاس، «ربایش موسیقی قدسی»",
+        paragraphs: [
+          "در مشرق‌الاذکار، نصوص مقدس بی‌ساز خوانده یا سروده می‌شوند—تنها صوت—تا نغمه در خدمت کلام باشد نه تماشا. حضرت عبدالبهاء موسیقی را علمی ستوده در آستان حق می‌خوانند و سرودهایی می‌خواهند که محافل را به وجد آرند و نغمهٔ ارضی را با لحن سماوی هماهنگ کنند.",
+          "سبک موسیقایی می‌تواند به فرهنگ‌ها گوناگون باشد؛ آنچه مهم است وقار، وضوح متن مقدس، و جذب قلب است. موسیقی معبد می‌کوشد کلام را دسترس‌پذیرتر از سخنِ تنها سازد—زیبایی حسی در خدمت فهم، نه تفنن به‌خاطر خود.",
+        ],
+      }
+    ),
+    sec(
       BT.artsPower,
       {
         title: "Drawing on the Spiritual Power of the Arts",
@@ -430,6 +499,27 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "در کاربرد بهائی، «هنر» اغلب یعنی کوشش برای کمال در هر کار—نه فقط صنعت گالری. پیراستن ظاهر، مهربانی، عدالت، صنعت و مراقبت از طبیعت همه کار هنری‌اند؛ خود کار به رتبهٔ عبادت رفعت یافته است. خلاقیت حلقهٔ بازخورد خودآگاهی است—نردبانی به‌سوی خدا وقتی نیت خیر بجوید.",
           "حضرت باب کمال صنعت را با یقین به کمال صنع الهی پیوند می‌دهند و بندگان را به تولید با نهایت اتقان می‌خوانند تا زمین نو ساخته شود. حضرت عبدالبهاء از کوشش هنرمند شاد می‌شوند: هرچه صنعت به کمال نزدیک‌تر، روح به خدا نزدیک‌تر. تمدن به چنین آفرینندگان زیبایی و معنا نیاز دارد.",
+        ],
+      }
+    ),
+    sec(
+      BT.artArchitecture,
+      {
+        title: "Art and Architecture Unite to Proclaim the Bahá’í Message",
+        linkLabel:
+          "Jennifer Campbell, “Art and Architecture Unite to Proclaim the Bahá’í Message”",
+        paragraphs: [
+          "The Wilmette Mashriqu’l-Adhkár shows how architecture, ornament, calligraphy of the Writings, and gardens proclaim unity without sermon. Nine sides and doorways, interlacing symbols of the world’s religions, and verses of Bahá’u’lláh on façade and alcove make form itself a teaching—beauty as invitation to one Creator.",
+          "Craft and landscape complete the message: reflecting pools, diverse plantings, and meditative grounds express unity in diversity. Open to every soul, the House of Worship treats visual art and sacred geometry as companions to prayer—architecture that elevates civilization by gathering humanity under one luminous roof.",
+        ],
+      },
+      {
+        title: "هنر و معماری در اعلام پیام بهائی",
+        linkLabel:
+          "جنیفر کمبل، «هنر و معماری در اعلام پیام بهائی»",
+        paragraphs: [
+          "مشرق‌الاذکار ویلمت نشان می‌دهد چگونه معماری، تزیین، خوشنویسی آثار، و باغ‌ها وحدت را بی‌منبر اعلام می‌کنند. نُه ضلع و در، نمادهای درهم‌تنیدهٔ ادیان جهان، و آیات حضرت بهاءالله بر نما و محراب، خودِ صورت را تعلیم می‌سازند—زیبایی چون دعوت به‌سوی یک خالق.",
+          "صنعت و منظر پیام را کامل می‌کنند: آب‌نماها، گیاهان گوناگون، و زمین‌های مراقبه وحدت در کثرت را بیان می‌دارند. گشوده به هر نفس، معبد هنر بصری و هندسهٔ قدسی را همراه دعا می‌داند—معماری‌ای که تمدن را با گردآوردن بشریت زیر یک سقف نورانی رفعت می‌بخشد.",
         ],
       }
     ),
