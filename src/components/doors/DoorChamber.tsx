@@ -19,47 +19,68 @@ export function DoorChamberView({
 }) {
   const { locale } = useLocale();
   const isFa = locale === "fa";
-  const copy = isFa ? content.fa : content.en;
+  const lang = locale === "fa" ? "fa" : "en";
+  const copy = content[lang];
+  const title = door.title[locale];
+  const subtitle = door.subtitle[locale];
+  const imageAlt = content.imageAlt[locale];
 
   return (
-    <div
-      className="min-h-[100svh]"
-      style={{
-        background: "linear-gradient(180deg, #050814 0%, #0B1126 40%, #FAF8F5 40%)",
-      }}
-    >
-      <section className="relative overflow-hidden px-5 pb-16 pt-28 md:pt-32">
-        <div className="pointer-events-none absolute inset-0 dome-glow opacity-50" />
-        <div className="relative mx-auto max-w-3xl text-center">
+    <div className="min-h-[100svh] bg-alabaster">
+      {/* Header with door image as full-bleed background */}
+      <section className="relative min-h-[52vh] overflow-hidden px-5 pb-20 pt-28 md:min-h-[58vh] md:pb-24 md:pt-32">
+        <div className="absolute inset-0 overflow-hidden bg-[#050814]">
+          {/* Framed a bit high + mild zoom-out so more of the photo stays visible */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            key={content.image}
+            src={content.image}
+            alt={imageAlt}
+            className="absolute left-1/2 top-[46%] h-[92%] w-[92%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_15%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/65 via-[#0B1126]/50 to-alabaster" />
+          <div className="pointer-events-none absolute inset-0 dome-glow opacity-40" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
           <NinePointedStar size={56} className="mx-auto text-gold" />
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, ease }}
-            className="mt-6 font-sans text-xs uppercase tracking-[0.3em] text-gold/75"
+            className="mt-6 font-sans text-xs uppercase tracking-[0.3em] text-gold/85"
           >
-            {isFa ? `دروازه ${door.number}` : `Door ${door.number}`}
+            {isFa
+              ? `دروازه ${door.number}`
+              : locale === "sv"
+                ? `Dörr ${door.number}`
+                : `Door ${door.number}`}
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
-            className="mt-3 break-words font-display text-3xl text-alabaster sm:text-4xl md:text-5xl"
+            className={cn(
+              "mt-3 break-words font-display text-3xl text-alabaster drop-shadow-[0_2px_20px_rgba(5,8,20,0.55)] sm:text-4xl md:text-5xl",
+              isFa && "prose-fa"
+            )}
             dir={isFa ? "rtl" : "ltr"}
           >
-            {door.title[isFa ? "fa" : "en"]}
+            {title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.1, ease }}
             className={cn(
-              "mt-4 text-alabaster/60",
-              isFa ? "prose-fa text-base" : "font-sans"
+              "mt-4 text-alabaster/85 drop-shadow-[0_1px_12px_rgba(5,8,20,0.5)]",
+              isFa
+                ? "prose-fa text-base md:text-lg"
+                : "font-sans text-sm md:text-base"
             )}
             dir={isFa ? "rtl" : "ltr"}
           >
-            {door.subtitle[isFa ? "fa" : "en"]}
+            {subtitle}
           </motion.p>
         </div>
       </section>
@@ -72,7 +93,7 @@ export function DoorChamberView({
             viewport={{ once: true }}
             transition={{ duration: 1, ease }}
             className={cn(
-              "-mt-8 border border-gold/25 bg-white/70 px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm md:px-10",
+              "-mt-8 border border-gold/25 bg-white/80 px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm md:px-10",
               isFa && "text-right"
             )}
             dir={isFa ? "rtl" : "ltr"}
@@ -106,28 +127,80 @@ export function DoorChamberView({
             dir={isFa ? "rtl" : "ltr"}
           >
             <p className="font-sans text-xs uppercase tracking-[0.25em] text-sage">
-              {isFa ? "مقالهٔ آغازین" : "Starter essay"}
+              {isFa
+                ? "مقالهٔ ژرف"
+                : locale === "sv"
+                  ? "Fördjupande essä"
+                  : "Deep essay"}
             </p>
-            <h2 className="mt-3 font-display text-3xl text-indigo">
-              {copy.articleTitle}
-            </h2>
-            <p
+            <h2
               className={cn(
-                "mt-6 text-stone",
-                isFa
-                  ? "prose-fa text-[1.08rem] md:text-[1.2rem]"
-                  : "font-sans text-base leading-relaxed md:text-lg"
+                "mt-3 font-display text-3xl text-indigo md:text-4xl",
+                isFa && "prose-fa"
               )}
             >
-              {copy.articleBody}
-            </p>
+              {copy.articleTitle}
+            </h2>
+            <div className="mt-6 space-y-5">
+              {copy.articleParagraphs.map((para, i) => (
+                <p
+                  key={i}
+                  className={cn(
+                    "text-stone",
+                    isFa
+                      ? "prose-fa text-[1.08rem] md:text-[1.2rem]"
+                      : "font-sans text-base leading-relaxed md:text-lg"
+                  )}
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            {copy.sources.length > 0 && (
+              <aside className="mt-10 border-t border-gold/25 pt-6">
+                <h3
+                  className={cn(
+                    "font-display text-lg text-indigo",
+                    isFa && "prose-fa"
+                  )}
+                >
+                  {isFa
+                    ? "منابع معتبر"
+                    : locale === "sv"
+                      ? "Auktoritativa källor"
+                      : "Authoritative sources"}
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {copy.sources.map((s) => (
+                    <li key={s.url}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "text-gold-deep underline-offset-2 transition hover:underline",
+                          isFa ? "prose-fa text-sm" : "font-sans text-sm"
+                        )}
+                      >
+                        {s.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
           </motion.article>
 
           <Link
             href="/#doors"
             className="mt-14 inline-block border-b border-gold/40 pb-1 font-sans text-sm text-gold"
           >
-            {isFa ? "بازگشت به نُه در" : "Return to the Nine Doors"}
+            {isFa
+              ? "بازگشت به نُه در"
+              : locale === "sv"
+                ? "Tillbaka till de nio dörrarna"
+                : "Return to the Nine Doors"}
           </Link>
         </div>
       </section>

@@ -1,160 +1,186 @@
 export type DoorSlug =
-  | "metaphysics"
-  | "mysticism"
-  | "family"
-  | "arts"
-  | "society"
-  | "science-religion"
-  | "devotional"
-  | "scholars"
-  | "seekers-path";
+  | "worlds-beyond"
+  | "self-knowledge"
+  | "seven-valleys"
+  | "sacred-symbols"
+  | "dreams-intuition"
+  | "cosmic-harmony"
+  | "sacred-arts"
+  | "love-alchemy"
+  | "spiritualizing-world";
 
 export type Door = {
   slug: DoorSlug;
   number: number;
+  /** Full title — door chamber pages */
   title: { en: string; sv: string; fa: string };
+  /** Full subtitle — door chamber pages */
   subtitle: { en: string; sv: string; fa: string };
+  /** Ultra-short label for homepage constellation (no overlap) */
+  shortTitle: { en: string; sv: string; fa: string };
   href: string;
 };
 
 export const DOORS: Door[] = [
   {
-    slug: "metaphysics",
+    slug: "worlds-beyond",
     number: 1,
     title: {
-      en: "Metaphysics",
-      sv: "Metafysik",
-      fa: "ماوراءالطبیعه",
+      fa: "عوالم غیب و سفر روح",
+      en: "The Unseen Worlds & Soul's Journey",
+      sv: "De osynliga världarna & själens resa",
     },
     subtitle: {
-      en: "The Unseen & Soul's Journey",
-      sv: "Det osynliga & själens resa",
-      fa: "غیب و سیر روح",
+      fa: "آن‌سوی پرده، ملکوت و پرواز جاودان روح",
+      en: "Beyond the veil, Malakút, and eternal ascent",
+      sv: "Bortom slöjan, Malakút och själens eviga färd",
     },
-    href: "/doors/metaphysics",
+    shortTitle: { fa: "غیب", en: "Unseen", sv: "Osynligt" },
+    href: "/doors/worlds-beyond",
   },
   {
-    slug: "mysticism",
+    slug: "self-knowledge",
     number: 2,
     title: {
-      en: "Mysticism",
-      sv: "Mystik",
-      fa: "عرفان",
+      fa: "خودشناسی و حقیقتِ وجود",
+      en: "Self-Knowledge & The Inner Reality",
+      sv: "Självkännedom & den inre verkligheten",
     },
     subtitle: {
-      en: "Sacred Writings & Seven Valleys",
-      sv: "Heliga skrifter & de sju dalarna",
-      fa: "آثار مقدس و هفت وادی",
+      fa: "«مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّه»؛ کشف گنج پنهان درون",
+      en: "Discovering the divine mystery hidden within the soul",
+      sv: "Att upptäcka det gudomliga mysteriet inom själen",
     },
-    href: "/doors/mysticism",
+    shortTitle: { fa: "خودشناسی", en: "Self", sv: "Självet" },
+    href: "/doors/self-knowledge",
   },
   {
-    slug: "family",
+    slug: "seven-valleys",
     number: 3,
     title: {
-      en: "Family",
-      sv: "Familj",
-      fa: "خانواده",
+      fa: "هفت وادی و سلوک عرفانی",
+      en: "The Seven Valleys & Mystical Wayfaring",
+      sv: "De sju dalarna & mystikens vandring",
     },
     subtitle: {
-      en: "Family & Spiritual Education",
-      sv: "Familj & andlig fostran",
-      fa: "خانواده و تربیت روحانی",
+      fa: "منازل عشق، معرفت، حیرت و فنا در آثار بهائی",
+      en: "Stations of love, knowledge, wonderment, and unity",
+      sv: "Stadier av kärlek, kunskap, förundran och enhet",
     },
-    href: "/doors/family",
+    shortTitle: { fa: "هفت وادی", en: "Valleys", sv: "Dalarna" },
+    href: "/doors/seven-valleys",
   },
   {
-    slug: "arts",
+    slug: "sacred-symbols",
     number: 4,
     title: {
-      en: "Arts",
-      sv: "Konst",
-      fa: "هنر",
+      fa: "رموز، حروف و هندسه قدسی",
+      en: "Sacred Symbols, Letters & Geometry",
+      sv: "Heliga symboler, bokstäver & geometri",
     },
     subtitle: {
-      en: "Arts, Music & Culture",
-      sv: "Konst, musik & kultur",
-      fa: "هنر، موسیقی و فرهنگ",
+      fa: "اسرار اسم اعظم، عدد ۹ و اشارات باطنی در آثار مبارکه",
+      en: "Mysteries of the Greatest Name, the number 9, and hidden allusions",
+      sv: "Mysterierna kring det Största Namnet, talet 9 och dolda tecken",
     },
-    href: "/doors/arts",
+    shortTitle: { fa: "رموز", en: "Symbols", sv: "Symboler" },
+    href: "/doors/sacred-symbols",
   },
   {
-    slug: "society",
+    slug: "dreams-intuition",
     number: 5,
     title: {
-      en: "Society",
-      sv: "Samhälle",
-      fa: "جامعه",
+      fa: "رؤیا، شهود و ادراک باطنی",
+      en: "Dreams, Intuition & Spiritual Perception",
+      sv: "Drömmar, intuition & andlig varseblivning",
     },
     subtitle: {
-      en: "Social Transformation & Unity",
-      sv: "Social förvandling & enhet",
-      fa: "تحول اجتماعی و وحدت",
+      fa: "خواب‌های صادقه، الهامات قلبی و نشانه‌های عالم بالا",
+      en: "True dreams, inner intuition, and subtle signs from on high",
+      sv: "Sanna drömmar, inre intuition och tecken från ovan",
     },
-    href: "/doors/society",
+    shortTitle: { fa: "رؤیا", en: "Dreams", sv: "Drömmar" },
+    href: "/doors/dreams-intuition",
   },
   {
-    slug: "science-religion",
+    slug: "cosmic-harmony",
     number: 6,
     title: {
-      en: "Science & Religion",
-      sv: "Vetenskap & religion",
-      fa: "علم و دین",
+      fa: "نظم کیهانی، علم و آگاهی",
+      en: "Cosmic Order, Science & Consciousness",
+      sv: "Kosmisk ordning, vetenskap & medvetande",
     },
     subtitle: {
-      en: "Harmony of Science & Religion",
-      sv: "Harmoni mellan vetenskap & religion",
-      fa: "هماهنگی علم و دین",
+      fa: "هماهنگی خرد علمی، کیهان‌شناسی و حقیقت روح",
+      en: "Harmony of empirical reason, cosmology, and spiritual consciousness",
+      sv: "Harmonin mellan vetenskap, kosmologi och andligt medvetande",
     },
-    href: "/doors/science-religion",
+    shortTitle: { fa: "کیهان", en: "Cosmos", sv: "Kosmos" },
+    href: "/doors/cosmic-harmony",
   },
   {
-    slug: "devotional",
+    slug: "sacred-arts",
     number: 7,
     title: {
-      en: "Devotional",
-      sv: "Andakt",
-      fa: "عبادت",
+      fa: "موسیقی، هنر و نردبان عروج",
+      en: "Sacred Music, Art & Ascent of the Soul",
+      sv: "Sakral musik, konst & själens uppstigande",
     },
     subtitle: {
-      en: "Prayer Wall & Audio Meditations",
-      sv: "Bönvägg & ljudmeditationer",
-      fa: "دیوار دعا و مراقبه صوتی",
+      fa: "نغمه‌های قدسی، خوشنویسی و زیبایی به مثابه دریچه غیب",
+      en: "Sacred melody, calligraphy, and beauty as a portal to the unseen",
+      sv: "Sakral melodi, kalligrafi och skönhet som en port till det osynliga",
     },
-    href: "/doors/devotional",
+    shortTitle: { fa: "هنر", en: "Arts", sv: "Konst" },
+    href: "/doors/sacred-arts",
   },
   {
-    slug: "scholars",
+    slug: "love-alchemy",
     number: 8,
     title: {
-      en: "Scholars",
-      sv: "Forskare",
-      fa: "پژوهشگران",
+      fa: "کیمیای عشق و پیوند ارواح",
+      en: "The Alchemy of Love & Soul Bonds",
+      sv: "Kärlekens alkemi & själarnas band",
     },
     subtitle: {
-      en: "Directory of Scholars & Resumes",
-      sv: "Förteckning över forskare",
-      fa: "فهرست پژوهشگران و سوابق",
+      fa: "عشق روحانی به مثابه نیروی آفرینش و پیوند جاودان نفوس",
+      en: "Spiritual love as the creative force of existence and eternal soul-ties",
+      sv: "Andlig kärlek som skapelsens kraft och själarnas eviga band",
     },
-    href: "/scholars",
+    shortTitle: { fa: "عشق", en: "Love", sv: "Kärlek" },
+    href: "/doors/love-alchemy",
   },
   {
-    slug: "seekers-path",
+    slug: "spiritualizing-world",
     number: 9,
     title: {
-      en: "Seeker's Path",
-      sv: "Sökarens väg",
-      fa: "راه جوینده",
+      fa: "کیمیاگریِ عمل و تجلی روح در جهان",
+      en: "Spiritualizing the World & Living Unity",
+      sv: "Världens förandligande & levande enhet",
     },
     subtitle: {
-      en: "Guided Study Paths",
-      sv: "Vägledda studievägar",
-      fa: "مسیرهای مطالعهٔ هدایت‌شده",
+      fa: "چگونه بیداری درونی، عدالت و وحدت عالم را می‌سازد",
+      en: "How inner awakening transforms society through justice and oneness",
+      sv: "Hur inre uppvaknande förvandlar världen genom rättvisa och enhet",
     },
-    href: "/doors/seekers-path",
+    shortTitle: { fa: "وحدت", en: "Unity", sv: "Enhet" },
+    href: "/doors/spiritualizing-world",
   },
 ];
 
 export function getDoor(slug: string): Door | undefined {
   return DOORS.find((d) => d.slug === slug);
 }
+
+/** Old slugs → new mystical doors (SEO / bookmarks). */
+export const DOOR_SLUG_REDIRECTS: Record<string, DoorSlug> = {
+  metaphysics: "worlds-beyond",
+  mysticism: "seven-valleys",
+  family: "self-knowledge",
+  arts: "sacred-arts",
+  society: "spiritualizing-world",
+  "science-religion": "cosmic-harmony",
+  devotional: "dreams-intuition",
+  "seekers-path": "self-knowledge",
+  scholars: "seven-valleys",
+};

@@ -100,7 +100,7 @@ export function NineDoorsPortal() {
                 key={door.slug}
                 className={cn(
                   "absolute z-30 -translate-x-1/2 -translate-y-1/2",
-                  "w-[4.5rem] sm:w-[5.75rem] md:w-32 lg:w-36"
+                  "w-[3.6rem] sm:w-[4.5rem] md:w-[5.25rem] lg:w-24"
                 )}
                 style={{ left: `${x}%`, top: `${y}%` }}
                 data-no-star
@@ -114,36 +114,30 @@ export function NineDoorsPortal() {
                 <Link
                   href={door.href}
                   className="group relative z-10 block touch-manipulation text-center outline-none"
+                  title={`${door.title[locale]} — ${door.subtitle[locale]}`}
                 >
                   <span
                     className={cn(
-                      "mx-auto mb-1 flex items-center justify-center rounded-full border border-gold/45 bg-[#0B1126]/80 font-sans text-gold shadow-[0_0_14px_rgba(197,160,89,0.25)] transition",
-                      "h-7 w-7 text-[10px]",
-                      "sm:mb-1.5 sm:h-8 sm:w-8 sm:text-[11px]",
-                      "md:mb-2 md:h-9 md:w-9 md:text-xs",
+                      "mx-auto mb-0.5 flex items-center justify-center rounded-full border border-gold/45 bg-[#0B1126]/80 font-sans text-gold shadow-[0_0_14px_rgba(197,160,89,0.25)] transition",
+                      "h-6 w-6 text-[9px]",
+                      "sm:mb-1 sm:h-7 sm:w-7 sm:text-[10px]",
+                      "md:h-8 md:w-8 md:text-[11px]",
                       "group-hover:bg-gold group-hover:text-indigo",
                       "group-active:bg-gold group-active:text-indigo"
                     )}
                   >
                     {door.number}
                   </span>
+                  {/* Compact label only — full title lives on /doors/[slug] */}
                   <span
                     className={cn(
-                      "block font-display leading-tight text-alabaster drop-shadow-[0_1px_8px_rgba(5,8,20,0.95)] transition group-hover:text-gold",
-                      "text-[11px] sm:text-xs md:text-sm lg:text-base"
-                    )}
-                  >
-                    {door.title[locale]}
-                  </span>
-                  <span
-                    className={cn(
-                      "mt-0.5 block leading-snug text-alabaster/75 drop-shadow-[0_1px_6px_rgba(5,8,20,0.9)]",
-                      "hidden text-[9px] sm:block sm:text-[10px] md:text-[11px] lg:text-xs",
-                      isFa ? "prose-fa" : "font-sans"
+                      "mx-auto block max-w-[4.2rem] truncate font-display leading-none text-alabaster drop-shadow-[0_1px_8px_rgba(5,8,20,0.95)] transition group-hover:text-gold sm:max-w-[5rem] md:max-w-[5.5rem]",
+                      "text-[10px] sm:text-[11px] md:text-xs",
+                      isFa && "prose-fa"
                     )}
                     dir={isFa ? "rtl" : "ltr"}
                   >
-                    {door.subtitle[locale]}
+                    {door.shortTitle[locale]}
                   </span>
                 </Link>
               </div>

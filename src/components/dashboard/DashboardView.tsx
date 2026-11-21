@@ -50,7 +50,7 @@ const copy = {
       {
         href: "/#doors",
         title: "Nine Doors",
-        body: "Enter metaphysics, mysticism, family, arts, society, and more.",
+        body: "Enter the unseen worlds, Seven Valleys, sacred arts, and living unity.",
       },
       {
         href: "/scholars",
@@ -119,7 +119,7 @@ const copy = {
       {
         href: "/#doors",
         title: "Nio dörrar",
-        body: "Gå in i metafysik, mystik, familj, konst, samhälle och mer.",
+        body: "Gå in i de osynliga världarna, de sju dalarna, sakral konst och levande enhet.",
       },
       {
         href: "/scholars",
@@ -188,7 +188,7 @@ const copy = {
       {
         href: "/#doors",
         title: "نُه در",
-        body: "وارد ماوراءالطبیعه، عرفان، خانواده، هنر، جامعه و دیگر ارکان شوید.",
+        body: "وارد عوالم غیب، هفت وادی، هنر قدسی و وحدت زنده شوید.",
       },
       {
         href: "/scholars",

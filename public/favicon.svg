@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img">
+  <title>Bahá'í Soul</title>
+  <rect width="100" height="100" rx="22" fill="#060918"/>
+  <path d="M 50.000 12.000 L 74.426 20.890 L 87.423 43.401 L 82.909 69.000 L 62.997 85.708 L 37.003 85.708 L 17.091 69.000 L 12.577 43.401 L 25.574 20.890 Z" fill="none" stroke="#C5A059" stroke-width="0.7" opacity="0.35"/>
+  <path d="M 50.000 12.000 L 62.997 85.708 L 25.574 20.890 L 82.909 69.000 L 12.577 43.401 L 87.423 43.401 L 17.091 69.000 L 74.426 20.890 L 37.003 85.708 Z" fill="none" stroke="#C5A059" stroke-width="2.2" stroke-linejoin="round"/>
+  <circle cx="50" cy="50" r="2.8" fill="#C5A059"/>
+</svg>

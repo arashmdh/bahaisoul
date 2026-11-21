@@ -39,7 +39,7 @@ export const dictionaries = {
     },
     doors: {
       heading: "The Nine Doors",
-      sub: "Each door opens onto a living pillar of spiritual inquiry.",
+      sub: "Nine portals into Bahá'í mysticism — the unseen, self-knowledge, and the spiritualization of the world.",
     },
     quote: {
       heading: "Word of the Day",
@@ -107,7 +107,7 @@ export const dictionaries = {
     },
     doors: {
       heading: "De nio dörrarna",
-      sub: "Varje dörr leder till en levande pelare av andlig undersökning.",
+      sub: "Nio portaler in i bahá'í-mystiken — det osynliga, självkännedom och världens förandligande.",
     },
     quote: {
       heading: "Dagens ord",
@@ -175,7 +175,7 @@ export const dictionaries = {
     },
     doors: {
       heading: "نُه در",
-      sub: "هر در به ستونی زنده از جست‌وجوی روحانی می‌گشاید.",
+      sub: "نُه دریچه به عرفان بهائی — غیب، خودشناسی و روحانی‌ساختن جهان.",
     },
     quote: {
       heading: "کلام روز",

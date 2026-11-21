@@ -85,7 +85,6 @@ export function allPublicPaths(): { path: string; priority: number; changeFreque
   ];
 
   for (const door of DOORS) {
-    if (door.slug === "scholars") continue; // redirects conceptually to /scholars
     paths.push({
       path: `/doors/${door.slug}`,
       priority: 0.8,

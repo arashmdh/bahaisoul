@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getDoor, DOORS } from "@/lib/doors";
+import { notFound, redirect } from "next/navigation";
+import { getDoor, DOORS, DOOR_SLUG_REDIRECTS } from "@/lib/doors";
 import { getDoorContent } from "@/lib/door-content";
 import { DoorChamberView } from "@/components/doors/DoorChamber";
 import { absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return DOORS.map((d) => ({ slug: d.slug }));
+  const current = DOORS.map((d) => ({ slug: d.slug }));
+  const legacy = Object.keys(DOOR_SLUG_REDIRECTS).map((slug) => ({ slug }));
+  return [...current, ...legacy];
 }
 
 export function generateMetadata({
@@ -14,12 +16,13 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
-  const door = getDoor(params.slug);
+  const redirected = DOOR_SLUG_REDIRECTS[params.slug];
+  const door = getDoor(redirected ?? params.slug);
   if (!door) return { title: "Door" };
-  const content = getDoorContent(params.slug);
+  const content = getDoorContent(door.slug);
   const url = absoluteUrl(`/doors/${door.slug}`);
   const title = `${door.title.en} / ${door.title.fa} — Nine Doors | Bahá'í Soul`;
-  const excerpt = content?.en.articleBody
+  const excerpt = content?.en.articleParagraphs[0]
     ?.slice(0, 155)
     .replace(/\s+/g, " ")
     .trim();
@@ -38,15 +41,28 @@ export function generateMetadata({
       "روح بهائی",
       "Nine Doors",
       "نُه در",
-      "Bahá'í",
+      "Bahá'í mysticism",
+      "عرفان بهائی",
       "بهائی",
     ],
     alternates: { canonical: url },
-    openGraph: { title, description, url },
+    openGraph: {
+      title,
+      description,
+      url,
+      images: content?.image
+        ? [{ url: content.image, alt: content.imageAlt.en }]
+        : undefined,
+    },
   };
 }
 
 export default function DoorPage({ params }: { params: { slug: string } }) {
+  const redirected = DOOR_SLUG_REDIRECTS[params.slug];
+  if (redirected) {
+    redirect(`/doors/${redirected}`);
+  }
+
   const door = getDoor(params.slug);
   const content = getDoorContent(params.slug);
   if (!door || !content) notFound();
