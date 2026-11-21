@@ -30,15 +30,24 @@ export function DoorChamberView({
       {/* Header with door image as full-bleed background */}
       <section className="relative min-h-[52vh] overflow-hidden px-5 pb-20 pt-28 md:min-h-[58vh] md:pb-24 md:pt-32">
         <div className="absolute inset-0 overflow-hidden bg-[#050814]">
-          {/* Framed a bit high + mild zoom-out so more of the photo stays visible */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={content.image}
             src={content.image}
             alt={imageAlt}
-            className="absolute left-1/2 top-[46%] h-[92%] w-[92%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_15%]"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: content.imagePosition ?? "center center",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/65 via-[#0B1126]/50 to-alabaster" />
+          <div
+            className={cn(
+              "absolute inset-0 bg-gradient-to-b to-alabaster",
+              content.imagePosition?.includes("top")
+                ? "from-[#050814]/35 via-[#0B1126]/45"
+                : "from-[#050814]/65 via-[#0B1126]/50"
+            )}
+          />
           <div className="pointer-events-none absolute inset-0 dome-glow opacity-40" />
         </div>
 

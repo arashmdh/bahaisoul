@@ -17,6 +17,8 @@ export type DoorChamber = {
   fa: DoorLocaleContent;
   image: string;
   imageAlt: { en: string; sv: string; fa: string };
+  /** CSS object-position for banner crop (e.g. "center top") */
+  imagePosition?: string;
 };
 
 /** Persian Hidden Word number for each mystical door. */
@@ -53,6 +55,7 @@ type ArticleBundle = {
   fa: { title: string; paragraphs: string[]; sources: DoorSource[] };
   image: string;
   imageAlt: { en: string; sv: string; fa: string };
+  imagePosition?: string;
 };
 
 const BRL = "https://www.bahai.org/library";
@@ -61,10 +64,11 @@ const BAHAI = "https://www.bahai.org";
 const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "worlds-beyond": {
     image: "/images/doors/worlds-beyond-v3.jpg",
+    imagePosition: "center top",
     imageAlt: {
-      en: "Soul rising from the body — the journey beyond the veil",
-      sv: "Själen som stiger ur kroppen — färden bortom slöjan",
-      fa: "عروج روح از بدن — سفر آن‌سوی پرده",
+      en: "Soul ascending toward the nine-pointed star — beyond the veil",
+      sv: "Själen stiger mot den niouddiga stjärnan — bortom slöjan",
+      fa: "عروج روح به‌سوی ستارهٔ نه‌پر — آن‌سوی پرده",
     },
     en: {
       title: "Beyond the Veil: Malakút and the Soul’s Eternal Flight",
@@ -167,10 +171,11 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
 
   "seven-valleys": {
     image: "/images/doors/seven-valleys.jpg",
+    imagePosition: "center top",
     imageAlt: {
-      en: "Seven stations of the wayfarer — from search to true poverty",
-      sv: "Sju stationer för vandraren — från sökande till sant fattigdom",
-      fa: "هفت منزل سالک — از طلب تا فقر حقیقی",
+      en: "Spiral path of light rising to a nine-pointed star — the Seven Valleys",
+      sv: "Ljusspiral mot en niouddig stjärna — de sju dalarna",
+      fa: "مسیر مارپیچ نور تا ستارهٔ نه‌پر — هفت وادی",
     },
     en: {
       title: "Haft-Vádí: A Map of Mystical Transformation",
@@ -262,9 +267,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "dreams-intuition": {
     image: "/images/doors/dreams-intuition.jpg",
     imageAlt: {
-      en: "Night sky and quiet stars — dreams and subtle intuition",
-      sv: "Natthimmel och stilla stjärnor — drömmar och subtil intuition",
-      fa: "آسمان شب و ستارگان آرام — رؤیا و شهود لطیف",
+      en: "Dreaming face among clouds and light — dreams and subtle intuition",
+      sv: "Drömmande ansikte bland moln och ljus — drömmar och subtil intuition",
+      fa: "چهره در رؤیا میان ابر و نور — رؤیا و شهود لطیف",
     },
     en: {
       title: "True Dreams, the Heart’s Lamp, and Subtle Guidance",
@@ -311,9 +316,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "cosmic-harmony": {
     image: "/images/doors/cosmic-harmony.jpg",
     imageAlt: {
-      en: "Deep space nebula — cosmic order meeting consciousness",
-      sv: "Djuprymdsnebulosa — kosmisk ordning möter medvetande",
-      fa: "سحابی ژرف کیهان — نظم کیهانی در دیدار آگاهی",
+      en: "Meditation, DNA of light, and nine-pointed star — science with spirit",
+      sv: "Meditation, ljusets DNA och niouddig stjärna — vetenskap med ande",
+      fa: "مراقبه، دی‌ان‌ای نور و ستارهٔ نه‌پر — علم در کنار روح",
     },
     en: {
       title: "Two Wings: Reason, Revelation, and Conscious Cosmos",
@@ -360,9 +365,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "sacred-arts": {
     image: "/images/doors/sacred-arts.jpg",
     imageAlt: {
-      en: "Mind as constellation — sacred art of consciousness",
-      sv: "Sinnet som stjärnbild — medvetandets sakrala konst",
-      fa: "ذهن چون صورت فلکی — هنر قدسی آگاهی",
+      en: "Cosmic mind of music, calligraphy, and light — sacred arts",
+      sv: "Kosmiskt sinne av musik, kalligrafi och ljus — sakrala konster",
+      fa: "ذهن کیهانیِ موسیقی و خط و نور — هنر قدسی",
     },
     en: {
       title: "Melody, Form, and the Ladder of Ascent",
@@ -454,9 +459,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
   "spiritualizing-world": {
     image: "/images/doors/spiritualizing-world.jpg",
     imageAlt: {
-      en: "Infinity of light in the cosmos — living unity of the world",
-      sv: "Oändlighetens ljus i kosmos — världens levande enhet",
-      fa: "بی‌نهایت نور در کیهان — وحدت زندهٔ جهان",
+      en: "Nine-pointed star uniting heaven, earth, and all beings — living unity",
+      sv: "Niouddig stjärna som förenar himmel, jord och alla varelser — levande enhet",
+      fa: "ستارهٔ نه‌پر پیوند آسمان و زمین و همهٔ موجودات — وحدت زنده",
     },
     en: {
       title: "From Inner Awakening to a World Remade",
@@ -513,6 +518,7 @@ function buildDoor(slug: DoorSlug): DoorChamber {
   return {
     image: a.image,
     imageAlt: a.imageAlt,
+    imagePosition: a.imagePosition,
     en: {
       quote: w.en,
       citation: c.en,

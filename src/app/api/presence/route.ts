@@ -1,14 +1,22 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 const TTL_MS = 60_000;
+const SESSION_RE = /^[a-zA-Z0-9_-]{8,64}$/;
 
 export async function POST(req: Request) {
   try {
+    const ip = clientIp(req);
+    const limited = rateLimit(`presence:${ip}`, 30, 60_000);
+    if (!limited.ok) {
+      return NextResponse.json({ count: 1 }, { status: 429 });
+    }
+
     const body = (await req.json()) as { sessionId?: string };
-    const sessionId = body.sessionId?.trim();
-    if (!sessionId) {
-      return NextResponse.json({ error: "sessionId required" }, { status: 400 });
+    const sessionId = body.sessionId?.trim() ?? "";
+    if (!SESSION_RE.test(sessionId)) {
+      return NextResponse.json({ error: "invalid sessionId" }, { status: 400 });
     }
 
     const now = new Date();

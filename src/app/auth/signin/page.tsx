@@ -16,6 +16,11 @@ const copy = {
     emailPh: "you@example.com",
     enter: "Enter",
     entering: "Entering…",
+    google: "Continue with Google",
+    googleOnly:
+      "Production sign-in uses Google. Dev email login is disabled on this deployment.",
+    unavailable:
+      "Sign-in is not configured yet. Add Google OAuth env vars, or enable ALLOW_DEV_LOGIN for staging.",
   },
   sv: {
     title: "Stig in i templet",
@@ -26,6 +31,11 @@ const copy = {
     emailPh: "du@exempel.com",
     enter: "Stig in",
     entering: "Stiger in…",
+    google: "Fortsätt med Google",
+    googleOnly:
+      "Produktion använder Google-inloggning. Dev e-post är avstängd här.",
+    unavailable:
+      "Inloggning är inte konfigurerad ännu. Lägg till Google OAuth eller ALLOW_DEV_LOGIN.",
   },
   fa: {
     title: "ورود به معبد",
@@ -36,8 +46,18 @@ const copy = {
     emailPh: "you@example.com",
     enter: "ورود",
     entering: "در حال ورود…",
+    google: "ورود با گوگل",
+    googleOnly:
+      "در نسخهٔ آنلاین ورود فقط با گوگل است. ورود آزمایشی با ایمیل اینجا غیرفعال است.",
+    unavailable:
+      "ورود هنوز پیکربندی نشده. Google OAuth یا ALLOW_DEV_LOGIN را تنظیم کنید.",
   },
 } as const;
+
+const hasGoogle = Boolean(
+  process.env.NEXT_PUBLIC_HAS_GOOGLE_AUTH === "true"
+);
+const allowDevLogin = process.env.NEXT_PUBLIC_ALLOW_DEV_LOGIN === "true";
 
 export default function SignInPage() {
   const { locale } = useLocale();
@@ -49,6 +69,7 @@ export default function SignInPage() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!allowDevLogin) return;
     setLoading(true);
     await signIn("credentials", {
       email,
@@ -57,6 +78,12 @@ export default function SignInPage() {
     });
     setLoading(false);
   };
+
+  const onGoogle = () => {
+    void signIn("google", { callbackUrl: "/dashboard" });
+  };
+
+  const noProviders = !hasGoogle && !allowDevLogin;
 
   return (
     <div className="flex min-h-[100svh] items-center justify-center bg-indigo px-5 pt-20">
@@ -79,40 +106,72 @@ export default function SignInPage() {
           {t.sub}
         </p>
 
-        <form onSubmit={onSubmit} className="mt-10 space-y-4 text-start">
-          <label className="block">
-            <span className="font-sans text-xs uppercase tracking-widest text-gold/80">
-              {t.name}
-            </span>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="mt-2 w-full border border-gold/25 bg-alabaster/5 px-4 py-3 font-sans text-sm text-alabaster focus:border-gold/50 focus:outline-none"
-              placeholder={t.namePh}
-            />
-          </label>
-          <label className="block">
-            <span className="font-sans text-xs uppercase tracking-widest text-gold/80">
-              {t.email}
-            </span>
-            <input
-              required
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 w-full border border-gold/25 bg-alabaster/5 px-4 py-3 font-sans text-sm text-alabaster focus:border-gold/50 focus:outline-none"
-              placeholder={t.emailPh}
-              dir="ltr"
-            />
-          </label>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-gold py-3 font-sans text-sm tracking-wide text-indigo transition hover:bg-gold-soft disabled:opacity-60"
+        {noProviders ? (
+          <p
+            className={cn(
+              "mt-10 rounded-sm border border-gold/25 bg-alabaster/5 px-4 py-4 text-sm text-alabaster/75",
+              isFa ? "prose-fa" : "font-sans"
+            )}
           >
-            {loading ? t.entering : t.enter}
+            {t.unavailable}
+          </p>
+        ) : null}
+
+        {hasGoogle ? (
+          <button
+            type="button"
+            onClick={onGoogle}
+            className="mt-10 w-full border border-gold/40 bg-alabaster/5 py-3 font-sans text-sm tracking-wide text-alabaster transition hover:border-gold hover:bg-alabaster/10"
+          >
+            {t.google}
           </button>
-        </form>
+        ) : null}
+
+        {allowDevLogin ? (
+          <form onSubmit={onSubmit} className="mt-8 space-y-4 text-start">
+            <label className="block">
+              <span className="font-sans text-xs uppercase tracking-widest text-gold/80">
+                {t.name}
+              </span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-2 w-full border border-gold/25 bg-alabaster/5 px-4 py-3 font-sans text-sm text-alabaster focus:border-gold/50 focus:outline-none"
+                placeholder={t.namePh}
+              />
+            </label>
+            <label className="block">
+              <span className="font-sans text-xs uppercase tracking-widest text-gold/80">
+                {t.email}
+              </span>
+              <input
+                required
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="mt-2 w-full border border-gold/25 bg-alabaster/5 px-4 py-3 font-sans text-sm text-alabaster focus:border-gold/50 focus:outline-none"
+                placeholder={t.emailPh}
+                dir="ltr"
+              />
+            </label>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gold py-3 font-sans text-sm tracking-wide text-indigo transition hover:bg-gold-soft disabled:opacity-60"
+            >
+              {loading ? t.entering : t.enter}
+            </button>
+          </form>
+        ) : hasGoogle ? (
+          <p
+            className={cn(
+              "mt-6 text-xs text-alabaster/45",
+              isFa ? "prose-fa" : "font-sans"
+            )}
+          >
+            {t.googleOnly}
+          </p>
+        ) : null}
       </div>
     </div>
   );

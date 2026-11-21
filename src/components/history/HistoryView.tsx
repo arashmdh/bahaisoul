@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { HISTORY_TOPICS, type HistoryTopic } from "@/lib/history";
@@ -10,16 +9,40 @@ import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+function TopicList({ topic }: { topic: HistoryTopic }) {
+  const { locale } = useLocale();
+
+  return (
+    <ul className="space-y-1 border-s border-gold/25 ps-3">
+      {HISTORY_TOPICS.map((item) => {
+        const active = item.slug === topic.slug;
+        return (
+          <li key={item.slug}>
+            <Link
+              href={`/history/${item.slug}`}
+              scroll={false}
+              className={cn(
+                "block py-2.5 pe-2 font-display text-[15px] leading-snug transition lg:text-base",
+                active
+                  ? "border-s-2 border-gold text-indigo -ms-[calc(0.75rem+1px)] ps-[calc(0.75rem-1px)]"
+                  : "text-stone hover:text-indigo"
+              )}
+            >
+              {item.title[locale]}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function HistoryView({ topic }: { topic: HistoryTopic }) {
   const { locale, t } = useLocale();
   const isFa = locale === "fa";
   const title = topic.title[locale];
   const subtitle = topic.subtitle[locale];
   const intro = topic.intro[locale];
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [topic.slug]);
 
   return (
     <div className="min-h-[100svh] bg-alabaster">
@@ -65,10 +88,10 @@ export function HistoryView({ topic }: { topic: HistoryTopic }) {
         </div>
       </section>
 
-      {/* Topic titles — horizontal on mobile, sidebar on desktop */}
-      <div className="border-b border-gold/20 bg-alabaster-warm/60">
+      {/* Mobile: horizontal strip */}
+      <div className="border-b border-gold/20 bg-alabaster-warm/60 md:hidden">
         <nav
-          className="mx-auto flex max-w-6xl gap-1 overflow-x-auto overscroll-x-contain px-4 py-3 [-webkit-overflow-scrolling:touch] sm:px-5 sm:py-4 md:flex-wrap md:justify-center md:gap-2 md:overflow-visible md:px-8 md:py-6"
+          className="mx-auto flex max-w-6xl gap-1 overflow-x-auto overscroll-x-contain px-4 py-3 [-webkit-overflow-scrolling:touch] sm:px-5 sm:py-4"
           aria-label={t.history.menu}
           dir={isFa ? "rtl" : "ltr"}
         >
@@ -80,7 +103,7 @@ export function HistoryView({ topic }: { topic: HistoryTopic }) {
                 href={`/history/${item.slug}`}
                 scroll={false}
                 className={cn(
-                  "shrink-0 px-3 py-2 font-display text-base transition md:px-4 md:text-lg",
+                  "shrink-0 px-3 py-2 font-display text-base transition",
                   active
                     ? "border-b-2 border-gold text-indigo"
                     : "border-b-2 border-transparent text-stone hover:text-indigo"
@@ -93,18 +116,33 @@ export function HistoryView({ topic }: { topic: HistoryTopic }) {
         </nav>
       </div>
 
-      <div className="mx-auto max-w-3xl px-5 py-12 md:px-8 md:py-16">
+      {/* Desktop: sticky topic rail + article */}
+      <div
+        className="mx-auto flex max-w-6xl items-start gap-10 px-5 py-12 md:gap-12 md:px-8 md:py-16 lg:gap-16"
+        dir={isFa ? "rtl" : "ltr"}
+      >
+        <aside
+          className="history-topic-rail hidden w-[15rem] shrink-0 md:block lg:w-[17rem]"
+          aria-label={t.history.menu}
+        >
+          <p className="mb-4 font-sans text-[11px] uppercase tracking-[0.22em] text-gold-deep/80">
+            {t.history.menu}
+          </p>
+          <TopicList topic={topic} />
+        </aside>
+
         <motion.article
           key={topic.slug}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease }}
           dir={isFa ? "rtl" : "ltr"}
+          className="min-w-0 max-w-3xl flex-1"
         >
-          <p className="font-sans text-xs uppercase tracking-[0.22em] text-sage">
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-sage md:hidden">
             {t.history.menu}
           </p>
-          <h2 className="mt-3 font-display text-3xl text-indigo md:text-4xl">
+          <h2 className="mt-3 font-display text-3xl text-indigo md:mt-0 md:text-4xl">
             {title}
           </h2>
           <p

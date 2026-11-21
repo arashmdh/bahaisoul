@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
+
+const WORD_MIN = 1;
+const WORD_MAX = 82;
 
 export async function GET() {
   try {
@@ -23,6 +27,12 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
+    const ip = clientIp(req);
+    const limited = rateLimit(`reflections:${ip}`, 8, 60_000);
+    if (!limited.ok) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = (await req.json()) as {
       name?: string;
       content?: string;
@@ -37,9 +47,15 @@ export async function POST(req: Request) {
       ? (body.locale as string)
       : "en";
 
-    if (!name || !content || !Number.isFinite(wordNumber)) {
+    if (
+      !name ||
+      !content ||
+      !Number.isFinite(wordNumber) ||
+      wordNumber < WORD_MIN ||
+      wordNumber > WORD_MAX
+    ) {
       return NextResponse.json(
-        { error: "name, content, and wordNumber required" },
+        { error: "name, content, and valid wordNumber required" },
         { status: 400 }
       );
     }
