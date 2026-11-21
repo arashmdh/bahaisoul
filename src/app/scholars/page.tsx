@@ -1,9 +1,24 @@
+import type { Metadata } from "next";
 import { ScholarsDirectory } from "@/components/scholars/ScholarsDirectory";
+import { absoluteUrl } from "@/lib/seo";
 
-export const metadata = {
-  title: "Scholars & Stewards",
+export const metadata: Metadata = {
+  title: "Scholars & Stewards — Arash Mamdouh, Shoja Ashari | Bahá'í Soul",
   description:
-    "Nine Temple Stewards and contributing Bahá’í scholars — a clergy-free circle of learning for Bahá’í Soul.",
+    "Nine Temple Stewards and Bahá'í scholars — Arash Mamdouh (آرش ممدوح), Shoja Ashari (شجاع اشعری), and contributing researchers. Clergy-free learning at Bahá'í Soul · روح بهائی · Bahá'í Sweden.",
+  keywords: [
+    "Arash Mamdouh",
+    "آرش ممدوح",
+    "Shoja Ashari",
+    "Shojaeddin Ashari Gheshmi",
+    "شجاع اشعری",
+    "Bahá'í scholars",
+    "Temple Stewards",
+    "Bahá'í Soul",
+    "روح بهائی",
+    "Bahá'í Sweden",
+  ],
+  alternates: { canonical: absoluteUrl("/scholars") },
 };
 
 export default function ScholarsPage() {

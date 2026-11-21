@@ -62,14 +62,15 @@ export function TempleGallery() {
     <div>
       {/* Filters */}
       <div className="sticky top-[72px] z-30 border-b border-gold/15 bg-alabaster/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 py-4 scrollbar-none md:px-8">
+        <div className="mx-auto flex max-w-7xl gap-2.5 overflow-x-auto px-5 py-4 scrollbar-none md:gap-3 md:px-8 md:py-5">
           {TEMPLE_REGIONS.map((r) => (
             <button
               key={r.id}
               type="button"
               onClick={() => setRegion(r.id)}
               className={cn(
-                "shrink-0 px-4 py-2 font-sans text-xs uppercase tracking-[0.18em] transition",
+                "shrink-0 rounded-md px-3.5 py-2.5 font-sans text-sm tracking-wide transition md:px-4 md:py-2.5 md:text-base",
+                locale === "fa" ? "prose-fa" : "uppercase tracking-[0.12em]",
                 region === r.id
                   ? "bg-indigo text-alabaster"
                   : "text-stone hover:text-indigo"
@@ -82,7 +83,12 @@ export function TempleGallery() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 py-5 md:px-6 md:py-6">
-        <p className="mb-4 font-sans text-xs text-stone md:text-sm">
+        <p
+          className={cn(
+            "mb-4 font-sans text-sm text-stone md:text-base",
+            locale === "fa" && "prose-fa"
+          )}
+        >
           {t.gallery.count.replace("{n}", String(filtered.length))}
         </p>
 
@@ -117,11 +123,21 @@ export function TempleGallery() {
                     className="absolute inset-0 h-full w-full object-cover transition duration-[1.2s] ease-serene group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-indigo/80 via-indigo/15 to-transparent opacity-85 transition duration-500 group-hover:opacity-95" />
-                  <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3">
-                    <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-gold sm:text-[9px]">
+                  <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3.5">
+                    <p
+                      className={cn(
+                        "font-sans text-[10px] tracking-wide text-gold sm:text-xs",
+                        locale !== "fa" && "uppercase tracking-[0.14em]"
+                      )}
+                    >
                       {copy.location}
                     </p>
-                    <h3 className="mt-0.5 line-clamp-2 font-display text-sm leading-snug text-alabaster sm:text-base">
+                    <h3
+                      className={cn(
+                        "mt-1 line-clamp-2 font-display text-base leading-snug text-alabaster sm:text-lg",
+                        locale === "fa" && "prose-fa"
+                      )}
+                    >
                       {copy.title}
                     </h3>
                   </div>

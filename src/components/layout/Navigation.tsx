@@ -46,18 +46,18 @@ export function Navigation() {
           className="group flex items-center gap-3 text-alabaster"
           onClick={() => setOpen(false)}
         >
-          <NinePointedStar size={28} animated={false} className="text-gold/90" />
-          <span className="font-display text-lg tracking-[0.04em] md:text-xl">
+          <NinePointedStar size={30} animated={false} className="text-gold/90" />
+          <span className="font-display text-xl tracking-[0.04em] md:text-2xl">
             {t.brand}
           </span>
         </Link>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="hidden items-center gap-6 xl:gap-7 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-sm tracking-wide text-alabaster/80 transition hover:text-gold"
+              className="font-sans text-base tracking-wide text-alabaster/85 transition hover:text-gold"
             >
               {link.label}
             </Link>
@@ -65,7 +65,7 @@ export function Navigation() {
           <LanguageSwitcher />
           <Link
             href="/auth/signin"
-            className="border border-gold/40 bg-gold/10 px-4 py-2 font-sans text-sm tracking-wide text-gold transition hover:bg-gold/20"
+            className="border border-gold/40 bg-gold/10 px-4 py-2.5 font-sans text-base tracking-wide text-gold transition hover:bg-gold/20"
           >
             {t.nav.enter}
           </Link>
@@ -77,7 +77,7 @@ export function Navigation() {
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </nav>
 
@@ -96,7 +96,7 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-display text-xl text-alabaster/90"
+                  className="font-display text-2xl text-alabaster/90"
                 >
                   {link.label}
                 </Link>
@@ -105,7 +105,7 @@ export function Navigation() {
               <Link
                 href="/auth/signin"
                 onClick={() => setOpen(false)}
-                className="mt-2 w-fit border border-gold/40 px-4 py-2 text-sm text-gold"
+                className="mt-2 w-fit border border-gold/40 px-4 py-2.5 text-base text-gold"
               >
                 {t.nav.enter}
               </Link>

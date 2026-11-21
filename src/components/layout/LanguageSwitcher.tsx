@@ -22,7 +22,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           type="button"
           onClick={() => setLocale(l.code as Locale)}
           className={cn(
-            "px-2 py-1 font-sans text-[11px] uppercase tracking-[0.12em] transition",
+            "px-2.5 py-1.5 font-sans text-xs uppercase tracking-[0.12em] transition md:text-sm",
             locale === l.code
               ? "bg-gold/20 text-gold"
               : "text-alabaster/55 hover:text-alabaster"
