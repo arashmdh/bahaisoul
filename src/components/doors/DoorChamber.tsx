@@ -25,6 +25,21 @@ export function DoorChamberView({
   const subtitle = door.subtitle[locale];
   const imageAlt = content.imageAlt[locale];
 
+  /** Authoritative list + per-section source URLs, deduped by URL. */
+  const allSources = (() => {
+    const seen = new Set<string>();
+    const out: { label: string; url: string }[] = [];
+    for (const s of [
+      ...copy.sources,
+      ...copy.sourceSections.map((sec) => sec.source),
+    ]) {
+      if (seen.has(s.url)) continue;
+      seen.add(s.url);
+      out.push(s);
+    }
+    return out;
+  })();
+
   return (
     <div className="min-h-[100svh] bg-alabaster">
       {/* Header with door image as full-bleed background */}
@@ -203,30 +218,12 @@ export function DoorChamberView({
                         </p>
                       ))}
                     </div>
-                    <p
-                      className={cn(
-                        "mt-5 text-gold-deep",
-                        isFa ? "prose-fa text-sm" : "font-sans text-sm"
-                      )}
-                    >
-                      <span className="text-stone/70">
-                        {isFa ? "منبع: " : "Source: "}
-                      </span>
-                      <a
-                        href={section.source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline-offset-2 transition hover:underline"
-                      >
-                        {section.source.label}
-                      </a>
-                    </p>
                   </section>
                 ))}
               </div>
             )}
 
-            {copy.sources.length > 0 && (
+            {allSources.length > 0 && (
               <aside className="mt-10 border-t border-gold/25 pt-6">
                 <h3
                   className={cn(
@@ -241,7 +238,7 @@ export function DoorChamberView({
                       : "Authoritative sources"}
                 </h3>
                 <ul className="mt-3 space-y-2">
-                  {copy.sources.map((s) => (
+                  {allSources.map((s) => (
                     <li key={s.url}>
                       <a
                         href={s.url}
@@ -266,7 +263,7 @@ export function DoorChamberView({
             className="mt-14 inline-block border-b border-gold/40 pb-1 font-sans text-sm text-gold"
           >
             {isFa
-              ? "بازگشت به نُه در"
+              ? "بازگشت به نُه درب"
               : locale === "sv"
                 ? "Tillbaka till de nio dörrarna"
                 : "Return to the Nine Doors"}

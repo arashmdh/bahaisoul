@@ -69,7 +69,7 @@ export default function SiteMapPage() {
         ))}
 
         <section className="mt-12">
-          <h2 className="font-display text-2xl text-indigo">Nine Doors · نُه در</h2>
+          <h2 className="font-display text-2xl text-indigo">Nine Doors · نُه درب</h2>
           <ul className="mt-4 space-y-2 border-t border-gold/20 pt-4">
             {DOORS.map((d) => (
               <li key={d.slug}>

@@ -40,7 +40,7 @@ export function generateMetadata({
       "Bahá'í Soul",
       "روح بهائی",
       "Nine Doors",
-      "نُه در",
+      "نُه درب",
       "Bahá'í mysticism",
       "عرفان بهائی",
       "بهائی",

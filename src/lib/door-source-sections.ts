@@ -1,6 +1,6 @@
 import type { DoorSlug } from "./doors";
 
-/** A paraphrased commentary block with a source link at the end. */
+/** A paraphrased commentary block; its source URL feeds the bottom sources list. */
 export type DoorSourceSection = {
   title: string;
   paragraphs: string[];
