@@ -72,6 +72,17 @@ const BT = {
   bodyEarth: "https://bahaiteachings.org/your-body-your-earth/",
   etMessage:
     "https://bahaiteachings.org/sending-message-extraterrestrial-civilizations/",
+  cosmosKnowsSelf:
+    "https://bahaiteachings.org/human-beings-the-way-the-cosmos-knows-itself/",
+  transcendingSelf: "https://bahaiteachings.org/transcending-the-self/",
+  spiritualPerfection:
+    "https://bahaiteachings.org/what-can-lead-us-toward-spiritual-perfection/",
+  astrologyExplored:
+    "https://bahaiteachings.org/is-it-written-in-the-stars-astrology-explored/",
+  ageAquarius:
+    "https://bahaiteachings.org/what-is-the-age-of-aquarius-anyway/",
+  sunMoonStars:
+    "https://bahaiteachings.org/understanding-the-prophecy-of-the-sun-moon-stars/",
 } as const;
 
 const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
@@ -153,6 +164,67 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "خوداندیشی در این تفسیر، فکر دقیق دربارهٔ رفتار و باورهاست—ساعتی از آن که حدیث بر هفتاد سال عبادت بی‌تفکر ترجیح می‌دهد. حضرت بهاءالله به شناخت آنچه به علو یا پستی می‌کشاند فرامی‌خوانند و به محاسبهٔ نفس هر روز پیش از حساب ناگهانی. پس محاسبه تنها رسم سال نو نیست؛ عادت روزانهٔ روحانی است.",
           "نصیحت حضرت عبدالبهاء—سنجیدن امروز با دیروز، شکر بر رشد، توبه بر قصور، و طلب عشق قوی‌تر—محاسبه را به حرکت پیش‌برنده بدل می‌کند. در برابر سنگینی جهان، گریز به سرگرمی فهمیدنی است؛ اما بازگشت به باطن غایت را بازمی‌گرداند و ارادهٔ خدمت را تازه می‌کند.",
+        ],
+      }
+    ),
+    sec(
+      BT.cosmosKnowsSelf,
+      {
+        title: "Human Beings: The Way the Cosmos Knows Itself",
+        linkLabel:
+          "David Langness, “Human Beings: the Way the Cosmos Knows Itself”",
+        paragraphs: [
+          "Self-knowledge opens onto cosmic purpose. Bahá’u’lláh teaches that God conferred on humanity the unique capacity to know and love Him—the generating impulse and primary purpose of creation. Upon every thing He shed the light of one Name; upon the human reality He focused the radiance of all His names and attributes, making it a mirror of His own Self.",
+          "Linking this to Carl Sagan’s phrase that humans are “the way the cosmos knows itself,” the essay reads the soul as divine self-description by which creatures recognize their Creator: he who hath known himself hath known his Lord. That knowing is not confined to Earth alone; the Writings speak of other worlds inhabited by beings capable of knowing God—awareness as a cosmic vocation.",
+        ],
+      },
+      {
+        title: "انسان: راهی که کیهان خود را می‌شناسد",
+        linkLabel:
+          "دیوید لانگنس، «انسان: راهی که کیهان خود را می‌شناسد»",
+        paragraphs: [
+          "خودشناسی به مقصود کیهانی می‌گشاید. حضرت بهاءالله می‌فرمایند خدا به انسان ظرفیت یگانهٔ عرفان و محبت خویش را بخشید—محرک و غایت اصلی خلقت. بر هر چیز پرتو یکی از اسماء را افشاند؛ بر حقیقت انسان شعاع همهٔ اسماء و صفات را متمرکز ساخت و آن را آیینهٔ نفس خویش کرد.",
+          "با پیوند به سخن کارل سیگن که انسان «راهی است که کیهان خود را می‌شناسد»، مقاله روح را توصیف الهی می‌خواند که مخلوق با آن خالق را می‌شناسد: مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّه. این عرفان به زمین محدود نیست؛ آثار از عوالمی سخن می‌گویند که باشندگانی قادر به عرفان حق در آن‌ها ساکن‌اند—آگاهی چون رسالت کیهانی.",
+        ],
+      }
+    ),
+    sec(
+      BT.transcendingSelf,
+      {
+        title: "Transcending the Self—World-Embracing Vision",
+        linkLabel: "David Langness, “Transcending the Self”",
+        paragraphs: [
+          "Bahá’u’lláh exalts knowing one’s self—what leads to loftiness or lowliness—yet knowing the self is the beginning, not the end. The Hidden Words call the lover to turn away from self so that God may live in the heart; Gleanings urge a vision world-embracing rather than confined to one’s own ego.",
+          "Once the mirror is recognized, the seeker is invited outward: into the spiritual and material cosmos, into service, into seeing reality beyond the insistent self. Self-knowledge thus becomes the foundation of awareness that connects soul to creation and creation back to God.",
+        ],
+      },
+      {
+        title: "فراتر از نفس—چشم‌انداز جهان‌شمول",
+        linkLabel: "دیوید لانگنس، «فراتر از نفس»",
+        paragraphs: [
+          "حضرت بهاءالله شناخت نفس—آنچه به علو یا پستی می‌کشاند—را ارج می‌نهند؛ اما شناخت نفس آغاز است نه پایان. کلمات مکنونه عاشق را به روی‌گردانی از خود می‌خوانند تا خدا در قلب بزید؛ منتخبات به چشم‌اندازی جهان‌شمول فرامی‌خوانند نه محصور در نفس اماره.",
+          "چون آیینه شناخته شد، جوینده به بیرون دعوت می‌شود: به کیهان روحانی و مادی، به خدمت، به دیدن حقیقت فراتر از نفس اصرارگر. خودشناسی بنیاد آگاهی‌ای می‌شود که روح را به خلقت و خلقت را به خدا پیوند می‌دهد.",
+        ],
+      }
+    ),
+    sec(
+      BT.spiritualPerfection,
+      {
+        title: "Self as Portal to Knowing God",
+        linkLabel:
+          "Joseph Roy Sheppherd, “What Can Lead Us Toward Spiritual Perfection?”",
+        paragraphs: [
+          "How do we increase knowledge of God? This commentary answers: the first step passes through the portal of the self. Growth never stops—physical, intellectual, emotional, spiritual. Relationships become laboratories of divine attributes; turning toward those qualities transforms potential into reality and draws the soul nearer the Divine.",
+          "‘Abdu’l-Bahá affirms that the soul’s only movement is toward perfection, and divine perfection is infinite—so progress never ends. Perfect mirrors of all attributes are the Manifestations; knowing Them is identical with knowing God’s Self. Ordinary seekers polish the mirror of self-knowledge so that light may appear.",
+        ],
+      },
+      {
+        title: "خود چون دروازهٔ عرفان خدا",
+        linkLabel:
+          "جوزف روی شپرد، «چه چیز ما را به‌سوی کمال روحانی می‌برد؟»",
+        paragraphs: [
+          "معرفت خدا را چگونه بیفزاییم؟ این تفسیر پاسخ می‌دهد: نخستین گام از دروازهٔ نفس می‌گذرد. رشد هرگز نمی‌ایستد—جسمانی، عقلی، عاطفی، روحانی. روابط آزمایشگاه صفات الهی می‌شوند؛ روی‌آوردن به آن صفات استعداد را به واقعیت بدل می‌کند و روح را به حق نزدیک‌تر می‌سازد.",
+          "حضرت عبدالبهاء می‌فرمایند حرکت روح تنها به‌سوی کمال است و کمال الهی بی‌کران—پس ترقی بی‌پایان. آیینه‌های کامل همهٔ صفات، مظاهر الهی‌اند؛ عرفان آنان عین عرفان نفس خداست. جویندگان عادی آیینهٔ خودشناسی را صیقل می‌دهند تا نور پدیدار شود.",
         ],
       }
     ),
@@ -240,6 +312,27 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "حضرت عبدالبهاء معرفت محسوس را از حقایق معقول—عشق، عقل، روح—جدا می‌سازند؛ حقایق معقول را جز در قالب محسوس نمی‌توان گفت. از این‌رو کتب قدسی از رمز سرشارند؛ خواندن صرف ظاهر بار روحانی را از دست می‌دهد، چنان‌که زبان عروس و داماد در غزل غزل‌ها فراتر از جسم اشاره می‌کند.",
           "کتاب ایقان جوینده را به خواندن با چشم باطن و دیدن هر مخلوق چون آیت خدا می‌آموزد. آموختن این زبان رمزی—در متن و در طبیعت—تمثیل‌هایی برای حیات جامعه می‌گشاید: عناصر گوناگون، اگر شکیبا به هم آمیزند، می‌توانند خاک بارور آگاهی مشترک شوند.",
+        ],
+      }
+    ),
+    sec(
+      BT.sunMoonStars,
+      {
+        title: "Sun, Moon, and Stars as Spiritual Symbols",
+        linkLabel:
+          "David Langness, “Understanding the Prophecy of the Sun, Moon & Stars”",
+        paragraphs: [
+          "Prophecies of darkened sun, fallen stars, and shaken heavens are read in Bahá’í commentary as symbolic: the sun as Manifestation, stars as religious leaders who should guide, heavens as religions themselves—not merely astronomical catastrophe. Esslemont notes that Prophets spoke primarily of spiritual light.",
+          "Celestial language in scripture is therefore a sacred cipher: the same sky that science maps becomes, in the Book, a map of guidance and crisis at the dawn of a new revelation. Distinguishing astronomy (science) from fortune-telling astrology, and both from sacred metaphor, is part of reading symbols with integrity.",
+        ],
+      },
+      {
+        title: "خورشید و ماه و ستارگان چون نمادهای روحانی",
+        linkLabel:
+          "دیوید لانگنس، «فهم نبوت خورشید و ماه و ستارگان»",
+        paragraphs: [
+          "نبوت‌های خورشید تیره، ستارگان فروافتاده و آسمان لرزان در تفسیر بهائی رمزی خوانده می‌شوند: خورشید چون مظهر الهی، ستارگان چون رهبران دینی که باید هدایت کنند، آسمان‌ها چون خود ادیان—نه صرف فاجعهٔ نجومی. اسلمونت یادآور می‌شود که پیامبران بیش‌تر از نور روحانی سخن گفتند.",
+          "زبان کیهانی در کتاب، رمز قدسی است: همان آسمانی که علم نقشه‌اش می‌کشد، در کتاب نقشهٔ هدایت و بحران در طلوع ظهور نو می‌شود. تمایز اخترشناسی (علم) از نجوم احکامیِ فال‌بینانه، و هر دو از استعارهٔ قدسی، بخشی از خواندن درست رموز است.",
         ],
       }
     ),
@@ -401,6 +494,46 @@ const SECTIONS: Record<DoorSlug, BilingualSection[]> = {
         paragraphs: [
           "کودکی در تماشای ستارگان به تصریح قرن‌نوزدهمی حضرت بهاءالله می‌رسد که هر سیاره مخلوقات خود را دارد، و به تعلیم حضرت عبدالبهاء که اجرام ستاره‌ای مسکون‌اند به باشندگانی متناسب با عناصر خویش—نه لزوماً با آگاهی زمینی. شگفتی جای غرور فرض تنها بودن زمین را می‌گیرد.",
           "چون سر بلند کنیم نور گذشته را می‌بینیم؛ چون به وحی بنگریم کیهانی را می‌یابیم که پیش‌تر مسکون تصدیق شده. دعوت ساده است: بیرون برو، چشم بردار، و بگذار فروتنی و حیرت یک آسمان را شریک شوند.",
+        ],
+      }
+    ),
+    sec(
+      BT.astrologyExplored,
+      {
+        title: "Is It Written in the Stars? Astrology and Cosmic Interconnection",
+        linkLabel:
+          "David Langness, “Is it Written in the Stars? Astrology Explored”",
+        paragraphs: [
+          "In Some Answered Questions, ‘Abdu’l-Bahá addresses whether stars influence the human soul. Certain celestial bodies—above all the sun—have clear material effects on earth. As for spiritual influence, He rejects the predictive “decrees” of old astrologers as imagination and myth, yet affirms that the limitless universe is like a living body whose members are strongly connected and mutually influence one another, materially and spiritually.",
+          "Sound that moves the heart illustrates how a subtle material vibration can produce deep spiritual effect; likewise the cosmos is organically linked even when science cannot yet map every tie. The teaching here is interconnection—not horoscope fate. Reading the heavens as a book of relationship, not fortune-telling, keeps poetic star-language subordinate to reason, revelation, and free moral choice.",
+        ],
+      },
+      {
+        title: "آیا در ستارگان نوشته شده؟ نجوم احکامی و پیوند کیهانی",
+        linkLabel:
+          "دیوید لانگنس، «آیا در ستارگان نوشته شده؟ کاوش در نجوم احکامی»",
+        paragraphs: [
+          "در مفاوضات، حضرت عبدالبهاء می‌پرسند آیا ستارگان بر روح انسان اثر دارند. برخی اجرام—به‌ویژه خورشید—اثر مادی آشکار بر زمین دارند. دربارهٔ تأثیر روحانی، «احکام» پیش‌گویانهٔ منجمان قدیم را خیال و افسانه می‌دانند، اما می‌فرمایند کیهان بی‌کران چون پیکری زنده است که اعضایش سخت به هم پیوسته‌اند و مادی و روحانی بر یکدیگر اثر می‌گذارند.",
+          "صدا که قلب را می‌جنباند نشان می‌دهد ارتعاش مادی لطیف چگونه اثر روحانی ژرف می‌آفریند؛ کیهان نیز اندام‌وار پیوند دارد هرچند علم هنوز همهٔ بندها را نشناسد. تعلیم اینجا همبستگی است—نه سرنوشت طالع. خواندن آسمان چون کتاب رابطه، نه فال‌بینی، زبان شاعرانهٔ ستارگان را تابع عقل، وحی و اختیار اخلاقی نگه می‌دارد.",
+        ],
+      }
+    ),
+    sec(
+      BT.ageAquarius,
+      {
+        title: "The Age of Aquarius—Zodiac as Allegory of a New Age",
+        linkLabel: "David Langness, “What is the Age of Aquarius, Anyway?”",
+        paragraphs: [
+          "Bahá’í teaching generally treats predictive astrology as superstition out of step with the harmony of science and religion; Shoghi Effendi urged patience with believers who cling to it while weaning reliance away, and distinguished astronomy (a science) from astrology. Yet the Writings sometimes borrow zodiac imagery as allegory: when the Sun of Reality rises from a new point on the spiritual horizon, a springtime of civilization begins.",
+          "‘Abdu’l-Bahá likens progressive revelation to the physical sun appearing from different zodiacal signs—Cancer, Libra, Aquarius, Aries—while remaining one sun. Lovers of the sun seek the light itself, not a fixed rising-point. Thus “Aquarius” language can point to a new prophetic cycle without endorsing horoscope practice.",
+        ],
+      },
+      {
+        title: "عصر دلو—منطقة‌البروج چون تمثیل دور جدید",
+        linkLabel: "دیوید لانگنس، «عصر دلو اصلاً چیست؟»",
+        paragraphs: [
+          "تعالیم بهائی عموماً نجوم احکامیِ پیش‌گویانه را خرافه و ناساز با هماهنگی علم و دین می‌دانند؛ حضرت شوقی افندی به صبر با مؤمنانی که بدان وابسته‌اند و تدریجاً رها کردنشان سفارش فرموده‌اند و اخترشناسی (علم) را از نجوم احکامی جدا ساخته‌اند. با این‌همه آثار گاه تصویر منطقة‌البروج را چون تمثیل به‌کار می‌برند: چون شمس حقیقت از نقطه‌ای نو در افق روحانی برآید، بهار تمدن آغاز می‌شود.",
+          "حضرت عبدالبهاء ظهور تدریجی را به خورشید مادی تشبیه می‌فرمایند که از برج‌های گوناگون—سرطان، میزان، دلو، حمل—طلوع می‌کند و با این‌همه یک خورشید است. عاشقان خورشید خود نور را می‌جویند نه نقطهٔ ثابت طلوع را. پس زبان «دلو» می‌تواند به دور نبوی نو اشاره کند بی‌آنکه عمل طالع‌بینی را تأیید کند.",
         ],
       }
     ),

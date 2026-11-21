@@ -233,13 +233,13 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       fa: "درخت نور درون — خودشناسی در پیشگاه حق",
     },
     en: {
-      title: "Seeking Self-Knowledge and the Practice of Daily Reflection",
+      title: "Self-Knowledge: Foundation of Awareness, Cosmos, and Knowing God",
       paragraphs: [
-        "A well-known Islamic tradition treasured in Bahá’í discourse affirms: “He who knoweth his own self hath known his Lord.” Bahá’u’lláh repeatedly turns the seeker inward—not toward ego, but toward the noble essence deposited in every human being. The soul is described as a mine rich in gems of inestimable value; education and spiritual discipline exist to bring those gems to light.",
-        "Human beings carry two dimensions at once: a material nature bound to need and habit, and a spiritual nature oriented toward the divine. Seeking self-knowledge means learning to distinguish these—not despising the body, but refusing to let appetite rule the mirror of the heart. True self-awareness, the Writings suggest, ripens through service: when we forget ourselves in love for others, the lower self loosens its grip and the higher self becomes visible.",
-        "Self-reflection—muḥásabah, the daily reckoning of the soul—is central to Bahá’í spiritual life. A cherished tradition affirms that an hour of reflection is better than seventy years of unreflective worship. Bahá’u’lláh and ‘Abdu’l-Bahá urge examination of motives before sleep, honesty about failings, and resolve to improve. Reflection is not self-condemnation; it is the lamp that shows where the veil still hangs.",
-        "Self-knowledge in the Bahá’í sense is neither narcissism nor withdrawal. It is recognition of one’s station as a conscious mirror of divine attributes—and honesty about the veils of desire, prejudice, and heedlessness that cloud that mirror. The Kitáb-i-Íqán and the Hidden Words urge cleansing of the heart so that the light of guidance may appear.",
-        "This door gathers practices of reflection: examining motives, consulting conscience, reading the Sacred Writings as a mirror held to the soul, serving others as a path to self-awareness, and walking the path of independent investigation of truth. To know oneself truly is to discover both humility before God and the creative power entrusted to every human spirit.",
+        "A well-known tradition treasured in Bahá’í discourse affirms: “He who knoweth his own self hath known his Lord.” Self-knowledge is not a side practice—it is the foundation of true awareness. Bahá’u’lláh turns the seeker inward toward the noble essence deposited in every soul, described as a mine of gems; education and discipline exist to bring those gems to light.",
+        "Bahá’u’lláh teaches that the primary purpose of creation is that humanity may know and love God. Upon every created thing He shed the light of one Name; upon the human reality He focused the radiance of all His names and attributes, making it a mirror of His own Self. To know that mirror—honestly, daily—is the first portal to knowing the Creator.",
+        "Human beings carry two natures: material and spiritual. Distinguishing them, serving others, and bringing oneself to account each day (an hour of reflection preferred to decades of unreflective worship) polish the mirror. Self-knowledge here is neither narcissism nor withdrawal; it is recognition of station and of the veils that cloud it.",
+        "Once the self is known, vision must become world-embracing. The soul that recognizes itself as a conscious participant in creation can read the book of the universe—nature, fellow beings, the vast cosmos—as signs of God. Awareness expands from inner reckoning to kinship with all that exists, without confusing ego with Lord.",
+        "This door gathers that arc: know thyself → know thy Lord → awaken to the cosmos as a field of divine signs → serve. Practices of prayer, reflection, independent investigation of truth, and deeds of love make self-knowledge the living root of spiritual science.",
       ],
       sources: [
         {
@@ -247,23 +247,31 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           url: `${BRL}/authoritative-texts/bahaullah/hidden-words/`,
         },
         {
+          label: "Bahá’u’lláh, Gleanings — purpose of creation: to know and love God",
+          url: GLEANINGS,
+        },
+        {
           label: "Bahá’u’lláh, The Kitáb-i-Íqán",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
         },
         {
-          label: "‘Abdu’l-Bahá on education and the human soul as a mine of gems",
+          label: "Bahá’u’lláh, Tablets of Bahá’u’lláh — know thine own self",
+          url: `${BRL}/authoritative-texts/bahaullah/tablets-bahaullah/`,
+        },
+        {
+          label: "The human soul — bahai.org",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        }
+        },
       ],
     },
     fa: {
-      title: "طلب خودشناسی و تمرین محاسبهٔ نفس روزانه",
+      title: "خودشناسی: پایهٔ آگاهی، کیهان و عرفان خدا",
       paragraphs: [
-        "حدیث شریف «مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّه» در گفتمان بهائی گرامی داشته شده است. حضرت بهاءالله بارها جوینده را به‌سوی باطن می‌خوانند—نه به‌سوی نفس اماره، بلکه به‌سوی جوهر شریفی که در هر انسان به ودیعه نهاده شده. روح چون معدنی سرشار از جواهر بی‌بها وصف شده؛ تربیت و سلوک برای آشکار ساختن آن گوهرهاست.",
-        "انسان دو بُعد دارد: طبیعت مادی وابسته به نیاز و عادت، و طبیعت روحانی متمایل به حق. طلب خودشناسی یعنی آموختن تمایز این دو—نه خوار داشتن جسم، بلکه نپذیرفتن آنکه شهوت بر آیینهٔ قلب حاکم شود. خودآگاهی حقیقی، چنان‌که آثار می‌آموزند، در خدمت می‌رسد: وقتی در عشق به دیگران خود را فراموش کنیم، نفس پست سست می‌شود و نفس برتر پدیدار می‌گردد.",
-        "تفکر و محاسبهٔ نفس روزانه در حیات روحانی بهائی محوری است. حدیثی گرامی می‌گوید «تفکر ساعة خیر من عبادة سبعین سنة». حضرت بهاءالله و حضرت عبدالبهاء به بررسی نیت‌ها پیش از خواب، صداقت دربارهٔ قصور، و عزم اصلاح فرامی‌خوانند. محاسبه خودسرزنشی نیست؛ چراغی است که نشان می‌دهد پرده هنوز کجا آویخته است.",
-        "خودشناسی در معنای بهائی نه خودشیفتگی است و نه گوشه‌نشینی. شناخت مقام انسان به‌مثابه آیینهٔ صفات الهی است—و صداقت دربارهٔ پرده‌های هوی، تعصب و غفلت که این آیینه را تیره می‌کند. کتاب ایقان و کلمات مکنونه به تطهیر قلب فرامی‌خوانند تا نور هدایت پدیدار شود.",
-        "این دروازه تمرین‌های تأمل را گرد می‌آورد: بررسی نیت‌ها، مشورت با وجدان، خواندن آثار مبارکه چون آیینه‌ای برابر روح، خدمت به دیگران چون راه خودآگاهی، و گام نهادن در تحری حقیقت. خود را به راستی شناختن، هم فروتنی در برابر خداست و هم کشف نیروی خلاقی که به هر روح انسانی سپرده شده است.",
+        "حدیث «مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّه» در گفتمان بهائی گرامی است. خودشناسی تمرین فرعی نیست—پایهٔ آگاهی راستین است. حضرت بهاءالله جوینده را به‌سوی جوهر شریف هر روح می‌خوانند؛ روح معدن جواهر است و تربیت برای آشکار ساختن آن گوهرها.",
+        "حضرت بهاءالله می‌فرمایند غایت اصلی خلقت آن است که انسان خدا را بشناسد و دوست بدارد. بر هر چیز پرتو یکی از اسماء را افشاند؛ بر حقیقت انسان شعاع همهٔ اسماء و صفات را متمرکز ساخت و آن را آیینهٔ نفس خویش کرد. شناخت صادقانه و روزانهٔ آن آیینه، نخستین دروازهٔ عرفان خالق است.",
+        "انسان دو طبیعت دارد: مادی و روحانی. تمایز آن دو، خدمت به دیگران، و محاسبهٔ نفس هر روز (ساعتی تفکر بر هفتاد سال عبادت بی‌تفکر) آیینه را صیقل می‌دهد. خودشناسی اینجا نه خودشیفتگی است و نه گوشه‌نشینی؛ شناخت مقام است و پرده‌هایی که آن را تیره می‌کند.",
+        "چون نفس شناخته شد، چشم‌انداز باید جهان‌شمول شود. روحی که خود را شرکت‌کنندهٔ آگاه در خلقت می‌بیند، کتاب کیهان—طبیعت، همنوعان، فضای بی‌کران—را چون آیات خدا می‌خواند. آگاهی از محاسبهٔ درون به خویشاوندی با همهٔ هستی می‌گسترد، بی‌آنکه نفس با رب خلط شود.",
+        "این دروازه آن قوس را گرد می‌آورد: خود را بشناس → پروردگارت را بشناس → کیهان را میدان آیات ببین → خدمت کن. دعا، تفکر، تحری حقیقت و اعمال عشق، خودشناسی را ریشهٔ زندهٔ علم روحانی می‌سازند.",
       ],
       sources: [
         {
@@ -271,13 +279,21 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
           url: `${BRL}/authoritative-texts/bahaullah/hidden-words/`,
         },
         {
+          label: "حضرت بهاءالله، منتخباتی از آثار — غایت خلقت: عرفان و محبت خدا",
+          url: GLEANINGS,
+        },
+        {
           label: "حضرت بهاءالله، کتاب ایقان",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
         },
         {
-          label: "حضرت عبدالبهاء — روح انسانی معدن جواهر",
+          label: "حضرت بهاءالله، الواح — شناخت نفس خویش",
+          url: `${BRL}/authoritative-texts/bahaullah/tablets-bahaullah/`,
+        },
+        {
+          label: "روح انسانی — bahai.org",
           url: `${BAHAI}/beliefs/life-spirit/human-soul/`,
-        }
+        },
       ],
     },
   },
@@ -344,9 +360,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "Bahá’í sacred culture is rich in symbols that point beyond themselves. The nine-pointed star recalls the numerical value of “Bahá” (glory) in the abjad system and the completeness of a new cycle of revelation; nine-sided Houses of Worship embody that same completeness in stone and light. Calligraphic forms of the Greatest Name—Yá Bahá’u’l-Abhá and related invocations—concentrate remembrance into visible beauty, a daily invitation to turn the heart toward God.",
         "The ringstone symbol, designed under ‘Abdu’l-Bahá’s guidance, gathers layered meaning into a single emblem: two five-pointed stars for the Báb and Bahá’u’lláh as Twin Manifestations; three horizontal lines suggesting the world of God, the world of Manifestation, and the world of creation; and a vertical line joining them—the Holy Spirit that links heaven and earth. Worn as a ring or seal, it is not a charm but a reminder of covenant and station.",
-        "How, then, should we read spiritual symbols in the divine scriptures? The Writings teach that sacred texts speak in metaphor as often as in plain speech. Mountains may mean religions; sun and moon may mean Manifestations and their mirrors; gardens, veils, wine, and nightingales open inner meanings. Bahá’u’lláh and the Báb employ the language of signs without reducing faith to occult speculation. The key is the Manifestation of God Himself: He unlocks the Book. Independent investigation, prayer, and consultation keep interpretation humble and fruitful.",
-        "Beyond letters and geometry, the whole of creation is a book of divine signs. Every atom, Bahá’u’lláh writes, can disclose the knowledge of God to the pure of heart. Symbolism thus serves recognition of God, unity of humanity, and the dawning of a world civilization—never a substitute for justice, love, and deeds.",
-        "This door explores how form becomes prayer: star, Greatest Name, ringstone, architecture, and the living metaphors of scripture—companions to contemplation, always subordinate to the spirit of the Writings.",
+        "How, then, should we read spiritual symbols in the divine scriptures? The Writings teach that sacred texts speak in metaphor as often as in plain speech. Mountains may mean religions; sun and moon may mean Manifestations and their mirrors; stars, lesser guides; gardens, veils, wine, and nightingales open inner meanings. The Manifestation of God unlocks the Book; independent investigation, prayer, and consultation keep interpretation humble.",
+        "Celestial images in prophecy are therefore sacred cipher—not fortune-telling. Distinguishing scriptural metaphor from predictive astrology (treated elsewhere under Cosmic Order) keeps the reading of symbols clean: the sky in the Book maps guidance and revelation, while astronomy maps physical light. Every atom, Bahá’u’lláh writes, can still disclose the knowledge of God to the pure of heart.",
+        "This door explores how form becomes prayer: nine-pointed star, Greatest Name, ringstone, architecture, and the living metaphors of scripture—companions to contemplation, always subordinate to justice, love, and deeds.",
       ],
       sources: [
         {
@@ -360,7 +376,11 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "The Greatest Name — Bahá’í Reference Library / teachings",
           url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
-        }
+        },
+        {
+          label: "Bahá’u’lláh, The Kitáb-i-Íqán — symbolic language of scripture",
+          url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
+        },
       ],
     },
     fa: {
@@ -368,9 +388,9 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       paragraphs: [
         "فرهنگ قدسی بهائی از رموزی سرشار است که فراتر از ظاهر خویش اشاره می‌کنند. ستارهٔ نُه‌پر ارزش عددی «بهاء» در حساب ابجد و کمال دور جدید را به یاد می‌آورد؛ مشارق‌الاذکار نُه‌ضلعی همان کمال را در سنگ و نور مجسم می‌کنند. صورت‌های خوشنویسی اسم اعظم—یا بهاءالابهی و اذکار وابسته—ذکر را به زیبایی مرئی بدل می‌کنند؛ دعوتی روزانه برای روی آوردن قلب به‌سوی خدا.",
         "نماد نگین انگشتری، به هدایت حضرت عبدالبهاء، معانی لایه‌لایه را در یک نشان گرد می‌آورد: دو ستارهٔ پنج‌پر برای حضرت باب و حضرت بهاءالله به‌مثابه مظاهر توأم؛ سه خط افقی اشاره به عالم حق، عالم امر (ظهور) و عالم خلق؛ و خط عمودی پیونددهنده—روح‌القدس که آسمان و زمین را می‌پیوندد. این طلسم نیست؛ یادآور عهد و مقام است.",
-        "پس زبان استعاری کتب آسمانی را چگونه بفهمیم؟ آثار می‌آموزند که متون قدسی به اندازهٔ کلام صریح، به استعاره سخن می‌گویند. کوه ممکن است ادیان باشد؛ خورشید و ماه مظاهر و آیینه‌هایشان؛ باغ، پرده، باده و بلبل معانی باطنی می‌گشایند. حضرت بهاءالله و حضرت باب زبان آیات را به‌کار می‌برند بی‌آنکه ایمان به گمانه‌زنی غیبی فروکاهد. کلید، خود مظهر الهی است: او کتاب را می‌گشاید. تحری حقیقت، دعا و مشورت تفسیر را فروتن و ثمربخش نگه می‌دارند.",
-        "فراتر از حروف و هندسه، تمام خلقت کتاب آیات الهی است. حضرت بهاءالله می‌فرمایند هر ذره‌ای می‌تواند معرفت خدا را بر قلب پاک بگشاید. رمز در خدمت عرفان حق، وحدت بشر و طلوع تمدن جهانی است—هرگز جایگزین عدالت، عشق و عمل نیست.",
-        "این دروازه می‌کاود که چگونه صورت به دعا بدل می‌شود: ستاره، اسم اعظم، نگین، معماری و استعارات زندهٔ کتاب—همراهان تأمل، همواره تابع روح آثار.",
+        "پس زبان استعاری کتب آسمانی را چگونه بفهمیم؟ آثار می‌آموزند که متون قدسی به اندازهٔ کلام صریح، به استعاره سخن می‌گویند. کوه ممکن است ادیان باشد؛ خورشید و ماه مظاهر و آیینه‌هایشان؛ ستارگان، رهبران کوچک‌تر؛ باغ، پرده، باده و بلبل معانی باطنی می‌گشایند. مظهر الهی کتاب را می‌گشاید؛ تحری حقیقت، دعا و مشورت تفسیر را فروتن نگه می‌دارند.",
+        "تصاویر آسمانی در نبوت‌ها رمز قدسی‌اند—نه فال‌بینی. تمایز استعارهٔ کتاب از نجوم احکامیِ پیش‌گویانه (که در درب نظم کیهانی آمده) خواندن رموز را پاک نگه می‌دارد: آسمان در کتاب نقشهٔ هدایت و ظهور است، و اخترشناسی نقشهٔ نور مادی. حضرت بهاءالله می‌فرمایند هر ذره‌ای می‌تواند معرفت خدا را بر قلب پاک بگشاید.",
+        "این دروازه می‌کاود که چگونه صورت به دعا بدل می‌شود: ستارهٔ نه‌پر، اسم اعظم، نگین، معماری و استعارات زندهٔ کتاب—همراهان تأمل، همواره تابع عدالت، عشق و عمل.",
       ],
       sources: [
         {
@@ -380,7 +400,15 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
         {
           label: "حضرت بهاءالله، کتاب اقدس و حواشی",
           url: `${BRL}/authoritative-texts/bahaullah/kitab-i-aqdas/`,
-        }
+        },
+        {
+          label: "اسم اعظم / ظهور تدریجی — bahai.org",
+          url: `${BAHAI}/beliefs/god-his-creation/revelation/`,
+        },
+        {
+          label: "حضرت بهاءالله، کتاب ایقان — زبان رمزی کتاب",
+          url: `${BRL}/authoritative-texts/bahaullah/kitab-i-iqan/`,
+        },
       ],
     },
   },
@@ -446,18 +474,22 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       fa: "مراقبه، دی‌ان‌ای نور و ستارهٔ نه‌پر — علم در کنار روح",
     },
     en: {
-      title: "Life Beyond Earth—and a Cosmos Where Science Meets Spirit",
+      title: "Life Beyond Earth—Stars, Science, and Cosmic Interconnection",
       paragraphs: [
         "‘Abdu’l-Bahá famously teaches that science and religion are as two wings of one bird—both required for ascent. Bahá’í cosmology affirms a universe of purpose: progressive revelation, the essential harmony of truth, and a human consciousness capable of knowing both material law and spiritual meaning.",
-        "What do the Bahá’í Writings say about life on other planets? Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute. ‘Abdu’l-Bahá affirms worlds inhabited by beings capable of knowing God. Shoghi Effendi notes that the nature of those creatures remains for science to discover. The case for life beyond Earth, in this light, is not fringe speculation—it is woven into the fabric of revelation, inviting awe rather than fear.",
-        "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; dogma that contradicts demonstrated truth is to be set aside; yet science without spiritual values risks becoming a cold instrument of power. Today’s search for exoplanets, astrobiology, and open scientific inquiry into unknown aerial phenomena can proceed without panic myths: curiosity, justice, and honesty replace the reflex to see every mystery as a threat.",
-        "Planetary unity on Earth remains the first task; wonder at a living cosmos is its companion. Reading nature as a book of divine signs, studying the stars without losing the soul, and building a civilization where technology serves unity—these are the twin labors of this door.",
-        "This chamber gathers that vision: a conscious cosmos, two wings in flight, and the quiet confidence that creation is vast enough for countless creatures—and one God.",
+        "What do the Writings say about life on other planets? Bahá’u’lláh writes that every fixed star hath its own planets, and every planet its own creatures, whose number no man can compute. ‘Abdu’l-Bahá affirms worlds inhabited by beings capable of knowing God. Shoghi Effendi notes that the nature of those creatures remains for science to discover—inviting awe rather than fear.",
+        "In Some Answered Questions—“The Influence of the Stars”—‘Abdu’l-Bahá affirms real material effects of celestial bodies (the sun above all) and a deep interconnection of the universe like a living body, while rejecting the predictive decrees of ancient astrologers as imagination. Shoghi Effendi distinguishes astronomy (a science) from astrology (largely superstition) and asks that horoscopes be given no importance. Zodiac imagery may still appear as allegory of progressive revelation: one Sun of Reality rising from new spiritual points.",
+        "Far from opposing empirical inquiry, the Writings celebrate knowledge as wings for humanity’s flight. Superstition is rejected; today’s search for exoplanets, astrobiology, and open study of unknown aerial phenomena can proceed without panic myths. Planetary unity on Earth remains the first task; wonder at a living, interconnected cosmos is its companion.",
+        "This chamber gathers that vision: two wings in flight, creatures beyond count, stars linked without fate written in charts—and one God.",
       ],
       sources: [
         {
           label: "Bahá’u’lláh, Gleanings — stars, planets, and creatures beyond count",
           url: GLEANINGS,
+        },
+        {
+          label: "‘Abdu’l-Bahá, Some Answered Questions — Influence of the Stars",
+          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
         },
         {
           label: "‘Abdu’l-Bahá, Paris Talks — science and religion",
@@ -471,18 +503,22 @@ const ARTICLES: Record<DoorSlug, ArticleBundle> = {
       ],
     },
     fa: {
-      title: "حیات فراتر از زمین—و کیهانی که علم در آن با روح دیدار می‌کند",
+      title: "حیات فراتر از زمین—ستارگان، علم و همبستگی کیهانی",
       paragraphs: [
         "حضرت عبدالبهاء می‌فرمایند علم و دین چون دو بال یک پرنده‌اند—هر دو برای عروج لازم است. کیهان‌شناسی بهائی جهانی هدفمند را تصدیق می‌کند: ظهور تدریجی، هماهنگی ذاتی حقیقت، و آگاهی انسانی که هم قانون مادی و هم معنای روحانی را می‌تواند شناخت.",
-        "آثار بهائی دربارهٔ حیات در سیارات دیگر چه می‌گویند؟ حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. حضرت عبدالبهاء از عوالمی سخن می‌گویند که باشندگانی قادر به عرفان حق در آن‌ها ساکن‌اند. حضرت شوقی افندی می‌فرمایند ماهیت این مخلوقات را علم روزی کشف خواهد کرد. دلیل حیات فراتر از زمین، در این نور، گمانه‌زنی حاشیه‌ای نیست—در تار و پود وحی تنیده است و شگفتی می‌طلبد، نه ترس.",
-        "آثار مبارکه علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جزم مخالف حقیقت مبرهن کنار نهاده می‌شود؛ اما علم بی‌ارزش‌های روحانی خطر ابزار سرد قدرت شدن دارد. جستجوی امروزِ سیارات فراخورشیدی، اخترزیست‌شناسی و پژوهش پدیده‌های ناشناختهٔ هوایی می‌تواند بی‌افسانه‌های هراس پیش رود: کنجکاوی، عدالت و صداقت جای این بازتاب را می‌گیرند که هر رازی را تهدید ببینیم.",
-        "وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده، هم‌سفر آن. خواندن طبیعت چون کتاب آیات، مطالعهٔ ستارگان بی‌از‌دست‌دادن روح، و ساختن تمدنی که فناوری در خدمت وحدت باشد—این دو کار این دروازه‌اند.",
-        "این حجره آن چشم‌انداز را گرد می‌آورد: کیهانی آگاه، دو بال در پرواز، و اطمینان آرام که خلقت برای مخلوقات بی‌شمار—و یک خدا—وسعت دارد.",
+        "آثار دربارهٔ حیات در سیارات دیگر چه می‌گویند؟ حضرت بهاءالله می‌فرمایند هر ستارهٔ ثابتی سیارات خود و هر سیاره‌ای مخلوقات خود را دارد—که شمارهٔ آنان را هیچ انسانی نمی‌تواند شمرد. حضرت عبدالبهاء از عوالمی سخن می‌گویند که باشندگانی قادر به عرفان حق در آن‌ها ساکن‌اند. حضرت شوقی افندی می‌فرمایند ماهیت این مخلوقات را علم روزی کشف خواهد کرد—شگفتی می‌طلبد، نه ترس.",
+        "در مفاوضات—«تأثیر ستارگان»—حضرت عبدالبهاء اثر مادی اجرام (به‌ویژه خورشید) و همبستگی ژرف کیهان چون پیکر زنده را تصدیق می‌فرمایند، اما احکام پیش‌گویانهٔ منجمان قدیم را خیال می‌دانند. حضرت شوقی افندی اخترشناسی را علم و نجوم احکامی را اغلب خرافه می‌شمارند و می‌فرمایند به طالع اهمیت ندهیم. زبان منطقة‌البروج هنوز می‌تواند تمثیل ظهور تدریجی باشد: یک شمس حقیقت از نقاط نو روحانی طلوع می‌کند.",
+        "آثار علم را بال پرواز بشر می‌ستایند. خرافات رد می‌شود؛ جستجوی سیارات فراخورشیدی، اخترزیست‌شناسی و پژوهش پدیده‌های ناشناخته می‌تواند بی‌افسانه‌های هراس پیش رود. وحدت سیاره‌ای روی زمین نخستین تکلیف است؛ شگفتی در برابر کیهان زنده و پیوسته، هم‌سفر آن.",
+        "این حجره آن چشم‌انداز را گرد می‌آورد: دو بال در پرواز، مخلوقات بی‌شمار، ستارگان پیوندخورده بی‌سرنوشت نوشته در زایجه—و یک خدا.",
       ],
       sources: [
         {
           label: "حضرت بهاءالله، منتخباتی از آثار — ستارگان، سیارات و مخلوقات بی‌شمار",
           url: GLEANINGS,
+        },
+        {
+          label: "حضرت عبدالبهاء، مفاوضات — تأثیر ستارگان",
+          url: `${BRL}/authoritative-texts/abdul-baha/some-answered-questions/`,
         },
         {
           label: "حضرت عبدالبهاء، خطابات پاریس — علم و دین",
