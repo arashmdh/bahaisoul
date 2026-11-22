@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ScholarsDirectory } from "@/components/scholars/ScholarsDirectory";
-import { ScholarsAccessGate } from "@/components/scholars/ScholarsAccessGate";
 import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -24,9 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function ScholarsPage() {
-  return (
-    <ScholarsAccessGate>
-      <ScholarsDirectory />
-    </ScholarsAccessGate>
-  );
+  return <ScholarsDirectory />;
 }

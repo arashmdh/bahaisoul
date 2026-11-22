@@ -1,11 +1,10 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { NinePointedStar } from "@/components/ui/NinePointedStar";
 import { cn } from "@/lib/utils";
-
-const STORAGE_KEY = "scholars-preview-unlocked";
 
 const copy = {
   en: {
@@ -37,28 +36,16 @@ const copy = {
   },
 } as const;
 
-export function ScholarsAccessGate({ children }: { children: React.ReactNode }) {
+export function ScholarsUnlockForm({ next }: { next: string }) {
   const { locale } = useLocale();
+  const router = useRouter();
   const t = copy[locale] ?? copy.en;
   const isFa = locale === "fa";
 
-  const [ready, setReady] = useState(false);
-  const [unlocked, setUnlocked] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
-
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem(STORAGE_KEY) === "1") {
-        setUnlocked(true);
-      }
-    } catch {
-      /* ignore */
-    }
-    setReady(true);
-  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -74,28 +61,14 @@ export function ScholarsAccessGate({ children }: { children: React.ReactNode }) 
         setError(true);
         return;
       }
-      try {
-        sessionStorage.setItem(STORAGE_KEY, "1");
-      } catch {
-        /* ignore */
-      }
-      setUnlocked(true);
+      router.replace(next);
+      router.refresh();
     } catch {
       setError(true);
     } finally {
       setBusy(false);
     }
   }
-
-  if (!ready) {
-    return (
-      <div className="flex min-h-[60svh] items-center justify-center bg-alabaster">
-        <NinePointedStar size={40} className="animate-pulse text-gold/70" />
-      </div>
-    );
-  }
-
-  if (unlocked) return <>{children}</>;
 
   return (
     <div className="relative flex min-h-[100svh] items-center justify-center bg-[#0B1126] px-5 py-24">
@@ -125,7 +98,9 @@ export function ScholarsAccessGate({ children }: { children: React.ReactNode }) 
         <p
           className={cn(
             "mt-3 text-center text-ink/70",
-            isFa ? "text-base leading-relaxed" : "font-sans text-sm leading-relaxed"
+            isFa
+              ? "text-base leading-relaxed"
+              : "font-sans text-sm leading-relaxed"
           )}
         >
           {t.lead}
@@ -136,13 +111,16 @@ export function ScholarsAccessGate({ children }: { children: React.ReactNode }) 
             <span
               className={cn(
                 "mb-1.5 block text-ink/60",
-                isFa ? "text-sm" : "font-sans text-xs uppercase tracking-[0.18em]"
+                isFa
+                  ? "text-sm"
+                  : "font-sans text-xs uppercase tracking-[0.18em]"
               )}
             >
               {t.user}
             </span>
             <input
               type="text"
+              name="username"
               autoComplete="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -154,13 +132,16 @@ export function ScholarsAccessGate({ children }: { children: React.ReactNode }) 
             <span
               className={cn(
                 "mb-1.5 block text-ink/60",
-                isFa ? "text-sm" : "font-sans text-xs uppercase tracking-[0.18em]"
+                isFa
+                  ? "text-sm"
+                  : "font-sans text-xs uppercase tracking-[0.18em]"
               )}
             >
               {t.pass}
             </span>
             <input
               type="password"
+              name="password"
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

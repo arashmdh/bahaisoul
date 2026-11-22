@@ -22,12 +22,14 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ ok: true });
-  res.cookies.set("scholars_preview", "1", {
+  res.cookies.set("scholars_preview_v2", "1", {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
     path: "/",
     maxAge: 60 * 60 * 24 * 14, // 14 days
   });
+  // Clear legacy client-era cookie if present
+  res.cookies.set("scholars_preview", "", { path: "/", maxAge: 0 });
   return res;
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getScholarBySlug, allScholars } from "@/lib/scholarsData";
 import { ScholarProfileClient } from "@/components/scholars/ScholarProfileClient";
-import { ScholarsAccessGate } from "@/components/scholars/ScholarsAccessGate";
 import { absoluteUrl, SITE_NAME } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -76,9 +75,5 @@ export default function ScholarProfilePage({
 }) {
   const person = getScholarBySlug(params.slug);
   if (!person) notFound();
-  return (
-    <ScholarsAccessGate>
-      <ScholarProfileClient person={person} />
-    </ScholarsAccessGate>
-  );
+  return <ScholarProfileClient person={person} />;
 }
