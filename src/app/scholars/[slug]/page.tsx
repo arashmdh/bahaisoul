@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getScholarBySlug, allScholars } from "@/lib/scholarsData";
 import { ScholarProfileClient } from "@/components/scholars/ScholarProfileClient";
+import { ScholarsAccessGate } from "@/components/scholars/ScholarsAccessGate";
 import { absoluteUrl, SITE_NAME } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -48,6 +49,7 @@ export function generateMetadata({
     title,
     description,
     keywords,
+    robots: { index: false, follow: false },
     alternates: { canonical: url },
     openGraph: {
       type: "profile",
@@ -74,5 +76,9 @@ export default function ScholarProfilePage({
 }) {
   const person = getScholarBySlug(params.slug);
   if (!person) notFound();
-  return <ScholarProfileClient person={person} />;
+  return (
+    <ScholarsAccessGate>
+      <ScholarProfileClient person={person} />
+    </ScholarsAccessGate>
+  );
 }

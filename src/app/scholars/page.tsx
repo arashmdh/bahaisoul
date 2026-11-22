@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ScholarsDirectory } from "@/components/scholars/ScholarsDirectory";
+import { ScholarsAccessGate } from "@/components/scholars/ScholarsAccessGate";
 import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -19,8 +20,13 @@ export const metadata: Metadata = {
     "Bahá'í Sweden",
   ],
   alternates: { canonical: absoluteUrl("/scholars") },
+  robots: { index: false, follow: false },
 };
 
 export default function ScholarsPage() {
-  return <ScholarsDirectory />;
+  return (
+    <ScholarsAccessGate>
+      <ScholarsDirectory />
+    </ScholarsAccessGate>
+  );
 }
